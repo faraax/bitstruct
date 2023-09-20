@@ -1,3 +1,5 @@
+import Navbar from "../components/Navbar"
+import { RiLayout2Fill, BsFillBuildingsFill, IoPerson, MdOutlineKeyboardArrowDown } from "../Utils/icons"
 
 export const metadata = {
     title: 'Dashboard - Bit Struct',
@@ -6,8 +8,71 @@ export const metadata = {
 
 export default function page() {
     return (
-        <div>
-            
+        <div className="w-full px-10 py-5">
+            <Navbar />
+            <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-4">
+                    <h2 className="text-lg font-medium mb-3">Dashboard</h2>
+                    <div className="grid grid-cols-3 gap-7">
+                        <div className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white w-full">
+                            <div className="flex justify-center items-center h-16 w-16 bg-primary bg-opacity-20 p-3 rounded-full">
+                                <RiLayout2Fill className="text-4xl text-primary" />
+                            </div>
+                            <h2 className="text-mute">Total Bids</h2>
+                            <h2 className="text-2xl">8,980</h2>
+                            <p className="text-mute"><span className="text-primary">+10%</span> from last month</p>
+                        </div>
+                        <div className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white w-full">
+                            <div className="flex justify-center items-center h-16 w-16 bg-primary bg-opacity-20 p-3 rounded-full">
+                                <BsFillBuildingsFill className="text-4xl text-primary" />
+                            </div>
+                            <h2 className="text-mute">Total Area</h2>
+                            <h2 className="text-2xl">5,906</h2>
+                            <p className="text-mute"><span className="text-primary">+10%</span> from last month</p>
+                        </div>
+                        <div className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white w-full">
+                            <div className="flex justify-center items-center h-16 w-16 bg-primary bg-opacity-20 p-3 rounded-full">
+                                <IoPerson className="text-4xl text-primary" />
+                            </div>
+                            <h2 className="text-mute">Total Vendors</h2>
+                            <h2 className="text-2xl">3,430</h2>
+                            <p className="text-mute"><span className="text-primary">+10%</span> from last month</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-span-2">
+                    <h2 className="text-lg font-medium mb-3">Filter Bids</h2>
+                    <div className="flex gap-2">
+                        <input type="text"
+                            className="placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl"
+                            placeholder="Keyword Search" />
+                        <button className="relative group w-full bg-white flex justify-between items-center placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl">
+                            <p className="px-4 text-primary">Bit Type</p>
+                            <MdOutlineKeyboardArrowDown className="text-xl text-primary" />
+                            <div className="absolute hidden group-focus:block top-full -right-1 h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded">
+                                <ul className="text-left flex flex-col bg-white text-primary">
+                                    <li className="px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary hover:bg-opacity-20">Option 1</li>
+                                    <li className="px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary hover:bg-opacity-20">Option 2</li>
+                                    <li className="px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary hover:bg-opacity-20">Option 3</li>
+                                    <li className="px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary hover:bg-opacity-20">Option 4</li>
+                                    <li className="px-4 py-2 border-mute border-opacity-20 hover:bg-primary hover:bg-opacity-20">Option 5</li>
+                                </ul>
+                            </div>
+                        </button>
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                        <input type="date"
+                            className="placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2"
+                            placeholder="Keyword Search" />
+                            <span className="text-center">
+                                <p>-</p>
+                            </span>
+                        <input type="date"
+                            className="placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2"
+                            placeholder="Keyword Search" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { DM_Sans } from 'next/font/google'
 import Sidebar from './components/Sidebar'
 import './globals.css'
+import Navbar from './components/Navbar'
 
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'] })

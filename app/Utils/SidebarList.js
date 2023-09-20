@@ -1,7 +1,4 @@
-import { IoStatsChart } from 'react-icons/io5'
-import { RiSettings4Fill } from 'react-icons/ri'
-import { BsFillGridFill, BsFillClipboard2DataFill } from 'react-icons/bs'
-
+import { IoStatsChart, RiSettings4Fill, BsFillGridFill, BsFillClipboard2DataFill } from './icons'
 
 export const navTitles = [
     {
