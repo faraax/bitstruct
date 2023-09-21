@@ -3,7 +3,8 @@ import { RiSettings4Fill, RiLayout2Fill } from 'react-icons/ri'
 import {
     BsFillGridFill,
     BsFillClipboard2DataFill,
-    BsBell, BsFillBuildingsFill
+    BsBell, BsFillBuildingsFill,
+    BsCloudDownloadFill
 } from 'react-icons/bs'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { IoLogOut, IoPerson } from 'react-icons/io5'
@@ -25,5 +26,6 @@ module.exports = {
     RiLayout2Fill,
     BsFillBuildingsFill,
     IoPerson,
-    MdOutlineKeyboardArrowDown
+    MdOutlineKeyboardArrowDown,
+    BsCloudDownloadFill
 }

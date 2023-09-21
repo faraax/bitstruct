@@ -4,7 +4,7 @@ import { BiSearchAlt2, BsBell, FaHeadphones } from '../Utils/icons'
 
 export default function Navbar() {
     return (
-        <nav className="flex items-center justify-between h-24">
+        <nav className="flex items-center justify-between h-24 sticky top-0 bg-[#FAFCFF] z-10 w-full px-10 py-5">
             <div className="flex flex-col gap-2">
                 <h2 className="text-2xl font-medium">Welcome Alex</h2>
                 <p className="text-mute text-base">
