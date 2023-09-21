@@ -3,6 +3,7 @@ import logo from '../../public/BidStruct_Logo.png'
 import SidebarList from './SidebarList'
 import { navTitles } from '../Utils/SidebarList'
 import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
+import React from 'react'
 
 
 
@@ -28,7 +29,9 @@ export default function Sidebar() {
                     <ul className='flex flex-col gap-5'>
                         {
                             navTitles.map((list) => (
-                                <SidebarList list={list} />
+                                <React.Fragment key={list.id}>
+                                    <SidebarList list={list} />
+                                </React.Fragment>
                             ))
                         }
                     </ul>

@@ -43,7 +43,9 @@ export default function page() {
                         <div className="grid grid-cols-3 gap-7">
                             {
                                 dashboardCards.map((cardsData) => (
-                                    <Cards icon={cardsData.icon} totalBids={cardsData.totalBids} percentage={cardsData.percentage} heading={cardsData.heading} />
+                                    <div key={cardsData.id} className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white col-span-1">
+                                        <Cards icon={cardsData.icon} totalBids={cardsData.totalBids} percentage={cardsData.percentage} heading={cardsData.heading} />
+                                    </div>
                                 ))
                             }
                         </div>
