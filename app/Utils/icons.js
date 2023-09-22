@@ -10,6 +10,9 @@ import { BiSearchAlt2 } from 'react-icons/bi'
 import { IoLogOut, IoPerson } from 'react-icons/io5'
 import { FaHeadphones } from 'react-icons/fa'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import { HiDotsHorizontal } from 'react-icons/hi'
+import { GrDocumentCsv } from 'react-icons/gr'
+import { SlDoc } from 'react-icons/sl'
 
 
 
@@ -27,5 +30,8 @@ module.exports = {
     BsFillBuildingsFill,
     IoPerson,
     MdOutlineKeyboardArrowDown,
-    BsCloudDownloadFill
+    BsCloudDownloadFill,
+    HiDotsHorizontal,
+    GrDocumentCsv,
+    SlDoc
 }

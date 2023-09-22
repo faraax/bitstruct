@@ -1,7 +1,7 @@
 import BidsFilter from "../components/BidsFilter"
 import Cards from "../components/Cards"
 import Navbar from "../components/Navbar"
-import { RiLayout2Fill, BsFillBuildingsFill, IoPerson, RiSettings4Fill, BsCloudDownloadFill } from "../Utils/icons"
+import { RiLayout2Fill, BsFillBuildingsFill, IoPerson, RiSettings4Fill, BsCloudDownloadFill, HiDotsHorizontal } from "../Utils/icons"
 
 export const metadata = {
     title: 'Dashboard - Bit Struct',
@@ -101,9 +101,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -135,9 +134,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -169,9 +167,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -203,9 +200,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -237,9 +233,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -271,9 +266,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -305,9 +299,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -339,9 +332,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -373,9 +365,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -407,9 +398,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>
@@ -441,9 +431,8 @@ export default function page() {
                                         <h2 className="text-sm">
                                             <BsCloudDownloadFill className="text-2xl text-secondary" />
                                         </h2>
-                                        <div
-                                            className="text-2xl flex justify-center items-center h-8 w-8 rounded-full hover:font-black cursor-pointer">
-                                            ...
+                                        <div>
+                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
                                 </tr>

@@ -1,8 +1,6 @@
 import { DM_Sans } from 'next/font/google'
 import Sidebar from './components/Sidebar'
 import './globals.css'
-import Navbar from './components/Navbar'
-
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'] })
 
@@ -14,7 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.className} bg-[#FAFCFF]`} suppressHydrationWarning={true}>
+      <body
+        className={`${dmSans.className} bg-[#FAFCFF]`}
+        suppressHydrationWarning={true}
+      >
         <main className='flex'>
           <Sidebar />
           {children}
