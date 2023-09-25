@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+.hero-gradient {
+    background-clip: text;
+    color: transparent;
+    background: linear-gradient(-170deg, #00dbde, #5596ff 32%, #c65ae7 76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 5px;

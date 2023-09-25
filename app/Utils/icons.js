@@ -4,7 +4,8 @@ import {
     BsFillGridFill,
     BsFillClipboard2DataFill,
     BsBell, BsFillBuildingsFill,
-    BsCloudDownloadFill
+    BsCloudDownloadFill,
+    BsArrowRightCircle
 } from 'react-icons/bs'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { IoLogOut, IoPerson } from 'react-icons/io5'
@@ -33,5 +34,6 @@ module.exports = {
     BsCloudDownloadFill,
     HiDotsHorizontal,
     GrDocumentCsv,
-    SlDoc
+    SlDoc,
+    BsArrowRightCircle
 }
