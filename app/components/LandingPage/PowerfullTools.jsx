@@ -1,3 +1,4 @@
+import Balancer from 'react-wrap-balancer'
 import { BsArrowRightCircle } from '../../Utils/icons'
 
 export default function PowerfullTools() {
@@ -27,21 +28,27 @@ export default function PowerfullTools() {
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>01</span></h2>
                         <h3 className='text-3xl'>BidAlerts</h3>
                         <p className='text-xl'>
-                            Don't search — let the leads come to you. Set up custom saved searches based on your own criteria and receive email alerts with the latest results and updates. You'll always be up-to-date on project developments, even when you're on the road.
+                            <Balancer>
+                                Don't search — let the leads come to you. Set up custom saved searches based on your own criteria and receive email alerts with the latest results and updates. You'll always be up-to-date on project developments, even when you're on the road.
+                            </Balancer>
                         </p>
                     </div>
                     <div className='border-stone-200 border-y-2 border-x-2 border-opacity-30 p-10 flex flex-col gap-8'>
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>02</span></h2>
                         <h3 className='text-3xl'>Powerful Search</h3>
                         <p className='text-xl'>
-                            With the most complete collection of information on available projects, companies and contacts in the industry, our advanced search criteria allows you to find the exact projects, companies or contacts that match your ideal criteria instantly.
+                            <Balancer>
+                                With the most complete collection of information on available projects, companies and contacts in the industry, our advanced search criteria allows you to find the exact projects, companies or contacts that match your ideal criteria instantly.
+                            </Balancer>
                         </p>
                     </div>
                     <div className='border-stone-200 border-y-2 border-r-2 border-opacity-30 p-10 flex flex-col gap-8'>
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>03</span></h2>
                         <h3 className='text-3xl'>Analytics & Forecasting</h3>
                         <p className='text-xl'>
-                            With built-in analytics tools, instantly spot opportunity within your niche of the construction market. Plot recent trends for any metric, forecast upcoming potential leads, and find your next job site with advanced geographic mapping tools.
+                            <Balancer>
+                                With built-in analytics tools, instantly spot opportunity within your niche of the construction market. Plot recent trends for any metric, forecast upcoming potential leads, and find your next job site with advanced geographic mapping tools.
+                            </Balancer>
                         </p>
                     </div>
                 </div>
