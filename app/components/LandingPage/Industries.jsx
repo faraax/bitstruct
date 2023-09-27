@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { cards } from '../Utils/IndustriesCards'
+import { cards } from '../../Utils/IndustriesCards'
 
 
 

@@ -25,13 +25,13 @@ export default function Carousel({ images, autoSlide = true, autoSlideIntervel =
 
     return (
         <div className='flex flex-col overflow-hidden gap-4'>
-            <div className={`flex flex-nowrap relative`}>
+            <div className='flex flex-nowrap relative'>
                 {
                     images.map((data) => (
                         <div key={data.id} className='w-full flex-none transition-transform ease-in-out duration-700' style={{ transform: `translateX(-${curr * 100}%)` }}>
                             <div className="flex gap-1 py-5 ">
                                 <VscQuote className="text-5xl text-primary" />
-                                <p className='text-xl text-white flex items-start justify-start gap-3 relative'>
+                                <p className='text-2xl text-white flex items-start justify-start gap-3 relative'>
                                     <Balancer>
                                         {data.review}
                                     </Balancer>
@@ -75,7 +75,7 @@ export default function Carousel({ images, autoSlide = true, autoSlideIntervel =
                 {
                     images.map((_, i) => (
                         <div
-                            className={`duration-150 w-2 h-2 bg-white rounded-full ${curr === i ? 'p-2' : "bg-opacity-50"}`}
+                            key={i} className={`duration-150 w-2 h-2 bg-white rounded-full ${curr === i ? 'p-2' : "bg-opacity-50"}`}
                         />
                     ))
                 }

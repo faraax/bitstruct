@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import logo from '../../public/BidStruct-Dark.png'
-import { BsArrowRightCircle } from '../Utils/icons'
+import logo from '../../../public/BidStruct-Dark.png'
+import { BsArrowRightCircle } from '../../Utils/icons'
 
 
 export default function Nav() {
     return (
-        <nav className='flex justify-between items-center px-28 py-7 h-24 sticky top-0 z-10 backdrop-blur-md border-stone-800 border-b-[0.1px]'>
+        <nav className='flex justify-between items-center px-28 py-7 h-24 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
             <div className='flex justify-center items-center gap-10 text-white'>
                 <Image
                     src={logo}

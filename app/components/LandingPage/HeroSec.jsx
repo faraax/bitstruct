@@ -1,4 +1,4 @@
-import { BsArrowRightCircle } from '../Utils/icons'
+import { BsArrowRightCircle } from '../../Utils/icons'
 import Balancer from 'react-wrap-balancer'
 
 export default function HeroSec() {
