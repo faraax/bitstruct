@@ -8,14 +8,15 @@ import {
     BsArrowRightCircle,
     BsArrowDownCircle
 } from 'react-icons/bs'
-import { BiSearchAlt2 } from 'react-icons/bi'
+import { BiSearchAlt2, BiLogoLinkedin } from 'react-icons/bi'
 import { IoLogOut, IoPerson } from 'react-icons/io5'
-import { FaHeadphones } from 'react-icons/fa'
+import { FaHeadphones, FaFacebookF } from 'react-icons/fa'
 import { MdOutlineKeyboardArrowDown, MdOutlineAnalytics } from 'react-icons/md'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import { GrDocumentCsv } from 'react-icons/gr'
 import { SlDoc } from 'react-icons/sl'
 import { VscQuote } from 'react-icons/vsc'
+import { SiInstagram } from 'react-icons/si'
 
 
 
@@ -40,5 +41,8 @@ module.exports = {
     BsArrowRightCircle,
     BsArrowDownCircle,
     MdOutlineAnalytics,
-    VscQuote
+    VscQuote,
+    SiInstagram,
+    FaFacebookF,
+    BiLogoLinkedin,
 }

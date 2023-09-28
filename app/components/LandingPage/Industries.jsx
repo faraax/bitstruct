@@ -6,7 +6,7 @@ import { cards } from '../../Utils/IndustriesCards'
 
 export default function Industries() {
     return (
-        <div className='bg-[#FAFCFF] py-7 px-28 flex flex-col gap-5'>
+        <div className='bg-[#FAFCFF] py-7 px-28 flex flex-col gap-5' id='industries'>
             <div className='my-5'>
                 <h2 className='text-4xl'>Industries that benefit from BidStruct</h2>
             </div>

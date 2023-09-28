@@ -5,7 +5,7 @@ import Carousel from "../Carousel/Carousel";
 
 export default function Testimonials() {
     return (
-        <div className='bg-[#0C0838] py-7 px-28'>
+        <div className='bg-[#0C0838] py-7 px-28' id="testimonials">
             <h2 className='text-primary text-3xl'>Success Stories</h2>
             <p className='text-white text-lg text-opacity-90 mt-4'>Checkout some of Bidstruct's success stories from our beloved users</p>
             <div className="grid grid-cols-3">

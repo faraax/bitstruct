@@ -7,6 +7,7 @@ import Testimonials from "./components/LandingPage/Testimonials";
 import PowerfullTools from "./components/LandingPage/PowerfullTools";
 import RelatedServices from "./components/LandingPage/RelatedServices";
 import KeyBenefits from "./components/LandingPage/KeyBenefits";
+import Footer from "./components/LandingPage/Footer";
 
 const user = false
 
@@ -15,7 +16,7 @@ export default function Home() {
     return redirect('/dashboard')
   }
   return (
-    <main className="bg-[url('/hero-img.jpeg')] bg-fixed bg-no-repeat bg-center bg-cover">
+    <main className="bg-[url('/hero-img.jpeg')] bg-fixed bg-no-repeat bg-center bg-cover" id="home">
       <Nav />
       <HeroSec />
       <Services />
@@ -24,6 +25,7 @@ export default function Home() {
       <PowerfullTools />
       <RelatedServices />
       <KeyBenefits />
+      <Footer />
     </main>
   )
 }

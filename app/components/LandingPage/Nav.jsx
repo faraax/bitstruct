@@ -1,23 +1,43 @@
 import Image from 'next/image'
 import logo from '../../../public/BidStruct-Dark.png'
 import { BsArrowRightCircle } from '../../Utils/icons'
+import Link from 'next/link'
 
 
-export default function Nav() {
+export default function Nav({ params }) {
+    console.log(params)
     return (
         <nav className='flex justify-between items-center px-28 py-7 h-24 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
             <div className='flex justify-center items-center gap-10 text-white'>
-                <Image
-                    src={logo}
-                    alt='Bit Struct-Logo'
-                    placeholder='blur'
-                    width={286}
-                />
+                <Link href="#home">
+                    <Image
+                        src={logo}
+                        alt='Bit Struct-Logo'
+                        placeholder='blur'
+                        width={286}
+                    />
+                </Link>
                 <ul className='flex gap-3'>
-                    <li className='hover:text-primary duration-150 cursor-pointer'>Services</li>
-                    <li className='hover:text-primary duration-150 cursor-pointer'>Industries</li>
-                    <li className='hover:text-primary duration-150 cursor-pointer'>Testimonials</li>
-                    <li className='hover:text-primary duration-150 cursor-pointer'>Contact us</li>
+                    <li className='hover:text-primary duration-150 cursor-pointer'>
+                        <Link href="#home">
+                            Home
+                        </Link>
+                    </li>
+                    <li className='hover:text-primary duration-150 cursor-pointer'>
+                        <a href="#services">
+                            Services
+                        </a>
+                    </li>
+                    <li className='hover:text-primary duration-150 cursor-pointer'>
+                        <a href="#industries">
+                            Industries
+                        </a>
+                    </li>
+                    <li className='hover:text-primary duration-150 cursor-pointer'>
+                        <a href="#testimonials">
+                            Testimonials
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div className='flex gap-4'>
