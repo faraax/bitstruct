@@ -8,6 +8,7 @@ import PowerfullTools from "./components/LandingPage/PowerfullTools";
 import RelatedServices from "./components/LandingPage/RelatedServices";
 import KeyBenefits from "./components/LandingPage/KeyBenefits";
 import Footer from "./components/LandingPage/Footer";
+import Modal from "./components/LandingPage/Modal";
 
 const user = false
 
@@ -26,6 +27,7 @@ export default function Home() {
       <RelatedServices />
       <KeyBenefits />
       <Footer />
+      <Modal />
     </main>
   )
 }

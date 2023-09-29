@@ -17,6 +17,7 @@ import { GrDocumentCsv } from 'react-icons/gr'
 import { SlDoc } from 'react-icons/sl'
 import { VscQuote } from 'react-icons/vsc'
 import { SiInstagram } from 'react-icons/si'
+import { CgCloseO } from 'react-icons/cg'
 
 
 
@@ -45,4 +46,5 @@ module.exports = {
     SiInstagram,
     FaFacebookF,
     BiLogoLinkedin,
+    CgCloseO
 }
