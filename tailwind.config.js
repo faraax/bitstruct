@@ -6,8 +6,18 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      // adding xs to the rest
+      'xs': "320px",
+      'sm': "576px",
+      'md': "768px",
+      'lg': "992px",
+      'xl': "1372px",
+      '2xl': "1820px",
+      '3xl': "2560px",
+    },
     extend: {
-      backgroundImage : {
+      backgroundImage: {
         'hero-pattern': "url('/hero-img.jpeg)"
       },
       colors: {
