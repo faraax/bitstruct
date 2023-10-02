@@ -1,5 +1,6 @@
-import { BsArrowRightCircle } from '../../Utils/icons'
+// import { BsArrowRightCircle } from '../../Utils/icons'
 import Balancer from 'react-wrap-balancer'
+import Button from '../clientComponents/Button'
 
 export default function HeroSec() {
     return (
@@ -21,10 +22,7 @@ export default function HeroSec() {
                 </Balancer>
             </p>
             <div>
-                <button className='capitalize flex gap-2 justify-center items-center duration-150 hover:gap-3 bg-white rounded-full px-5 py-2 hover:text-secondary hover:font-bold'>
-                    Scrape Data Now
-                    <BsArrowRightCircle />
-                </button>
+                <Button text={'Scrape Data Now'} type={"signup"} classList={'hover:text-secondary bg-white'} />
             </div>
         </div>
     )

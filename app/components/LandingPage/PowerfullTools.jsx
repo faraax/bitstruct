@@ -1,5 +1,6 @@
 import Balancer from 'react-wrap-balancer'
 import { BsArrowRightCircle } from '../../Utils/icons'
+import Button from '../clientComponents/Button'
 
 export default function PowerfullTools() {
     return (
@@ -11,10 +12,7 @@ export default function PowerfullTools() {
                 </div>
                 <div>
                     <div>
-                        <button className='capitalize flex gap-2 justify-center items-center duration-150 hover:gap-3 bg-white rounded-full px-5 py-3 hover:text-secondary'>
-                            Simplify data acquisition
-                            <BsArrowRightCircle />
-                        </button>
+                        <Button text={'Simplify data acquisition'} type={"signup"} classList={'hover:text-secondary bg-white'} />
                     </div>
                 </div>
             </div>

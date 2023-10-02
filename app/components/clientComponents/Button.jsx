@@ -5,7 +5,7 @@ import { BsArrowRightCircle } from '../../Utils/icons'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
-export default function Button({ text, type }) {
+export default function Button({ text, type, classList }) {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -25,7 +25,7 @@ export default function Button({ text, type }) {
             onClick={() => {
                 router.push(pathname + '?' + createQueryString("modal", 'true', type.toString()))
             }}
-            className='capitalize flex gap-2 justify-center items-center duration-150 hover:gap-3 bg-white rounded-full px-5 py-2 hover:text-secondary hover:font-bold'>
+            className={`capitalize flex gap-2 justify-center items-center duration-150 hover:gap-3 hover:font-bold rounded-full px-5 py-2 ${classList}`}>
             {text}
             <BsArrowRightCircle />
         </button>

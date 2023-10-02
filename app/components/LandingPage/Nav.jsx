@@ -2,12 +2,13 @@ import Image from 'next/image'
 import logo from '../../../public/BidStruct-Dark.png'
 import Link from 'next/link'
 import Button from '../clientComponents/Button'
+import ResponsiveSidebar from '../clientComponents/ResponsiveSidebar'
 
 
 export default function Nav() {
     return (
-        <nav className='flex justify-between items-center px-28 py-7 h-24 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
-            <div className='flex justify-center items-center gap-10 text-white'>
+        <nav className='flex justify-between items-center 2xl:px-28 xl:px-28 lg:px-16 sm:px-10 px-10 py-7 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
+            <div className='flex justify-center items-center gap-10 text-white '>
                 <Link href="#home">
                     <Image
                         src={logo}
@@ -16,7 +17,7 @@ export default function Nav() {
                         width={286}
                     />
                 </Link>
-                <ul className='flex gap-3'>
+                <ul className='gap-3 hidden 2xl:flex xl:flex'>
                     <li className='hover:text-primary duration-150 cursor-pointer'>
                         <Link href="#home">
                             Home
@@ -39,10 +40,11 @@ export default function Nav() {
                     </li>
                 </ul>
             </div>
-            <div className='flex gap-4'>
-                <Button text={'Sign in'} type={"signin"} />
-                <Button text={'Sign up'} type={"signup"} />
+            <div className='gap-4 hidden 2xl:flex xl:flex'>
+                <Button text={'Sign in'} type={"signin"} classList={'hover:text-secondary bg-white'} />
+                <Button text={'Sign up'} type={"signup"} classList={'hover:text-secondary bg-white'} />
             </div>
+            <ResponsiveSidebar />
         </nav >
     )
 }
