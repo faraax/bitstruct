@@ -7,7 +7,7 @@ import ResponsiveSidebar from '../clientComponents/ResponsiveSidebar'
 
 export default function Nav() {
     return (
-        <nav className='flex justify-between items-center 2xl:px-28 xl:px-28 lg:px-16 sm:px-10 px-10 py-7 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
+        <nav className='flex justify-between items-center x-container py-7 sticky top-0 z-10 backdrop-blur-md border-stone-200/30 border-b-[0.1px]'>
             <div className='flex justify-center items-center gap-10 text-white '>
                 <Link href="#home">
                     <Image

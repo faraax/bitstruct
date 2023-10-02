@@ -22,15 +22,14 @@ const hide = {
     }
 };
 
-
-
 export default function ResponsiveSidebar() {
     const [showMenu, setShowMenu] = useState(false)
     return (
         <>
             <div
                 onClick={() => setShowMenu(!showMenu)}
-                className='2xl:hidden xl:hidden lg:block sm:block block hover:bg-secondary/30 p-2'>
+                className='2xl:hidden xl:hidden lg:block sm:block block hover:bg-secondary/30 p-2'
+            >
                 {
                     showMenu ? <CgCloseO className="text-4xl text-white" /> : <CgMenuRight className="text-4xl text-white" />
                 }
