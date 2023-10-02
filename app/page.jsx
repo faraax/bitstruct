@@ -25,7 +25,7 @@ export default function Home() {
       <Testimonials />
       <PowerfullTools />
       <RelatedServices />
-      {/* <KeyBenefits /> */}
+      <KeyBenefits />
       {/* <Footer /> */}
       {/* <Modal /> */}
     </main>

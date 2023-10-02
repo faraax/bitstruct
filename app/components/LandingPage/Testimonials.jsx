@@ -19,6 +19,9 @@ export default function Testimonials() {
                     <Image
                         src={img}
                         alt="dashboard-img"
+                        height={'auto'}
+                        width={'auto'}
+                        className="md:w-80 md:h-72 mx-auto"
                     />
                 </div>
             </div>
