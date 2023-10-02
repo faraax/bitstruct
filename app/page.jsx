@@ -19,13 +19,12 @@ export default function Home() {
   return (
     <main className="bg-[url('/hero-img.jpeg')] bg-fixed bg-no-repeat bg-center bg-cover" id="home">
       <Nav />
-      {/* <ResonsiveNav /> */}
       <HeroSec />
       <Services />
       <Industries />
       <Testimonials />
       <PowerfullTools />
-      {/* <RelatedServices /> */}
+      <RelatedServices />
       {/* <KeyBenefits /> */}
       {/* <Footer /> */}
       {/* <Modal /> */}
