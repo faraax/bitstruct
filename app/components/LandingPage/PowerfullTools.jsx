@@ -5,10 +5,18 @@ import Button from '../clientComponents/Button'
 export default function PowerfullTools() {
     return (
         <div>
-            <div className='bg-primary py-12 px-28 grid grid-cols-3 place-content-center'>
+            <div className='bg-primary py-12 x-container grid 3xl:grid-cols-3 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 grid-cols-1 place-content-center gap-2'>
                 <div className='flex gap-3 flex-col col-span-2'>
-                    <h2 className='text-white text-3xl font-semibold'>"Don't make the process harder than it is."</h2>
-                    <p className='text-white text-xl'>Jack Welch, American business executive</p>
+                    <h2 className='text-white 2xl:text-3xl  xl:text-3xl  lg:text-3xl sm:text-2xl text-2xl font-semibold'>
+                        <Balancer>
+                            "Don't make the process harder than it is."
+                        </Balancer>
+                    </h2>
+                    <p className='text-white text-xl'>
+                        <Balancer>
+                            Jack Welch, American business executive
+                        </Balancer>
+                    </p>
                 </div>
                 <div>
                     <div>
@@ -16,13 +24,13 @@ export default function PowerfullTools() {
                     </div>
                 </div>
             </div>
-            <div className='bg-white py-12 px-28'>
-                <h2 className='text-4xl py-10'>Powerful tools help you <span className='hero-gradient'>
+            <div className='bg-white py-12 x-container'>
+                <h2 className='2xl:text-4xl xl:text-4xl lg:text-3xl sm:text-3xl text-3xl py-10'>Powerful tools help you <span className='hero-gradient'>
                     find work faster.
                 </span>
                 </h2>
-                <div className='grid grid-cols-3'>
-                    <div className='border-stone-200 border-y-2 border-l-2 border-opacity-30 p-10 flex flex-col gap-8'>
+                <div className='grid 3xl:grid-cols-3 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 grid-cols-1'>
+                    <div className='border-stone-200 border-y-2 border-l-2 border-opacity-30 3xl:p-10 2xl:p-10 xl:p-10 lg:p-10 p-5 flex flex-col gap-8'>
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>01</span></h2>
                         <h3 className='text-3xl'>BidAlerts</h3>
                         <p className='text-xl'>
@@ -31,7 +39,7 @@ export default function PowerfullTools() {
                             </Balancer>
                         </p>
                     </div>
-                    <div className='border-stone-200 border-y-2 border-x-2 border-opacity-30 p-10 flex flex-col gap-8'>
+                    <div className='border-stone-200 border-y-2 border-x-2 border-opacity-30 3xl:p-10 2xl:p-10 xl:p-10 lg:p-10 p-5 flex flex-col gap-8'>
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>02</span></h2>
                         <h3 className='text-3xl'>Powerful Search</h3>
                         <p className='text-xl'>
@@ -40,7 +48,7 @@ export default function PowerfullTools() {
                             </Balancer>
                         </p>
                     </div>
-                    <div className='border-stone-200 border-y-2 border-r-2 border-opacity-30 p-10 flex flex-col gap-8'>
+                    <div className='border-stone-200 border-y-2 border-r-2 border-opacity-30 3xl:p-10 2xl:p-10 xl:p-10 lg:p-10 p-5 flex flex-col gap-8'>
                         <h2 className='text-7xl font-medium'><span className='hero-gradient'>03</span></h2>
                         <h3 className='text-3xl'>Analytics & Forecasting</h3>
                         <p className='text-xl'>

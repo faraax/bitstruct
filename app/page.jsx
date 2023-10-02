@@ -25,10 +25,10 @@ export default function Home() {
       <Industries />
       <Testimonials />
       <PowerfullTools />
-      <RelatedServices />
-      <KeyBenefits />
-      <Footer />
-      <Modal />
+      {/* <RelatedServices /> */}
+      {/* <KeyBenefits /> */}
+      {/* <Footer /> */}
+      {/* <Modal /> */}
     </main>
   )
 }

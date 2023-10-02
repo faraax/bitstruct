@@ -1,4 +1,3 @@
-// import { BsArrowRightCircle } from '../../Utils/icons'
 import Balancer from 'react-wrap-balancer'
 import Button from '../clientComponents/Button'
 

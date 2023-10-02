@@ -19,6 +19,10 @@
     @apply 2xl:px-28 xl:px-28 lg:px-16 sm:px-10 px-10
 }
 
+.industries-card {
+    @apply 3xl:w-[450px] 2xl:w-[350px] xl:w-[350px] lg:w-[350px] md:w-[350px] sm:w-[350px] xs:w-[250px] 3xl:h-[300px] 2xl:h-[200px] xl:h-[200px] lg:h-[200px] md:h-[200px] sm:h-[200px] xs:h-[100px] w-[350px] h-[200px]
+}
+
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
