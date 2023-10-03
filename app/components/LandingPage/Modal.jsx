@@ -32,7 +32,7 @@ export default function Modal() {
             window.removeEventListener('keydown', handleEsc);
             window.removeEventListener('mousedown', outSideClick);
         };
-    }, []);
+    }, [router]);
 
     const createQueryString = useCallback(
         (name, value, type) => {
@@ -52,7 +52,7 @@ export default function Modal() {
                 exit={{ opacity: 0, scale: 0.2 }}
                 className='h-screen w-screen fixed top-0 left-0 backdrop-blur-md flex justify-center items-center z-10'
             >
-                <div className='bg-[#CECEDC] p-10 rounded-xl h-2/4 flex flex-col gap-4 w-2/5' ref={modalRef}>
+                <div className='bg-[#CECEDC] p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 rounded-xl w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3 flex flex-col gap-4' ref={modalRef}>
                     <div className='flex flex-col gap-4'>
                         <div className='flex justify-between items-center'>
                             <h2 className='text-primary font-normal text-4xl'>Welcome</h2>
@@ -81,7 +81,7 @@ export default function Modal() {
                         </div>
                         <div className='flex justify-between items-center'>
                             {
-                                type === "signin" && (<p>Don't have an account? <span
+                                type === "signin" && (<p>Don{`'`}t have an account? <span
                                     className='text-secondary hover:underline cursor-pointer'
                                     onClick={() => router.push(pathname + '?' + createQueryString("modal", 'true', "signup"))}>
                                     Sign up
@@ -101,9 +101,9 @@ export default function Modal() {
                             }
                             {type === "signup" && <p className='text-secondary hover:underline cursor-pointer'>Forgot Password</p>}
 
+                        </div>
                     </div>
                 </div>
-            </div>
             </m.div >
         )
 }

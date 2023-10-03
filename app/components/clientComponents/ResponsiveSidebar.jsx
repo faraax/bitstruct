@@ -49,51 +49,59 @@ export default function ResponsiveSidebar() {
         <>
             <div
                 onClick={() => setShowMenu(!showMenu)}
-                className='2xl:hidden xl:hidden lg:block sm:block block hover:bg-secondary/30 p-2'
+                className='3xl:hidden 2xl:hidden xl:hidden lg:block md:block sm:block xs:block block hover:bg-secondary/30 p-2'
             >
                 {
-                    showMenu ? <CgCloseO className="text-4xl text-white" /> : <CgMenuRight className="text-4xl text-white" />
+                    showMenu && <CgMenuRight className="text-4xl text-gray-400 2xl:hidden xl:v lg:hidden md:hidden sm:hidden xs:block block" />
+                }
+                {
+                    showMenu ? <CgCloseO className="text-4xl text-gray-400 2xl:block xl:block lg:block md:block sm:block xs:hidden hidden" /> : <CgMenuRight className="text-4xl text-gray-400" />
                 }
             </div>
             <m.div
                 animate={showMenu ? show : hide}
-                className={`2xl:hidden xl:hidden lg:block hidden fixed top-0 backdrop-blur-md h-screen transition-transform left-0`}
+                className={`3xl:hidden 2xl:hidden xl:hidden lg:block md:block sm:block xs:block block fixed top-0 backdrop-blur-md h-screen transition-transform left-0`}
                 ref={sidebarRef}
             >
-                <div className='flex flex-col justify-between gap-4 px-10 py-5 bg-[#FAFCFF] h-screen w-80'>
+                <div className='flex flex-col justify-between gap-4 bg-[#FAFCFF] h-screen w-80'>
                     <div>
-                        <Link href="#home">
-                            <Image
-                                src={logo}
-                                alt='Bit Struct-Logo' d
-                                placeholder='blur'
-                                width={286}
-                            />
-                        </Link>
-                        <ul className='flex gap-3 flex-col pt-10'>
-                            <li className='hover:text-primary duration-150 cursor-pointer'>
+                        <div className='p-5 relative'>
+                            <Link href="#home">
+                                <Image
+                                    src={logo}
+                                    alt='Bit Struct-Logo' d
+                                    placeholder='blur'
+                                    width={250}
+                                />
+                            </Link>
+                            <div onClick={() => setShowMenu(!showMenu)} className='absolute top-1/2 right-4 -translate-y-1/2 3xl:hidden 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden xs:block block'>
+                                <CgCloseO className="text-2xl" />
+                            </div>
+                        </div>
+                        <ul className='flex gap-3 flex-col pt-10 px-10 py-5'>
+                            <li onClick={() => setShowMenu(!showMenu)} className='hover:text-primary duration-150 cursor-pointer'>
                                 <Link href="#home">
                                     Home
                                 </Link>
                             </li>
-                            <li className='hover:text-primary duration-150 cursor-pointer'>
+                            <li onClick={() => setShowMenu(!showMenu)} className='hover:text-primary duration-150 cursor-pointer'>
                                 <a href="#services">
                                     Services
                                 </a>
                             </li>
-                            <li className='hover:text-primary duration-150 cursor-pointer'>
+                            <li onClick={() => setShowMenu(!showMenu)} className='hover:text-primary duration-150 cursor-pointer'>
                                 <a href="#industries">
                                     Industries
                                 </a>
                             </li>
-                            <li className='hover:text-primary duration-150 cursor-pointer'>
+                            <li onClick={() => setShowMenu(!showMenu)} className='hover:text-primary duration-150 cursor-pointer'>
                                 <a href="#testimonials">
                                     Testimonials
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div className='flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4 px-10 py-5'>
                         <Button text={'Sign in'} type={"signin"} classList={'bg-secondary text-white'} />
                         <Button text={'Sign up'} type={"signup"} classList={'bg-secondary text-white'} />
                     </div>

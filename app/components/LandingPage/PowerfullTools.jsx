@@ -9,7 +9,7 @@ export default function PowerfullTools() {
                 <div className='flex gap-3 flex-col col-span-2'>
                     <h2 className='text-white 2xl:text-3xl  xl:text-3xl  lg:text-3xl sm:text-2xl text-2xl font-semibold'>
                         <Balancer>
-                            "Don't make the process harder than it is."
+                            {`"Don't make the process harder than it is."`}
                         </Balancer>
                     </h2>
                     <p className='text-white text-xl'>
@@ -35,7 +35,7 @@ export default function PowerfullTools() {
                         <h3 className='text-3xl'>BidAlerts</h3>
                         <p className='text-xl'>
                             <Balancer>
-                                Don't search — let the leads come to you. Set up custom saved searches based on your own criteria and receive email alerts with the latest results and updates. You'll always be up-to-date on project developments, even when you're on the road.
+                                {`Don't search — let the leads come to you. Set up custom saved searches based on your own criteria and receive email alerts with the latest results and updates. You'll always be up-to-date on project developments, even when you're on the road.`}
                             </Balancer>
                         </p>
                     </div>

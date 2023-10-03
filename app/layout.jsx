@@ -10,7 +10,7 @@ const dmSans = DM_Sans(
 )
 
 export const metadata = {
-  title: 'Bit Struct - Home',
+  title: 'Bid Struct - Home',
   description: 'BidStruct: Your gateway to essential projects. Simplified registration, access to bids, and agency profiles.',
 }
 
