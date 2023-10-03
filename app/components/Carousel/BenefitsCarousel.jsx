@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import Balancer from "react-wrap-balancer"
@@ -29,7 +30,12 @@ export default function BenefitsCarousel({ array, autoplay = true, autoSlideInte
                     array.map((data) => {
                         return (
                             <div key={data.id} className="flex-none flex-col gap-3 transition-transform ease-in-out duration-700 w-full" style={{ transform: `translateX(-${current * 100}%)` }}>
-                                <h2 className='text-7xl font-medium'><span className='hero-gradient'>{data.id}</span></h2>
+                                <Image
+                                    src={data.imgSrc}
+                                    alt={data.altText}
+                                    height={100}
+                                    width={100}
+                                />
                                 <h3 className='text-3xl font-semibold py-6'>{data.heading}</h3>
                                 <p className='text-xl w-3/4'>
                                     <Balancer>

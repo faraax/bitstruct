@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CgMenuRight, CgCloseO } from '../../Utils/icons'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -24,6 +24,27 @@ const hide = {
 
 export default function ResponsiveSidebar() {
     const [showMenu, setShowMenu] = useState(false)
+    const sidebarRef = useRef()
+
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.keyCode === 27) {
+                setShowMenu(false)
+            }
+        }
+        window.addEventListener('keydown', handleEsc);
+        const outSideClick = (e) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+                setShowMenu(false)
+            }
+        };
+        window.addEventListener('mousedown', outSideClick);
+        return () => {
+            window.removeEventListener('mousedown', outSideClick);
+            window.removeEventListener('keydown', handleEsc)
+        }
+    }, [])
+
     return (
         <>
             <div
@@ -37,6 +58,7 @@ export default function ResponsiveSidebar() {
             <m.div
                 animate={showMenu ? show : hide}
                 className={`2xl:hidden xl:hidden lg:block hidden fixed top-0 backdrop-blur-md h-screen transition-transform left-0`}
+                ref={sidebarRef}
             >
                 <div className='flex flex-col justify-between gap-4 px-10 py-5 bg-[#FAFCFF] h-screen w-80'>
                     <div>

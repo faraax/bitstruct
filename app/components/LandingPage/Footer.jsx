@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
     return (
-        <footer className='bg-[#0C0838] '>
+        <footer className='bg-[#0C0838]'>
             <div className='grid grid-cols-4 border-stone-200 border-b-2 border-opacity-30'>
                 <div className='py-7 px-28 flex flex-col gap-1'>
                     <Image

@@ -17,7 +17,7 @@ export default function Industries() {
                             <div className='industries-card relative object-contain aspect-video'>
                                 <Image
                                     src={item.src}
-                                    className='absolute inset-0 m-0 h-full w-full overflow-hidden'
+                                    className='absolute inset-0 m-0 h-full w-full overflow-hidden shadow-lg'
                                     alt={item.category}
                                 />
                             </div>

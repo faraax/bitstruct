@@ -5,6 +5,7 @@ import infrastructure from '../../public/images/Infrastructure.jpg'
 import architectural from '../../public/images/blueprint-architect-construction-project-sketch-concept.jpg'
 import government from '../../public/images/joshua-sukoff-5DDYHjk_KMU-unsplash.jpg'
 import automobile from '../../public/images/zero-take-t4yzxOtDZgQ-unsplash.jpg'
+import categories from '../../public/images/View More.svg'
 import { BsArrowRightCircle } from '../Utils/icons'
 
 
@@ -53,8 +54,8 @@ export const cards = [
     },
     {
         id: 8,
-        src: resident,
-        category: 'Residential',
+        src: categories,
+        category: 'Over 1,146+ Categories',
         icon: <BsArrowRightCircle className='text-xl' />
     },
 ]
