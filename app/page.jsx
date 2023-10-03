@@ -1,3 +1,5 @@
+'use client'
+
 import { redirect } from "next/navigation";
 import HeroSec from "./components/LandingPage/HeroSec";
 import Nav from "./components/LandingPage/Nav";
@@ -9,10 +11,13 @@ import RelatedServices from "./components/LandingPage/RelatedServices";
 import KeyBenefits from "./components/LandingPage/KeyBenefits";
 import Footer from "./components/LandingPage/Footer";
 import Modal from "./components/LandingPage/Modal";
+import { useAuthContext } from "./hooks/useAuthContext";
 
-const user = false
+// const user = false
 
 export default function Home() {
+  const { user } = useAuthContext()
+
   if (user) {
     return redirect('/dashboard')
   }

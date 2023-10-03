@@ -4,6 +4,7 @@ import { motion as m } from 'framer-motion'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CgCloseO } from '../../Utils/icons'
 import { useCallback, useEffect, useRef } from 'react'
+import { useAuthContext } from '@/app/hooks/useAuthContext'
 
 export default function Modal() {
     const searchParams = useSearchParams()
@@ -11,6 +12,7 @@ export default function Modal() {
     const modalRef = useRef()
     const pathname = usePathname()
     const type = searchParams.get('type')
+    const { dispatch, user } = useAuthContext()
 
     useEffect(() => {
 
@@ -44,7 +46,12 @@ export default function Modal() {
         [searchParams]
     )
 
-    if (searchParams.get('modal') === "true")
+    const handleLogin = () => {
+        dispatch({ type: 'LOGIN' })
+        console.log(user);
+    }
+
+    if (searchParams.get('modal') === "true" && user === false)
         return (
             <m.div
                 initial={{ opacity: 0, scale: 0.2 }}
@@ -75,7 +82,9 @@ export default function Modal() {
                         <input type="password" name="password" id="password" className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700' placeholder='Type Your Password' />
                         <div className='flex items-center flex-col w-full'>
                             <button
-                                className='bg-secondary py-3 px-6 rounded-full text-white'>
+                                className='bg-secondary py-3 px-6 rounded-full text-white'
+                                onClick={handleLogin}
+                            >
                                 {type === "signin" ? 'Signin' : 'Signup'}
                             </button>
                         </div>
@@ -93,7 +102,10 @@ export default function Modal() {
                                 type === "signup" && (
                                     <p>Already have an account? <span
                                         className='text-secondary hover:underline cursor-pointer'
-                                        onClick={() => router.push(pathname + '?' + createQueryString("modal", 'true', "signin"))}>
+                                        onClick={() => {
+                                            router.push(pathname + '?' + createQueryString("modal", 'true', "signin"))
+                                            dispatch({ type: 'LOGIN' })
+                                        }}>
                                         Sign up
                                     </span>
                                     </p>

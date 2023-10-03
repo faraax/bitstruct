@@ -15,6 +15,7 @@ export default function Button({ text, type, classList }) {
             const params = new URLSearchParams(searchParams)
             params.set(name, value)
             params.set('type', type)
+            // params.delete()
             return params.toString()
         },
         [searchParams]
