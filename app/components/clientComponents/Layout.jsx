@@ -1,5 +1,4 @@
 "use client"
-
 import { useAuthContext } from "@/app/hooks/useAuthContext"
 
 export default function Layout({ children }) {
