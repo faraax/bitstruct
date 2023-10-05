@@ -6,10 +6,16 @@ import { navTitles } from '../Utils/SidebarList'
 import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 import React from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { redirect } from 'next/navigation'
 
 
 export default function Sidebar() {
     const { dispatch } = useAuthContext()
+
+    const handleLogout = () => {
+        dispatch({ type: 'LOGOUT' })
+        redirect('/')
+    }
     return (
         <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0'>
             <div className='flex flex-col gap-10'>
@@ -39,7 +45,7 @@ export default function Sidebar() {
                 </div>
             </div>
             <div className='flex w-full'>
-                <button onClick={() => dispatch({ type: 'LOGOUT' })} className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
+                <button onClick={handleLogout} className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
                     <IoLogOut className='text-2xl' />
                     <span className='text-base'>
                         Logout
