@@ -16,6 +16,7 @@ export default function page() {
             </div>
 
             <div className="grid grid-cols-3 px-10 gap-7">
+
                 <div className="flex gap-5 flex-col">
                     <div className="flex items-center w-full">
                         <h2 className="text-xl">New Awarded</h2>
@@ -225,6 +226,7 @@ export default function page() {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     )

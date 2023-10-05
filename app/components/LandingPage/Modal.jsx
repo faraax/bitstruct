@@ -48,7 +48,6 @@ export default function Modal() {
 
     const handleLogin = () => {
         dispatch({ type: 'LOGIN' })
-        console.log(user);
     }
 
     if (searchParams.get('modal') === "true" && user === false)

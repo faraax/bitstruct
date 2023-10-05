@@ -1,5 +1,4 @@
 import { DM_Sans } from 'next/font/google'
-import Sidebar from './components/Sidebar'
 import './globals.css'
 import { AuthContextProvider } from './context/authContext'
 import Layout from './components/clientComponents/Layout'
@@ -24,7 +23,6 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}>
         <AuthContextProvider>
           <Layout>
-            <Sidebar />
             {children}
           </Layout>
         </AuthContextProvider>

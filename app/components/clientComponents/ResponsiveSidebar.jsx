@@ -60,7 +60,7 @@ export default function ResponsiveSidebar() {
             </div>
             <m.div
                 animate={showMenu ? show : hide}
-                className={`3xl:hidden 2xl:hidden xl:hidden lg:block md:block sm:block xs:block block fixed top-0 backdrop-blur-md h-screen transition-transform left-0`}
+                className={`3xl:hidden 2xl:hidden xl:hidden lg:block md:block sm:block xs:block block fixed top-0 backdrop-blur-md h-screen left-0`}
                 ref={sidebarRef}
             >
                 <div className='flex flex-col justify-between gap-4 bg-[#FAFCFF] h-screen w-80'>

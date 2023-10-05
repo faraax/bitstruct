@@ -24,6 +24,5 @@ export const navTitles = [
         title: "Settings",
         icon: <RiSettings4Fill />,
         url: "/settings"
-    },
-
+    }
 ]
