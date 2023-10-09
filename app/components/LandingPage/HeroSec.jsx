@@ -21,11 +21,11 @@ export default function HeroSec() {
                 </h1>
                 <p className='text-white text-left text-xl sm:text-lg xs:text-base font-medium text-opacity-90 py-3'>
                     <Balancer>
-                        Access to the projects that matter to you. BidStruct is streamlined for effortless registration, easy access to bid opportunities, and optimal business exposure. BidStruct is designed to connect vendors and contractors to <span className='hero-gradient'> government bid opportunities.</span> This powerful tool streamlines the registration process and provides an efficient method to maintain all of your individual agency profiles.
+                        Access to the projects that matter to you. BidStruct is streamlined for effortless registration, easy access to bid opportunities, and optimal business exposure. BidStruct is designed to connect vendors and contractors to <span className='hero-gradient'> government bid opportunities.</span>
                     </Balancer>
                 </p>
                 <div>
-                    <Button text={'Scrape Data Now'} type={"signup"} classList={'hover:text-secondary bg-white'} />
+                    <Button text={'Want to get started?'} type={"signup"} classList={'hover:text-secondary bg-white'} />
                 </div>
             </div>
         </div>

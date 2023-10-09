@@ -20,7 +20,8 @@
 }
 
 .industries-card {
-    @apply 3xl:w-[450px] 2xl:w-[350px] xl:w-[350px] lg:w-[425px] md:w-[350px] sm:w-[450px] xs:w-[250px] 3xl:h-[300px] 2xl:h-[200px] xl:h-[200px] lg:h-[225px] md:h-[200px] sm:h-[300px] xs:h-[100px] w-[350px] h-[200px]
+    @apply w-full h-full
+    /* @apply 3xl:w-[450px] 2xl:w-[350px] xl:w-[350px] lg:w-[425px] md:w-[350px] sm:w-[450px] xs:w-full 3xl:h-[300px] 2xl:h-[200px] xl:h-[200px] lg:h-[225px] md:h-[200px] sm:h-[300px] xs:h-full w-[350px] h-[200px] */
 }
 
 
