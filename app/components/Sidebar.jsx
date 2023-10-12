@@ -6,7 +6,7 @@ import { navTitles } from '../Utils/SidebarList'
 import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 import React from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { redirect } from 'next/navigation'
+// import { redirect } from 'next/navigation'
 
 
 export default function Sidebar() {
@@ -14,7 +14,7 @@ export default function Sidebar() {
 
     const handleLogout = () => {
         dispatch({ type: 'LOGOUT' })
-        redirect('/')
+        // redirect('/')
     }
     return (
         <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0'>

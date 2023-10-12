@@ -32,7 +32,17 @@ const dashboardCards = [
     }
 ]
 
-export default function page() {
+async function getData() {
+    try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users')
+        return res.json()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+export default async function page() {
+    const data = await getData()
     return (
         <div className="w-full">
             <Navbar />
@@ -60,7 +70,7 @@ export default function page() {
                     <h2>Bid Opportunities</h2>
                     <div>
                         <table className="table w-full -z-0 my-3">
-                            <thead>
+                            <thead className="sticky top-24 z-40 bg-[#FAFCFF] border-b border-mute border-opacity-20">
                                 <tr className="text-mute text-left border-b border-mute border-opacity-20">
                                     <th className="font-normal py-3">Project Titles</th>
                                     <th className="font-normal">Vendors</th>
@@ -75,7 +85,49 @@ export default function page() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="text-mute text-left border-b border-mute border-opacity-20">
+                                {
+                                    data.map((list) => (
+                                        <tr key={list.id} className="text-mute text-left border-b border-mute border-opacity-20">
+                                            <td className="py-3">
+                                                <span className="text-sm">Invitation# {list.address.zipcode}</span>
+                                                <h2 className="text-black">{list.name}</h2>
+                                            </td>
+                                            <td className="py-3">
+                                                <h2 className="text-black">{list.name}</h2>
+                                            </td>
+                                            <td className="py-3">
+                                                <h2 className="text-sm">{list.name}</h2>
+                                                <span className="text-sm">03:21 PM</span>
+                                            </td>
+                                            <td className="py-3">
+                                                <h2 className="text-sm">{list.website}</h2>
+                                            </td>
+                                            <td className="py-3">
+                                                <button
+                                                    // className="text-sm bg-primary text-white px-5 py-2 rounded-xl">
+                                                    className="text-white text-sm bg-primary hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl"
+                                                >
+                                                    Awarded
+                                                </button>
+                                            </td>
+                                            <td className="py-3">
+                                                <h2 className="text-sm">{list.company.name.slice(0, 5)}</h2>
+                                            </td>
+                                            <td className="py-3">
+                                                <h2 className="text-sm">{list.company.bs.slice(0, 5)} ...</h2>
+                                            </td>
+                                            <td className="py-3 flex justify-between">
+                                                <h2 className="text-sm">
+                                                    <BsCloudDownloadFill className="text-2xl text-secondary" />
+                                                </h2>
+                                                <div>
+                                                    <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                                {/* <tr className="text-mute text-left border-b border-mute border-opacity-20">
                                     <td className="py-3">
                                         <span className="text-sm">Invitation# SCP12345</span>
                                         <h2 className="text-black">Texas Leather Services</h2>
@@ -404,40 +456,7 @@ export default function page() {
                                             <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
                                         </div>
                                     </td>
-                                </tr>
-                                <tr className="text-mute text-left border-b border-mute border-opacity-20">
-                                    <td className="py-3">
-                                        <span className="text-sm">Invitation# SCP12345</span>
-                                        <h2 className="text-black">Texas Leather Services</h2>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-black">Timoty</h2>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-sm">12/09/2023</h2>
-                                        <span className="text-sm">03:21 PM</span>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-sm">Null</h2>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-sm bg-primary text-white w-1/2 px-5 py-2 rounded-xl">Awarded</h2>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-sm">Electronic</h2>
-                                    </td>
-                                    <td className="py-3">
-                                        <h2 className="text-sm">Abracadabra Group</h2>
-                                    </td>
-                                    <td className="py-3 flex justify-between">
-                                        <h2 className="text-sm">
-                                            <BsCloudDownloadFill className="text-2xl text-secondary" />
-                                        </h2>
-                                        <div>
-                                            <HiDotsHorizontal className="text-2xl flex justify-center items-center hover:text-primary cursor-pointer" />
-                                        </div>
-                                    </td>
-                                </tr>
+                                </tr> */}
                             </tbody >
                         </table >
                     </div>

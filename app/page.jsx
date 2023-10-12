@@ -1,5 +1,4 @@
 'use client'
-
 import { redirect } from "next/navigation";
 import HeroSec from "./components/LandingPage/HeroSec";
 import Nav from "./components/LandingPage/Nav";
@@ -12,23 +11,22 @@ import KeyBenefits from "./components/LandingPage/KeyBenefits";
 import Footer from "./components/LandingPage/Footer";
 import Modal from "./components/LandingPage/Modal";
 import { useAuthContext } from "./hooks/useAuthContext";
+import PriceCards from "./components/PriceCards";
 
-// const user = false
 
 export default function Home() {
   const { user } = useAuthContext()
+  if (user) return redirect('/dashboard')
 
-  if (user) {
-    return redirect('/dashboard')
-  }
   return (
-    <main className="bg-[url('/hero-img.jpeg')] bg-fixed bg-no-repeat bg-center bg-cover" id="home">
+    <main className="bg-[url('/hero-img.png')] bg-fixed bg-no-repeat bg-center bg-cover" id="home">
       <Nav />
       <HeroSec />
       <Services />
       <Industries />
       <Testimonials />
       <PowerfullTools />
+      <PriceCards />
       <RelatedServices />
       <KeyBenefits />
       <Footer />

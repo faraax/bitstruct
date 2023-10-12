@@ -15,7 +15,7 @@ export default function KeyBenefits() {
                             Key benefits of <span className="hero-gradient"> BidStruct</span>
                         </Balancer>
                     </h2>
-                    <Button text={'Hurry up and join us'} type={"signup"} classList={'hover:text-secondary bg-white w-1/2 border-stone-400 border-2 3xl:flex 2xl:flex xl:flex lg:flex md:hidden xs:hidden'} />
+                    <Button text={'Get Started With A Free Trial'} type={"signup"} classList={'hover:text-secondary bg-white w-1/2 border-stone-400 border-2 3xl:flex 2xl:flex xl:flex lg:flex md:hidden xs:hidden'} />
                 </div>
                 <div className="col-span-4 flex flex-col 3xl:justify-between 2xl:justify-between xl:justify-between lg:justify-between md:justify-center justify-center 3xl:items-start 2xl:items-start xl:items-start lg:items-start md:items-center items-center 3xl:h-96 2xl:h-96 xl:h-96 lg:h-96 md:h-full sm:h-full h-full">
                     <BenefitsCarousel array={keyBenefits} />
