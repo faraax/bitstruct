@@ -1,7 +1,5 @@
 import Balancer from 'react-wrap-balancer'
 import Button from '../clientComponents/Button'
-import Image from 'next/image'
-import heroImg from '../../../public/hero-img-2.png'
 
 export default function HeroSec() {
     return (
