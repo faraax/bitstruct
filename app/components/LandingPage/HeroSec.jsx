@@ -5,7 +5,7 @@ import heroImg from '../../../public/hero-img-2.png'
 
 export default function HeroSec() {
     return (
-        <div className='min-h-screen grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-1 py-7 x-container gap-5'>
+        <div className='min-h-screen grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 py-7 x-container gap-5'>
             <div>
                 <h1 className='3xl:text-7xl 2xl:text-7xl xl:text-6xl sm:text-5xl xs:text-4xl text-6xl mt-20 tracking-widest font-semibold'>
                     <Balancer>
@@ -30,7 +30,7 @@ export default function HeroSec() {
                     <Button text={'Want to get started?'} type={"signup"} classList={'hover:text-secondary bg-white'} />
                 </div>
             </div>
-            <div className="bg-[url('/hero-img-2.png')] bg-local bg-no-repeat bg-center bg-contain">
+            <div className="bg-[url('/hero-img-2.png')] bg-local bg-no-repeat bg-center bg-contain hidden 3xl:flex 2xl:flex xl:flex lg:flex md:hidden">
             </div>
         </div>
     )
