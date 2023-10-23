@@ -1,18 +1,24 @@
 "use client"
-
 import { motion as m } from 'framer-motion'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CgCloseO } from '../../Utils/icons'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAuthContext } from '@/app/hooks/useAuthContext'
+import useAuth from '@/app/hooks/useAuth'
+// import { cookies } from 'next/headers'
 
 export default function Modal() {
     const searchParams = useSearchParams()
-    const router = useRouter()
     const modalRef = useRef()
+    const router = useRouter()
     const pathname = usePathname()
     const type = searchParams.get('type')
     const { dispatch, user } = useAuthContext()
+    const { userLogin, loading, error, message, userSignup } = useAuth()
+    const [userCredential, setUserCredential] = useState({
+        email: "",
+        password: ""
+    })
 
     useEffect(() => {
 
@@ -46,8 +52,18 @@ export default function Modal() {
         [searchParams]
     )
 
-    const handleLogin = () => {
-        dispatch({ type: 'LOGIN' })
+    const handleCredentials = (e) => {
+        const { value, name } = e.target
+        setUserCredential({
+            ...userCredential,
+            [name]: value
+        })
+    }
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        type === "signup" ? userSignup(userCredential) : userLogin(userCredential)
+        // message === "User registered successfully" ? /* router.push(pathname + '?' + createQueryString("modal", 'true', "signin")) */ console.log("askljdf") : null 
     }
 
     if (searchParams.get('modal') === "true" && user === false)
@@ -70,23 +86,58 @@ export default function Modal() {
                         </div>
                         <p>Fill you email & password to {type === "signin" ? 'Sign In' : 'Sign Up'}</p>
                     </div>
-                    <div className='flex flex-col gap-3'>
+                    <form onSubmit={handleFormSubmit} className='flex flex-col gap-3'>
                         <label className='flex flex-col text-xl'>
                             Email Address
                         </label>
-                        <input type="text" name="email" id="email" className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700' placeholder='You Email Address' />
+                        <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
+                            placeholder='You Email Address'
+                            onChange={handleCredentials}
+                        />
                         <label className='flex flex-col text-xl'>
                             Password
                         </label>
-                        <input type="password" name="password" id="password" className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700' placeholder='Type Your Password' />
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
+                            placeholder='Type Your Password'
+                            onChange={handleCredentials}
+                        />
                         <div className='flex items-center flex-col w-full'>
-                            <button
-                                className='bg-secondary py-3 px-6 rounded-full text-white'
-                                onClick={handleLogin}
-                            >
-                                {type === "signin" ? 'Signin' : 'Signup'}
-                            </button>
+                            {
+                                loading && <button disabled className='bg-secondary/80 py-3 px-5 rounded-full text-white cursor-wait'>
+                                    Loading
+                                </button>
+                            }
+                            {
+                                !loading && <button
+                                    className='bg-secondary py-3 px-6 rounded-full text-white'
+                                    >
+                                    {type === "signin" ? 'Signin' : 'Signup'}
+                                </button>
+                            }
+
                         </div>
+                        {
+                            error && (
+                                <div className='flex justify-center items-center'>
+                                    <h2 className='text-red-500'>{error}</h2>
+                                </div>
+                            )
+                        }
+                        {
+                            message && (
+                                <div className='flex justify-center items-center'>
+                                    <h2 className='text-red-500'>{message}</h2>
+                                </div>
+                            )
+                        }
                         <div className='flex justify-between items-center'>
                             {
                                 type === "signin" && (<p>Don{`'`}t have an account? <span
@@ -103,7 +154,7 @@ export default function Modal() {
                                         className='text-secondary hover:underline cursor-pointer'
                                         onClick={() => {
                                             router.push(pathname + '?' + createQueryString("modal", 'true', "signin"))
-                                            dispatch({ type: 'LOGIN' })
+                                            // dispatch({ type: 'LOGIN' })
                                         }}>
                                         Sign up
                                     </span>
@@ -113,7 +164,7 @@ export default function Modal() {
                             {type === "signup" && <p className='text-secondary hover:underline cursor-pointer'>Forgot Password</p>}
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </m.div >
         )

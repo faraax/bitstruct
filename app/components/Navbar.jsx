@@ -1,12 +1,13 @@
 import { currentDate, currentDay, currentMonth, currentYear } from '../Utils/dateFormat'
 import { BiSearchAlt2, BsBell, FaHeadphones } from '../Utils/icons'
+import Username from './clientComponents/Username'
 
 
 export default function Navbar() {
     return (
         <nav className="flex items-center justify-between h-24 sticky top-0 bg-[#FAFCFF] z-10 w-full px-10 py-5">
             <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-medium">Welcome Alex</h2>
+                <Username />
                 <p className="text-mute text-base">
                     {`${currentDay}, ${currentDate} ${currentMonth} ${currentYear}`}
                 </p>
@@ -18,9 +19,7 @@ export default function Navbar() {
                         className='border border-mute border-opacity-20 px-10 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:placeholder:text-primary peer'
                         placeholder='Search'
                     />
-                    <BiSearchAlt2
-                        className='text-mute text-2xl absolute left-5 top-1/2 -translate-y-1/2 -translate-x-1/2 peer-focus:text-primary'
-                    />
+                    <BiSearchAlt2 className='text-mute text-2xl absolute left-5 top-1/2 -translate-y-1/2 -translate-x-1/2 peer-focus:text-primary' />
                 </div>
                 <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
                     <button>

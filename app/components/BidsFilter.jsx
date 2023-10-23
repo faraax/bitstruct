@@ -1,8 +1,6 @@
 "use client"
 import { MdOutlineKeyboardArrowDown } from "../Utils/icons"
 
-
-
 export default function BidsFilter() {
     return (
         <>
