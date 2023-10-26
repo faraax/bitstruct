@@ -97,6 +97,7 @@ export default function Modal() {
                             className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
                             placeholder='You Email Address'
                             onChange={handleCredentials}
+                            required
                         />
                         <label className='flex flex-col text-xl'>
                             Password
@@ -108,6 +109,7 @@ export default function Modal() {
                             className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
                             placeholder='Type Your Password'
                             onChange={handleCredentials}
+                            required
                         />
                         <div className='flex items-center flex-col w-full'>
                             {

@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import { BsCloudDownloadFill, SlDoc } from '../Utils/icons'
 
-export default function page() {
+export default function Activity() {
     return (
         <div className="w-full">
             <Navbar />

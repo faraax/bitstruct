@@ -5,19 +5,30 @@ import SidebarList from './SidebarList'
 import { navTitles } from '../Utils/SidebarList'
 import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 import React from 'react'
-// import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 import useAuth from '../hooks/useAuth'
 // import { redirect } from 'next/navigation'
 
 
 export default function Sidebar() {
-    // const { dispatch } = useAuthContext()
+    // const { user,
+    //     authIsReady,
+    //     subscription,
+    //     profiles,
+    //     selectedProfile } = useAuthContext()
     const { logout, loading } = useAuth()
 
     const handleLogout = () => {
         // dispatch({ type: 'LOGOUT' })
         // redirect('/')
         logout()
+        // console.log({
+        //     user,
+        //     authIsReady,
+        //     subscription,
+        //     profiles,
+        //     selectedProfile
+        // });
     }
     return (
         <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0'>

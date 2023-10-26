@@ -19,10 +19,10 @@ export default function useAuth() {
         setError(null)
         try {
             let reqOptions = {
-                url: "http://api.bidstruct.com/auth/login",
+                url: `${process.env.APIENDPOINT}auth/login`,
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 data: JSON.stringify(userCredential),
             }
@@ -37,7 +37,7 @@ export default function useAuth() {
         catch (err) {
             setError(err.message)
             setLoading(false)
-            console.log("Login Err =>", err.message);
+            console.log("Login Err =>", err);
             setTimeout(() => setError(null), 5000)
         }
     }
@@ -47,7 +47,7 @@ export default function useAuth() {
         setError(null)
         try {
             let reqOptions = {
-                url: "http://api.bidstruct.com/auth/register",
+                url: `${process.env.APIENDPOINT}auth/register`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -59,7 +59,7 @@ export default function useAuth() {
 
             setLoading(false)
             setMessage(data.message)
-            console.log(data);
+            // console.log(data);
             setTimeout(() => setMessage(null), 5000)
         }
         catch (err) {
@@ -74,6 +74,7 @@ export default function useAuth() {
         setLoading(true)
         Cookies.remove("jwtToken")
         dispatch({ type: 'LOGOUT' })
+        dispatch({ type: 'SETPROFILE', payload: null })
         setLoading(false)
     }
 

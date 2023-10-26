@@ -41,7 +41,7 @@ async function getData() {
     }
 }
 
-export default async function page() {
+export default async function DashboardPage() {
     const data = await getData()
     return (
         <div className="w-full">

@@ -15,7 +15,9 @@ import PriceCards from "./components/PriceCards";
 
 
 export default function Home() {
-  const { user } = useAuthContext()
+  const { user, profiles } = useAuthContext()
+
+  if (user && !profiles) return redirect('/setup-profile')
   if (user) return redirect('/dashboard')
 
   return (

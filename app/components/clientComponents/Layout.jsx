@@ -6,11 +6,11 @@ import Sidebar from "../Sidebar"
 import { navTitles } from "@/app/Utils/SidebarList"
 
 export default function Layout({ children }) {
-    const { user } = useAuthContext()
+    const { user, profiles } = useAuthContext()
     const pathname = usePathname()
     const protectedRoutes = navTitles.map(list => list.url)
     return (
-        <main className={user ? 'flex' : ''}>
+        <main className={user && profiles ? 'flex' : ''}>
             <ProtectedRoutes path={pathname} user={user} >
                 {protectedRoutes.includes(pathname) && <Sidebar />}
                 {children}

@@ -1,13 +1,15 @@
+import { CgProfile } from 'react-icons/cg'
 import { currentDate, currentDay, currentMonth, currentYear } from '../Utils/dateFormat'
-import { BiSearchAlt2, BsBell, FaHeadphones } from '../Utils/icons'
+import { BiSearchAlt2, BsBell } from '../Utils/icons'
 import Username from './clientComponents/Username'
+import UserList from './clientComponents/UserList'
 
 
 export default function Navbar() {
     return (
         <nav className="flex items-center justify-between h-24 sticky top-0 bg-[#FAFCFF] z-10 w-full px-10 py-5">
             <div className="flex flex-col gap-2">
-                <Username />
+                <Username notes={"Welcome "} />
                 <p className="text-mute text-base">
                     {`${currentDay}, ${currentDate} ${currentMonth} ${currentYear}`}
                 </p>
@@ -24,11 +26,17 @@ export default function Navbar() {
                 <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
                     <button>
                         <BsBell />
+                        {/* <CgProfile /> */}
                     </button>
                 </div>
-                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
-                    <button>
-                        <FaHeadphones />
+                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-lg p-3'>
+                    <button className='relative group' title='Select Profile'>
+                        <CgProfile />
+                        <div className="z-10 absolute hidden group-focus:block top-full -right-1 max-h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded">
+                            <ul className="text-left flex flex-col bg-white text-primary">
+                                <UserList />
+                            </ul>
+                        </div>
                     </button>
                 </div>
             </div>
