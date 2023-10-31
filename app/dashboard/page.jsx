@@ -101,8 +101,8 @@ export default function DashboardPage() {
                         <h2 className="text-lg font-medium mb-3">Dashboard</h2>
                         <div className="grid grid-cols-3 gap-7">
                             {
-                                dashboardCards.map((cardsData) => (
-                                    <div key={cardsData.id} className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white col-span-1">
+                                dashboardCards.map((cardsData, index) => (
+                                    <div key={index} className="flex flex-col p-5 gap-1 border border-mute border-opacity-20 rounded-lg bg-white col-span-1">
                                         <Cards icon={cardsData.icon} totalBids={cardsData.totalBids} percentage={cardsData.percentage} heading={cardsData.heading} />
                                     </div>
                                 ))

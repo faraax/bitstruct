@@ -52,9 +52,9 @@ export default function BidsFilter({ setPortalid, portalid }) {
                         <ul className="text-left flex flex-col bg-white text-primary">
                             {
                                 portalList?.map((list) => (
-                                    list.projectName.map((list) => (
+                                    list.projectName.map((list, index) => (
                                         <li
-                                            key={list.portalId}
+                                            key={index}
                                             onClick={() => handlePortalId(list)}
                                             className={`px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary/20  ${portalid?.portalId === list.portalId && 'bg-primary/20'}`}
                                         >

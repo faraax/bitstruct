@@ -1,21 +1,12 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { BsPersonFillAdd } from 'react-icons/bs'
-import { CgClose } from 'react-icons/cg'
-import GetProfilePortalTable from './ServerComponents/GetProfilePortalTable'
 
 export default function ViewProfile() {
-    const { profiles, selectedProfile } = useAuthContext()
+    const { profiles, selectedProfile, dispatch } = useAuthContext()
     const [loading, setLoading] = useState(false)
-    const [currentProfile, setCurrentProfile] = useState(null)
     const [selectedProject, setSelectedProject] = useState([])
-    // const token = Cookies.get('jwtToken')
-
-    useEffect(() => {
-        setCurrentProfile(selectedProfile)
-    }, [selectedProfile, setCurrentProfile])
 
     useLayoutEffect(() => {
 
@@ -42,10 +33,9 @@ export default function ViewProfile() {
             }
         }
         if (selectedProfile) {
-            // console.log({ currentProfile, selectedProfile });
             getProfileList()
         }
-    }, [currentProfile, setSelectedProject, selectedProfile])
+    }, [setSelectedProject, selectedProfile])
 
     return (
         <>
@@ -70,11 +60,13 @@ export default function ViewProfile() {
                         <div className='flex gap-6 relative py-5'>
                             {
                                 profiles?.map((list, index) => (
+                                    // console.log(list)
                                     <div onClick={() =>
-                                        setCurrentProfile(list.profile_name)
+                                        // setCurrentProfile(list)
+                                        dispatch({ type: 'SELECTEDPROFILE', payload: list })
                                     }
                                         key={index}
-                                        className={`h-24 w-24 ${currentProfile === list.profile_name ? 'bg-primary text-white ' : 'text-black hover:text-white'} border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 duration-150`}
+                                        className={`h-24 w-24 ${selectedProfile?.profile_name === list.profile_name ? 'bg-primary text-white ' : 'text-black hover:text-white'} border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 duration-150`}
                                         title={list.profile_name}>
                                         <h1 className='text-3xl'>{list.profile_name.split("")[0]}</h1>
                                         <span className='absolute -bottom-0 text-sm text-slate-800 font-semibold min-w-max' >{list.profile_name}</span>
@@ -111,8 +103,8 @@ export default function ViewProfile() {
                                             </td>
                                             <td className="flex py-3 relative gap-2 flex-wrap">
                                                 {
-                                                    tableList.projectName.map((projectLsit) => (
-                                                        <div key={projectLsit.portalId} title={projectLsit.portalName} className='bg-primary/70 hover:bg-primary px-3 flex gap-4 items-center justify-between duration-150 rounded-lg'>
+                                                    tableList.projectName.map((projectLsit, index) => (
+                                                        <div key={index} title={projectLsit.portalName} className='bg-primary/70 hover:bg-primary px-3 flex gap-4 items-center justify-between duration-150 rounded-lg'>
                                                             <h2 className="text-sm my-1 font-bold text-black/60" >{projectLsit.portalName.substring(0, 20)}...</h2>
                                                         </div>
                                                     ))
@@ -124,7 +116,17 @@ export default function ViewProfile() {
                             </tbody >
                         </table >
                         {
-                            loading && <h2>Loading</h2>
+                            loading && <div className="flex  items-center gap-2 p-3 rounded-lg font-bold cursor-wait w-full text-secondary">
+                                <svg className="h-5 w-5 animate-spin" viewBox="3 3 18 18">
+                                    <path
+                                        className="fill-mute"
+                                        d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"></path>
+                                    <path
+                                        className="fill-primary"
+                                        d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"></path>
+                                </svg>
+                                <span className="text-lg text-primary">Loading...</span>
+                            </div>
                         }
                     </div>
                 </div>

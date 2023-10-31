@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
@@ -6,196 +6,16 @@ import { BsPersonFillAdd } from 'react-icons/bs'
 // import { CgClose } from 'react-icons/cg'
 
 export default function AddProfile() {
-    const { profiles, selectedProfile } = useAuthContext()
+    const { profiles, selectedProfile, dispatch } = useAuthContext()
     const [loading, setLoading] = useState(false)
+    const [msg, setMsg] = useState(null)
     const [addNewProfile, setAddNewProfile] = useState(false)
     const [profileName, setProfileName] = useState('')
-    const [currentProfile, setCurrentProfile] = useState()
-    const [statesList, setStateList] = useState([])
-    const [selectedState, setSelectedState] = useState(null)
-    const [portalListByState, setPortalListByState] = useState([])
-    const [selectedProject, setSelectedProject] = useState([])
-
-    useEffect(() => {
-        setCurrentProfile(selectedProfile?.profile_name)
-    }, [selectedProfile, setCurrentProfile])
-
-    useLayoutEffect(() => {
-        const getStates = async () => {
-            setLoading(true)
-            try {
-                let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getAvailableStates`,
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-
-                let { data } = await axios.request(reqOptions);
-                setStateList(data);
-                setLoading(false)
-            } catch (err) {
-                setLoading(false)
-                console.log(err);
-            }
-        }
-
-        const getPortals = async () => {
-            setLoading(true)
-            const formData = new FormData();
-            formData.append("portalState", selectedState)
-            try {
-                let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/listPortalsByState`,
-                    method: "POST",
-                    headers: {
-                        // "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
-                    },
-                    data: { portalState: selectedState }
-                }
-
-                let { data } = await axios.request(reqOptions);
-                setLoading(false)
-                setPortalListByState(data)
-                // console.log(data);
-            } catch (err) {
-                setLoading(false)
-                console.log(err);
-            }
-        }
-
-        const getProfileList = async () => {
-            try {
-                // const portalIds = selectedProject.flatMap(state => state.projectName.map(project => project.portalId));
-                let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getProfilePortalList`,
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
-                    },
-                    data: { profileName: currentProfile }
-                }
-
-                let { data } = await axios.request(reqOptions);
-                setSelectedProject(data)
-                console.log(data);
-            } catch (err) {
-                console.log(err);
-            }
-            // console.log(currentProfile);
-        }
-        getProfileList()
-        getStates()
-
-        if (selectedState) {
-            getPortals()
-        }
-    }, [selectedState, setLoading, currentProfile])
-
-    const handleSeleteState = (e) => {
-        setSelectedState(e.target.value)
-    }
-
-    const handleProjectState = (e) => {
-
-        const { value } = e.target;
-        const selectedList = portalListByState.filter((list) => list.portalName === value)[0]
-
-        // Find the index of the selected state in the state array
-        const stateIndex = selectedProject.findIndex((project) => project.state === selectedState);
-
-        function containsObject(obj, list) {
-            for (let i = 0; i < list.length; i++) {
-                if (list[i].portalId === obj.portalId && list[i].portalName === obj.portalName) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        if (value === "Select Project") {
-            return;
-        }
-
-        if (stateIndex === -1) {
-            let value = { portalId: selectedList.portalId, portalName: selectedList.portalName }
-            setSelectedProject([
-                ...selectedProject,
-                {
-                    state: selectedState,
-                    projectName: [value],
-                },
-            ]);
-
-        } else {
-            let value = { portalId: selectedList.portalId, portalName: selectedList.portalName }
-
-            const isDuplicate = containsObject(value, selectedProject[stateIndex].projectName);
-
-            if (!isDuplicate) {
-                setSelectedProject([
-                    ...selectedProject.slice(0, stateIndex),
-                    {
-                        ...selectedProject[stateIndex],
-                        projectName: [...selectedProject[stateIndex].projectName, value],
-                    },
-                    ...selectedProject.slice(stateIndex + 1),
-                ]);
-            }
-        }
-    };
-
-    const handleDeleteState = (portalId) => () => {
-        const updatedProjects = selectedProject.map((state) => {
-            const updatedProjectName = state.projectName.filter(
-                (project) => project.portalId !== portalId
-            );
-
-            return {
-                state: state.state,
-                projectName: updatedProjectName,
-            };
-        });
-
-        // Remove parent objects with empty projectName arrays
-        const nonEmptyProjects = updatedProjects.filter(
-            (state) => state.projectName.length > 0
-        );
-
-        setSelectedProject(nonEmptyProjects);;
-        // console.log(stateId, projectId);
-    }
-
-    const handleSaveSettings = async () => {
-        try {
-            const portalIds = selectedProject.flatMap(state => state.projectName.map(project => project.portalId));
-            let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/addPortalsToProfile`,
-                // url: `${process.env.APIENDPOINT}api/getProfilePortalList`,
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `JWT ${Cookies.get('jwtToken')}`
-                },
-                data: { profileName: currentProfile, portalsList: portalIds }
-                // data: { profileName: currentProfile }
-            }
-
-            let { data } = await axios.request(reqOptions);
-            console.log(data);
-        } catch (err) {
-            console.log(err);
-        }
-        // console.log(selectedProject);
-    }
 
     const handleNewProfile = async (e) => {
         e.preventDefault()
-        // const formData = new FormData();
-        // formData.append('profileName', profileName)
-        // setIsPending(true)
+        setLoading(true)
+        setMsg(null)
         try {
             let reqOptions = {
                 url: `${process.env.APIENDPOINT}api/addProfile`,
@@ -208,18 +28,19 @@ export default function AddProfile() {
             }
 
             let resp = await axios.request(reqOptions);
-
             console.log(resp.data);
-            // setIsPending(false)
-            // if (resp.data === "Profile Added") {
-            //     dispatch({ type: 'SETPROFILE', payload: data.data })
-            //     console.log(profile);
-            //     redirect('/dashboard')
-            // }
+            if (resp) {
+                setLoading(false)
+                setMsg("User Updated")
+                setTimeout(() => setMsg(null), 5000)
+            }
+
         }
         catch (err) {
+            setLoading(false)
+            setMsg("Error")
             console.log("Login Err =>", err.message);
-            // setIsPending(false)
+            setTimeout(() => setMsg(null), 5000)
         }
     }
     return (
@@ -246,10 +67,10 @@ export default function AddProfile() {
                             {
                                 profiles?.map((list, index) => (
                                     <div onClick={() =>
-                                        setCurrentProfile(list.profile_name)
+                                        dispatch({ type: 'SELECTEDPROFILE', payload: list })
                                     }
                                         key={index}
-                                        className={`h-24 w-24 ${currentProfile === list.profile_name ? 'bg-primary text-white ' : 'text-black hover:text-white'} border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 duration-150`}
+                                        className={`h-24 w-24 ${selectedProfile?.profile_name === list.profile_name ? 'bg-primary text-white ' : 'text-black hover:text-white'} border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 duration-150`}
                                         title={list.profile_name}>
                                         <h1 className='text-3xl'>{list.profile_name.split("")[0]}</h1>
                                         <span className='absolute -bottom-0 text-sm text-slate-800 font-semibold min-w-max' >{list.profile_name}</span>
@@ -277,10 +98,28 @@ export default function AddProfile() {
                                         placeholder="Type Profile Name"
                                         required
                                     />
-                                    <button
-                                        className='flex px-7 py-2 items-center gap-2 bg-primary text-white rounded-xl hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
-                                        Save
-                                    </button>
+                                    {
+                                        loading && <button
+                                            disabled
+                                            className='cursor-wait flex px-7 py-2 items-center gap-2 bg-primary text-white rounded-xl hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
+                                            <svg className="h-5 w-5 animate-spin" viewBox="3 3 18 18">
+                                                <path
+                                                    className="fill-white"
+                                                    d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"></path>
+                                                <path
+                                                    className="fill-primary"
+                                                    d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"></path>
+                                            </svg>
+                                            <span className="text-lg text-white">Loading...</span>
+                                        </button>
+                                    }
+                                    {
+                                        !loading && <button
+                                            className='flex px-7 py-2 items-center gap-2 bg-primary text-white rounded-xl hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
+                                            Save
+                                        </button>
+                                    }
+
                                 </form>
                             )
                         }
