@@ -1,7 +1,7 @@
 
 export default function loading() {
     return (
-        <div className="max-h-screen w-full flex justify-center items-center">
+        <div className="max-h-screen w-full flex justify-center items-center col-span-12">
             <div className="flex bg-primary/10 justify-center items-center gap-2 p-3 rounded-lg font-bold h-screen cursor-wait w-full text-secondary">
                 <svg className="h-20 w-20 animate-spin" viewBox="3 3 18 18">
                     <path

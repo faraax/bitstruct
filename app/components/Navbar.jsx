@@ -26,7 +26,6 @@ export default function Navbar() {
                 <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
                     <button>
                         <BsBell />
-                        {/* <CgProfile /> */}
                     </button>
                 </div>
                 <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-lg p-3'>

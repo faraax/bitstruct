@@ -4,9 +4,9 @@ import { HiDotsHorizontal } from "../Utils/icons";
 import basharAllan from "../../public/testimonials/Bashar Allan.jpg";
 import ghassanKhoulaghasi from "../../public/testimonials/Ghassan Khoulaghasi.jpg";
 
-export default function page() {
+export default function Transaction() {
     return (
-        <div className="w-full">
+        <div className="col-span-10">
             <Navbar />
             <div className="px-10 py-5">
                 <div className="flex items-center gap-3">

@@ -4,7 +4,7 @@ import { BsCloudDownloadFill, SlDoc } from '../Utils/icons'
 
 export default function Activity() {
     return (
-        <div className="w-full">
+        <div className="col-span-10">
             <Navbar />
             <div className='pt-5 px-10 py-5 text-lg font-medium'>
                 <h2>Bid View</h2>

@@ -10,7 +10,7 @@ export default function Layout({ children }) {
     const pathname = usePathname()
     const protectedRoutes = navTitles.map(list => list.url)
     return (
-        <main className={user && profiles ? 'flex' : ''}>
+        <main className={user && profiles ? 'grid grid-cols-12' : ''}>
             <ProtectedRoutes path={pathname} user={user} >
                 {protectedRoutes.includes(pathname) && <Sidebar />}
                 {children}

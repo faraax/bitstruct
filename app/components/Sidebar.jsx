@@ -5,33 +5,13 @@ import SidebarList from './SidebarList'
 import { navTitles } from '../Utils/SidebarList'
 import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 import React from 'react'
-import { useAuthContext } from '../hooks/useAuthContext'
 import useAuth from '../hooks/useAuth'
-// import { redirect } from 'next/navigation'
 
 
 export default function Sidebar() {
-    // const { user,
-    //     authIsReady,
-    //     subscription,
-    //     profiles,
-    //     selectedProfile } = useAuthContext()
     const { logout, loading } = useAuth()
-
-    const handleLogout = () => {
-        // dispatch({ type: 'LOGOUT' })
-        // redirect('/')
-        logout()
-        // console.log({
-        //     user,
-        //     authIsReady,
-        //     subscription,
-        //     profiles,
-        //     selectedProfile
-        // });
-    }
     return (
-        <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0'>
+        <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0 col-span-2'>
             <div className='flex flex-col gap-10'>
                 <div>
                     <Image
@@ -69,7 +49,7 @@ export default function Sidebar() {
                     </button>
                 }
                 {
-                    !loading && <button onClick={handleLogout} className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
+                    !loading && <button onClick={() => logout()} className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
                         <IoLogOut className='text-2xl' />
                         <span className='text-base'>
                             Logout
