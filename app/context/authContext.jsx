@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useLayoutEffect, useReducer } from "react";
 import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -39,9 +39,8 @@ export const AuthContextProvider = ({ children }) => {
     const token = Cookies.get('jwtToken')
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let currentDate = new Date();
-        // console.log("From Auth",token);
 
         const getSub = async () => {
             try {
@@ -58,6 +57,7 @@ export const AuthContextProvider = ({ children }) => {
                 if (resp.status === 200) {
                     dispatch({ type: 'SETSUB', payload: resp.data })
                 }
+                // console.log("sub", resp.data);
             } catch (err) {
                 console.log(err);
             }
@@ -77,6 +77,7 @@ export const AuthContextProvider = ({ children }) => {
                 if (resp.status === 200) {
                     dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
                     dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
+                    // console.log({ SETPROFILE: resp.data.profiles, SELECTEDPROFILE: resp.data.profiles[0] });
                 }
             } catch (err) {
                 console.log(err);

@@ -38,24 +38,6 @@ const dashboardCards = [
     }
 ]
 
-// async function getData(token) {
-//     // const headersInstance = headers()
-//     // const authorization = headersInstance.get('authorization')
-//     try {
-//         const res = await fetch(`${process.env.APIENDPOINT}api/getPortalData`, {
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Authorization": `JWT ${token}`
-//             }
-//         })
-//         // console.log(data);
-//         return res.json()
-//     } catch (err) {
-//         throw new Error(err)
-//     }
-// }
-// getData()
-
 export default function DashboardPage() {
     const [portalData, setPortalData] = useState(null)
     const [portalid, setPortalid] = useState(null)
@@ -80,7 +62,6 @@ export default function DashboardPage() {
                 if (data) {
                     setLoading(false)
                 }
-                // console.log(portalData);
             } catch (err) {
                 setPortalData(null)
                 setLoading(false)
@@ -127,7 +108,7 @@ export default function DashboardPage() {
                                             className="fill-primary"
                                             d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"></path>
                                     </svg>
-                                    <span className="text-lg">Please Wait while the data is being scraped</span>
+                                    <span className="text-lg">Please wait while the data is being scraped</span>
                                 </div>
                             ) : 'Select Portal Id to scrape data'}</h2>
                         }
@@ -166,14 +147,11 @@ export default function DashboardPage() {
                                                 Object.keys(portalList).map((objKeys, _i) => (
                                                     <td className="py-3 px-10" key={_i}>
                                                         {objKeys === "url" ? (
-                                                            // console.log(portalList[objKeys])
                                                             <></>
                                                         ) : (objKeys === "title") ? (
                                                             portalList[objKeys].substring(0, 10)
                                                         ) : (objKeys === "bidDueDate") ? (
                                                             portalList[objKeys].substring(0, 10)
-                                                            // console.log(portalList[objKeys])
-                                                            // <></> issueDate
                                                         ) : (objKeys === "issueDate") ? (
                                                             portalList[objKeys].substring(0, 10)
                                                         ) : (objKeys === "byInvitation") ? (
@@ -200,9 +178,6 @@ export default function DashboardPage() {
                             </tbody>
                         </table >
                     </div>
-                    {/* {
-                        <h1 dangerouslySetInnerHTML={{ __html: JSON.stringify(portalData) }}></h1>
-                    } */}
                 </div>
 
             </div>

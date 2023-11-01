@@ -9,7 +9,6 @@ export default function ViewProfile() {
     const [selectedProject, setSelectedProject] = useState([])
 
     useLayoutEffect(() => {
-
         const getProfileList = async () => {
             setLoading(true)
             try {
@@ -43,7 +42,6 @@ export default function ViewProfile() {
                 <div className='w-full bg-primary h-1 mt-4' />
                 <div className='flex justify-between'>
                     <div>
-                        {profiles && !selectedProfile && <h2 className='text-mute'>{profiles[0].profile_name}</h2>}
                         {selectedProfile && <h2 className='text-mute'>{selectedProfile.profile_name}</h2>}
                     </div>
                     <div className='flex items-center gap-5'>

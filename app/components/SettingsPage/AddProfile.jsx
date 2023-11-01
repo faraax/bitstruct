@@ -49,7 +49,6 @@ export default function AddProfile() {
                 <div className='w-full bg-primary h-1 mt-4' />
                 <div className='flex justify-between'>
                     <div>
-                        {profiles && !selectedProfile && <h2 className='text-mute'>{profiles[0].profile_name}</h2>}
                         {selectedProfile && <h2 className='text-mute'>{selectedProfile.profile_name}</h2>}
                     </div>
                     <div className='flex items-center gap-5'>
@@ -197,6 +196,9 @@ export default function AddProfile() {
 
                         </div> */}
                     </div>
+                    {
+                        msg && <h3>{msg}</h3>
+                    }
                     {/* <table className="table w-full -z-0 my-5">
                         <thead className="sticky top-24 z-40 bg-[#FAFCFF] border-b border-mute border-opacity-20">
                             <tr className="text-mute text-left border-b border-mute border-opacity-20">

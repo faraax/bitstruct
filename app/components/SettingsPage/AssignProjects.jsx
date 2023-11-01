@@ -8,16 +8,10 @@ export default function AssignProjects() {
     const { profiles, selectedProfile, dispatch } = useAuthContext()
     const [loading, setLoading] = useState(false)
     const [saveDataloader, setSaveDataloader] = useState(false)
-    // const [profileName, setProfileName] = useState('')
-    // const [currentProfile, setCurrentProfile] = useState()
     const [statesList, setStateList] = useState([])
     const [selectedState, setSelectedState] = useState(null)
     const [portalListByState, setPortalListByState] = useState([])
     const [selectedProject, setSelectedProject] = useState([])
-
-    // useEffect(() => {
-    //     setCurrentProfile(selectedProfile?.profile_name)
-    // }, [selectedProfile, setCurrentProfile])
 
     useLayoutEffect(() => {
         const getStates = async () => {
@@ -173,7 +167,6 @@ export default function AssignProjects() {
                 <div className='w-full bg-primary h-1 mt-4' />
                 <div className='flex justify-between'>
                     <div>
-                        {profiles && !selectedProfile && <h2 className='text-mute'>{profiles[0].profile_name}</h2>}
                         {selectedProfile && <h2 className='text-mute'>{selectedProfile.profile_name}</h2>}
                     </div>
                     <div className='flex items-center gap-5'>
