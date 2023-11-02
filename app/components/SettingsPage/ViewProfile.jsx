@@ -1,7 +1,7 @@
-import React, { useLayoutEffect, useState } from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import React, { useLayoutEffect, useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function ViewProfile() {
     const { profiles, selectedProfile, dispatch } = useAuthContext()
@@ -58,9 +58,7 @@ export default function ViewProfile() {
                         <div className='flex gap-6 relative py-5'>
                             {
                                 profiles?.map((list, index) => (
-                                    // console.log(list)
                                     <div onClick={() =>
-                                        // setCurrentProfile(list)
                                         dispatch({ type: 'SELECTEDPROFILE', payload: list })
                                     }
                                         key={index}
@@ -79,7 +77,6 @@ export default function ViewProfile() {
                                     <th className="font-normal">Project Name</th>
                                 </tr>
                             </thead>
-                            {/* <GetProfilePortalTable currentProfile={currentProfile} token={token} /> */}
                             <tbody>
                                 {
                                     selectedProject.length === 0 && (

@@ -1,12 +1,12 @@
 "use client"
-import Payment from "../../components/Payment";
-import Cookies from "js-cookie";
 import axios from "axios";
-import { AnimatePresence, motion as m } from "framer-motion";
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import Payment from "../../components/Payment";
 import { MdDoubleArrow } from "react-icons/md";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import SetProfleName from "../../components/SetProfleName";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { AnimatePresence, motion as m } from "framer-motion";
 
 
 export default function ProfileSetup() {
@@ -31,39 +31,15 @@ export default function ProfileSetup() {
                 dispatch({ type: 'SETSUB', payload: resp.data })
                 setIsPending(false)
                 if (resp.data.product.active) {
-                    setSelectedTab("Profile")   
+                    setSelectedTab("Profile")
                 }
             } catch (err) {
                 console.log(err);
                 setIsPending(false)
             }
         }
-
-        // const getProfile = async () => {
-        //     setIsPending(true)
-        //     try {
-        //         let reqOptions = {
-        //             url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
-        //             method: "GET",
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //                 "Authorization": `JWT ${token}`
-        //             }
-        //         }
-        //         let resp = await axios.request(reqOptions);
-        //         setIsPending(false)
-        //         if (resp.status === 200) {
-        //             dispatch({ type: 'SETPROFILE', payload: resp.data.profiles[0] })
-        //         }
-        //     } catch (err) {
-        //         console.log(err);
-        //         setIsPending(false)
-        //     }
-        // }
-
         if (token) {
             getSub()
-            // getProfile()
         }
 
     }, [dispatch, token])

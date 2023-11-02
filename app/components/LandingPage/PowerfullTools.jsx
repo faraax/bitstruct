@@ -1,5 +1,7 @@
+import dynamic from 'next/dynamic'
 import Balancer from 'react-wrap-balancer'
-import Button from '../clientComponents/Button'
+
+const Button = dynamic(() => import("../clientComponents/Button"))
 
 export default function PowerfullTools() {
     return (

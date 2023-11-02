@@ -1,9 +1,12 @@
 "use client"
-import { useAuthContext } from "@/app/hooks/useAuthContext"
+import dynamic from "next/dynamic"
 import { usePathname } from "next/navigation"
-import ProtectedRoutes from "../ProtectedRoutes"
-import Sidebar from "../Sidebar"
 import { navTitles } from "@/app/Utils/SidebarList"
+import { useAuthContext } from "@/app/hooks/useAuthContext"
+
+const ProtectedRoutes = dynamic(() => import("../ProtectedRoutes"))
+const Sidebar = dynamic(() => import("../Sidebar"))
+
 
 export default function Layout({ children }) {
     const { user, profiles } = useAuthContext()

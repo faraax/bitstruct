@@ -1,10 +1,12 @@
 "use client"
+import dynamic from 'next/dynamic'
 import { CgProfile } from 'react-icons/cg'
-import { currentDate, currentDay, currentMonth, currentYear } from '../Utils/dateFormat'
 import { BiSearchAlt2, BsBell } from '../Utils/icons'
-import Username from './clientComponents/Username'
-import UserList from './clientComponents/UserList'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { currentDate, currentDay, currentMonth, currentYear } from '../Utils/dateFormat'
+
+const Username = dynamic(() => import('./clientComponents/Username'))
+const UserList = dynamic(() => import('./clientComponents/UserList'))
 
 
 export default function Navbar() {

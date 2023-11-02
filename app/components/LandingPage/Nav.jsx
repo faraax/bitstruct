@@ -1,9 +1,10 @@
-import Image from 'next/image'
-import logo from '../../../public/BidStruct-Dark.png'
 import Link from 'next/link'
-import Button from '../clientComponents/Button'
-import ResponsiveSidebar from '../clientComponents/ResponsiveSidebar'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import logo from '../../../public/BidStruct-Dark.png'
 
+const Button = dynamic(() => import("../clientComponents/Button"))
+const ResponsiveSidebar = dynamic(() => import('../clientComponents/ResponsiveSidebar'))
 
 export default function Nav() {
     return (

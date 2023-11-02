@@ -1,10 +1,10 @@
 "use client"
 import { motion as m } from 'framer-motion'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CgCloseO } from '../../Utils/icons'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { useAuthContext } from '@/app/hooks/useAuthContext'
 import useAuth from '@/app/hooks/useAuth'
+import { useAuthContext } from '@/app/hooks/useAuthContext'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function Modal() {
     const searchParams = useSearchParams()
@@ -62,7 +62,6 @@ export default function Modal() {
     const handleFormSubmit = (e) => {
         e.preventDefault()
         type === "signup" ? userSignup(userCredential) : userLogin(userCredential)
-        // message === "User registered successfully" ? /* router.push(pathname + '?' + createQueryString("modal", 'true', "signin")) */ console.log("askljdf") : null 
     }
 
     if (searchParams.get('modal') === "true" && user === false)
@@ -163,7 +162,6 @@ export default function Modal() {
                                         className='text-secondary hover:underline cursor-pointer'
                                         onClick={() => {
                                             router.push(pathname + '?' + createQueryString("modal", 'true', "signin"))
-                                            // dispatch({ type: 'LOGIN' })
                                         }}>
                                         Sign in
                                     </span>

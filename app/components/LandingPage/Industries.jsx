@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { cards } from '../../Utils/IndustriesCards'
 
-
 export default function Industries() {
     return (
         <div className='bg-[#FAFCFF] py-7 x-container flex flex-col gap-5' id='industries'>
@@ -23,7 +22,6 @@ export default function Industries() {
                             </div>
                             <div className='flex gap-4 justify-center items-center'>
                                 <p className='text-lg'>{item.category}</p>
-                                {/* {item.icon} */}
                             </div>
                         </div>
                     ))

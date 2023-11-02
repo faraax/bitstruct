@@ -1,4 +1,5 @@
 'use client'
+import dynamic from 'next/dynamic'
 import { redirect } from "next/navigation";
 import Nav from "./components/LandingPage/Nav";
 import PriceCards from "./components/PriceCards";
@@ -12,6 +13,7 @@ import KeyBenefits from "./components/LandingPage/KeyBenefits";
 import Testimonials from "./components/LandingPage/Testimonials";
 import PowerfullTools from "./components/LandingPage/PowerfullTools";
 import RelatedServices from "./components/LandingPage/RelatedServices";
+
 
 
 export default function Home() {

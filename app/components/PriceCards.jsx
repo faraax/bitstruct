@@ -1,6 +1,8 @@
 import React from 'react'
-import Button from './clientComponents/Button'
+import dynamic from 'next/dynamic'
 import { pricePlans } from '../Utils/pricePlans'
+
+const Button = dynamic(() => import('./clientComponents/Button'))
 
 
 export default function PriceCards() {

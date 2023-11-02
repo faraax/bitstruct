@@ -1,9 +1,9 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+import Image from 'next/image';
 import Balancer from "react-wrap-balancer";
 import { VscQuote } from "../../Utils/icons";
-import Image from 'next/image';
+import React, { useEffect, useState } from 'react'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
 
 export default function Carousel({ images, autoSlide = true, autoSlideIntervel = 3 }) {

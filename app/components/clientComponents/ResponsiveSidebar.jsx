@@ -1,12 +1,13 @@
 "use client"
-import { useEffect, useRef, useState } from 'react'
-import { CgMenuRight, CgCloseO } from '../../Utils/icons'
 import Link from 'next/link'
 import Image from 'next/image'
-import Button from './Button'
-import logo from '../../../public/BidStruct_Logo.png'
+import dynamic from 'next/dynamic'
 import { motion as m } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import logo from '../../../public/BidStruct_Logo.png'
+import { CgMenuRight, CgCloseO } from '../../Utils/icons'
 
+const Button = dynamic(() => import('./Button'))
 
 const show = {
     x: "0%",

@@ -1,8 +1,11 @@
 import Image from "next/image";
-import Navbar from "../components/Navbar";
+import dynamic from "next/dynamic";
 import { HiDotsHorizontal } from "../Utils/icons";
 import basharAllan from "../../public/testimonials/Bashar Allan.jpg";
 import ghassanKhoulaghasi from "../../public/testimonials/Ghassan Khoulaghasi.jpg";
+
+
+const Navbar = dynamic(() => import("../components/Navbar"))
 
 export default function Transaction() {
     return (
@@ -226,7 +229,7 @@ export default function Transaction() {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     )

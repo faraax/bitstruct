@@ -1,8 +1,8 @@
-import React, { useLayoutEffect, useState } from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { CgClose } from 'react-icons/cg'
+import React, { useLayoutEffect, useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function AssignProjects() {
     const { profiles, selectedProfile, dispatch } = useAuthContext()
@@ -183,9 +183,7 @@ export default function AssignProjects() {
                         <div className='flex gap-6 relative py-5'>
                             {
                                 profiles?.map((list, index) => (
-                                    // console.log(list)
                                     <div onClick={() =>
-                                        // setCurrentProfile(list)
                                         dispatch({ type: 'SELECTEDPROFILE', payload: list })
                                     }
                                         key={index}
@@ -304,7 +302,6 @@ export default function AssignProjects() {
                             Save Settings
                         </button>
                     }
-
                 </div>
             </div>
         </div>

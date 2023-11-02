@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import React, { useState } from 'react'
 import { BsPersonFillAdd } from 'react-icons/bs'
-// import { CgClose } from 'react-icons/cg'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function AddProfile() {
     const { profiles, selectedProfile, dispatch } = useAuthContext()
@@ -43,6 +42,7 @@ export default function AddProfile() {
             setTimeout(() => setMsg(null), 5000)
         }
     }
+
     return (
         <div>
             <div className='bg-white rounded-xl gap-5 px-10 py-3 flex flex-col justify-center shadow-lg h-full'>
@@ -122,134 +122,11 @@ export default function AddProfile() {
                                 </form>
                             )
                         }
-                        {/* <div>
-                            {
-                                editButton && (
-                                    <div className='flex gap-4'>
-                                        <div>
-                                            <label >Select State</label>
-                                            <select
-                                                onChange={handleSeleteState}
-                                                className='w-full bg-white flex justify-between items-center placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl' required>
-                                                <option
-                                                    selected disabled value={null}>Select State</option>
-                                                {
-                                                    statesList.map((list, index) => (
-                                                        <option key={index} value={list} className='text-sm h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded'>{list}</option>
-                                                    ))
-                                                }
-                                            </select>
-                                        </div>
-                                        <div>
-                                            {
-                                                !loading ? (
-                                                    <>
-                                                        <label >Select Project</label>
-                                                        <select
-                                                            onChange={handleProjectState}
-                                                            className='w-full bg-white flex justify-between items-center placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl' required>
-                                                            <option
-                                                                value={null} selected defaultChecked className='active:bg-mute hover:bg-mute'>Select Project</option>
-                                                            {
-                                                                portalListByState.map((list, index) => (
-                                                                    <option key={index} content={list.portalState} value={list.portalName} title={list.portalId} className='text-sm h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded'>{list.portalName}</option>
-                                                                ))
-                                                            }
-                                                        </select>
-                                                    </>
-                                                ) : <h2>Loading</h2>
-                                            }
-
-                                        </div>
-                                    </div>
-                                )
-                            }
-                            {
-                                addNewProfile && (
-                                    <form className='flex gap-4' onSubmit={handleNewProfile}>
-                                        <input
-                                            onChange={(e) => setProfileName(e.target.value)}
-                                            name="profileName"
-                                            id="profileName"
-                                            value={profileName}
-                                            className="placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl"
-                                            placeholder="Type Profile Name"
-                                            required
-                                        />
-                                        <button
-                                            className='flex px-7 py-2 items-center gap-2 bg-primary text-white rounded-xl hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
-                                            Save
-                                        </button>
-                                    </form>
-                                )
-                            }
-                            {
-                                !addNewProfile && (
-                                    <div>
-                                        <button onClick={() => setEditButton(!editButton)}
-                                            className='flex px-7 py-2 items-center gap-2 bg-primary text-white rounded-xl hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
-                                            Edit
-                                        </button>
-                                    </div>
-                                )
-                            }
-
-                        </div> */}
                     </div>
                     {
                         msg && <h3>{msg}</h3>
                     }
-                    {/* <table className="table w-full -z-0 my-5">
-                        <thead className="sticky top-24 z-40 bg-[#FAFCFF] border-b border-mute border-opacity-20">
-                            <tr className="text-mute text-left border-b border-mute border-opacity-20">
-                                <th className="font-normal py-3 pl-2">States</th>
-                                <th className="font-normal">Project Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                selectedProject.length === 0 && (
-                                    <tr className=" text-left border-b border-mute border-opacity-20">
-                                        <td className="py-3 w-1/5">
-                                            <span className="text-sm">Empty List</span>
-                                        </td>
-                                        <td className="py-3 w-1/5">
-                                            <span className="text-sm">Empty List</span>
-                                        </td>
-                                    </tr>
-                                )
-                            }
-                            {
-                                selectedProject.length > 0 && selectedProject.map((tableList, index) => (
-                                    <tr key={index} className=" text-left border-b border-mute border-opacity-20">
-                                        <td className="py-3 w-1/5">
-                                            <span className="text-sm">{tableList.state}</span>
-                                        </td>
-                                        <td className="flex py-3 relative gap-2 flex-wrap">
-                                            {
-                                                tableList.projectName.map((projectLsit) => (
-                                                    <div key={projectLsit.portalId} title={projectLsit.portalName} className='bg-primary/70 hover:bg-primary px-3 flex gap-4 items-center justify-between duration-150 rounded-lg'>
-                                                        <h2 className="text-sm my-1 font-bold text-black/60" >{projectLsit.portalName.substring(0, 20)}...</h2>
-                                                        <span onClick={handleDeleteState(projectLsit.portalId)} className='hover:bg-primary text-black/30 hover:text-black/40 hover:font-bold cursor-pointer m-1'>
-                                                            <CgClose />
-                                                        </span>
-                                                    </div>
-                                                ))
-                                            }
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody >
-                    </table > */}
                 </div>
-                {/* {
-                    editButton && (
-                        <div className='flex justify-between items-center'>
-                            <button onClick={handleSaveSettings} className='text-primary bg-primary bg-opacity-20 p-4 py-1 rounded-xl hover:bg-opacity-10 duration-150'>Save Settings</button>
-                        </div>
-                    )
-                } */}
             </div>
         </div>
     )

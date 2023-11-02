@@ -1,6 +1,9 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import dynamic from 'next/dynamic'
 import { BsCloudDownloadFill, SlDoc } from '../Utils/icons'
+
+
+const Navbar = dynamic(() => import("../components/Navbar"))
 
 export default function Activity() {
     return (
@@ -35,22 +38,10 @@ export default function Activity() {
                             </div>
                         </div>
                         <table className="table w-full -z-0">
-                            {/* <thead>
-                                <tr className="text-mute text-left border-b border-mute border-opacity-20">
-                                    <th className="font-normal py-3">Project Titles</th>
-                                    <th className="font-normal">Vendors</th>
-                                    <th className="font-normal">Due Date</th>
-                                    <th className="font-normal">Remaining</th>
-                                    <th className="font-normal">Stage</th>
-                                    <th className="font-normal">Format</th>
-                                    <th className="font-normal">District Areas</th>
-                                </tr>
-                            </thead> */}
                             <tbody>
                                 <tr className="text-mute text-left border-b border-mute border-opacity-20">
                                     <td className="py-3 w-1/5">
                                         <span className="text-sm">Due Date</span>
-                                        {/* <h2 className="text-black">Texas Leather Services</h2> */}
                                     </td>
                                     <td className="py-3 w-1/5">
                                         <h2 className="text-sm">12/09/2023</h2>
@@ -66,11 +57,9 @@ export default function Activity() {
                                 <tr className="text-mute text-left border-b border-mute border-opacity-20">
                                     <td className="py-3 w-1/5">
                                         <span className="text-sm">Remaining</span>
-                                        {/* <h2 className="text-black">Texas Leather Services</h2> */}
                                     </td>
                                     <td className="py-3 w-1/5">
                                         <h2 className="text-sm">Null</h2>
-                                        {/* <span className="text-sm">03:21 PM</span> */}
                                     </td>
                                     <td className="py-3 w-1/5">
                                         <h2 className="text-sm">Lorem Field</h2>
@@ -111,11 +100,9 @@ export default function Activity() {
                                 <tr className="text-mute text-left border-b border-mute border-opacity-20">
                                     <td className="py-3 w-1/5">
                                         <span className="text-sm">Remaining</span>
-                                        {/* <h2 className="text-black">Texas Leather Services</h2> */}
                                     </td>
                                     <td className="py-3 w-1/5">
                                         <h2 className="text-sm">Null</h2>
-                                        {/* <span className="text-sm">03:21 PM</span> */}
                                     </td>
                                     <td className="py-3 w-1/5">
                                         <h2 className="text-sm">Lorem Field</h2>

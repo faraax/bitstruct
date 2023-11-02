@@ -3,6 +3,7 @@ import img from "../../../public/testimonials/IMG_6178.jpg";
 import testimonials from "../../Utils/Testimonials";
 import Carousel from "../Carousel/Carousel";
 
+
 export default function Testimonials() {
     return (
         <div className='bg-[#0C0838] py-7 x-container' id="testimonials">

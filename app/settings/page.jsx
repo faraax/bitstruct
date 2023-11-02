@@ -1,11 +1,13 @@
 "use client"
 import { useState } from 'react'
-import Navbar from '../components/Navbar'
-import ViewProfile from '../components/SettingsPage/ViewProfile'
-import AddProfile from '../components/SettingsPage/AddProfile'
-import Payments from '../components/SettingsPage/Payments'
-import AssignProjects from '../components/SettingsPage/AssignProjects'
+import dynamic from 'next/dynamic'
 
+
+const Navbar = dynamic(() => import('../components/Navbar'))
+const ViewProfile = dynamic(() => import('../components/SettingsPage/ViewProfile'))
+const AddProfile = dynamic(() => import('../components/SettingsPage/AddProfile'))
+const Payments = dynamic(() => import('../components/SettingsPage/Payments'))
+const AssignProjects = dynamic(() => import('../components/SettingsPage/AssignProjects'))
 
 
 export default function SettingsPage() {

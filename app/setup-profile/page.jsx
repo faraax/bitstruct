@@ -1,13 +1,15 @@
 "use client"
-import logo from '../../public/BidStruct-Dark.png'
+import axios from 'axios';
 import Image from "next/image";
-import ProfileSetup from '../components/clientComponents/ProfileSetup';
+import Cookies from 'js-cookie';
+import dynamic from 'next/dynamic';
 import useAuth from '../hooks/useAuth';
 import { IoLogOut } from '../Utils/icons'
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import logo from '../../public/BidStruct-Dark.png'
+
+const ProfileSetup = dynamic(() => import('../components/clientComponents/ProfileSetup'))
 
 export default function SetupProfilePage() {
     const { logout } = useAuth();

@@ -1,9 +1,9 @@
+import dynamic from "next/dynamic";
 import Balancer from "react-wrap-balancer";
-import BenefitsCarousel from "../Carousel/BenefitsCarousel";
 import keyBenefits from "../../Utils/keyBenefits"
-import Button from "../clientComponents/Button";
+import BenefitsCarousel from "../Carousel/BenefitsCarousel";
 
-
+const Button = dynamic(() => import("../clientComponents/Button"))
 
 export default function KeyBenefits() {
     return (

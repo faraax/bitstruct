@@ -1,12 +1,14 @@
 "use client"
-import Image from 'next/image'
-import logo from '../../public/BidStruct_Logo.png'
-import SidebarList from './SidebarList'
-import { navTitles } from '../Utils/SidebarList'
-import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 import React from 'react'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import useAuth from '../hooks/useAuth'
+import { navTitles } from '../Utils/SidebarList'
+import logo from '../../public/BidStruct_Logo.png'
+import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
 
+
+const SidebarList = dynamic(() => import('./SidebarList'))
 
 export default function Sidebar() {
     const { logout, loading } = useAuth()
