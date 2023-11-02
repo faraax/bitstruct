@@ -83,7 +83,7 @@ export default function Modal() {
                                 <CgCloseO className="text-3xl hover:text-primary/60 cursor-pointer duration-150" />
                             </button>
                         </div>
-                        <p>Fill you email & password to {type === "signin" ? 'Sign In' : 'Sign Up'}</p>
+                        <p>Fill you email & password to {type === "signin" ? 'Sign In' : 'regiser'}</p>
                     </div>
                     <form onSubmit={handleFormSubmit} className='flex flex-col gap-3'>
                         <label className='flex flex-col text-xl'>
@@ -165,12 +165,12 @@ export default function Modal() {
                                             router.push(pathname + '?' + createQueryString("modal", 'true', "signin"))
                                             // dispatch({ type: 'LOGIN' })
                                         }}>
-                                        Sign up
+                                        Sign in
                                     </span>
                                     </p>
                                 )
                             }
-                            {type === "signup" && <p className='text-secondary hover:underline cursor-pointer'>Forgot Password</p>}
+                            {type === "signin" && <p className='text-secondary hover:underline cursor-pointer'>Forgot Password</p>}
 
                         </div>
                     </form>

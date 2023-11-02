@@ -1,17 +1,17 @@
 'use client'
 import { redirect } from "next/navigation";
-import HeroSec from "./components/LandingPage/HeroSec";
 import Nav from "./components/LandingPage/Nav";
+import PriceCards from "./components/PriceCards";
+import Modal from "./components/LandingPage/Modal";
+import Footer from "./components/LandingPage/Footer";
+import HeroSec from "./components/LandingPage/HeroSec";
+import { useAuthContext } from "./hooks/useAuthContext";
 import Services from "./components/LandingPage/Services";
 import Industries from "./components/LandingPage/Industries";
+import KeyBenefits from "./components/LandingPage/KeyBenefits";
 import Testimonials from "./components/LandingPage/Testimonials";
 import PowerfullTools from "./components/LandingPage/PowerfullTools";
 import RelatedServices from "./components/LandingPage/RelatedServices";
-import KeyBenefits from "./components/LandingPage/KeyBenefits";
-import Footer from "./components/LandingPage/Footer";
-import Modal from "./components/LandingPage/Modal";
-import { useAuthContext } from "./hooks/useAuthContext";
-import PriceCards from "./components/PriceCards";
 
 
 export default function Home() {
@@ -21,7 +21,9 @@ export default function Home() {
   if (user) return redirect('/dashboard')
 
   return (
-    <main className="bg-[url('/hero-img.png')] bg-fixed bg-no-repeat bg-center bg-cover" id="home">
+    <main
+      className="bg-[url('/hero-img.png')] bg-fixed bg-no-repeat bg-center bg-cover"
+      id="home">
       <Nav />
       <HeroSec />
       <Services />

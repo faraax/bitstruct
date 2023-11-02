@@ -23,7 +23,7 @@ export default function Industries() {
                             </div>
                             <div className='flex gap-4 justify-center items-center'>
                                 <p className='text-lg'>{item.category}</p>
-                                {item.icon}
+                                {/* {item.icon} */}
                             </div>
                         </div>
                     ))
