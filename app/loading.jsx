@@ -1,5 +1,4 @@
 export default function Loading() {
-    // const { user, profiles } = useAuthContext()
     return (
         <div className={`max-h-screen w-full flex justify-center items-center col-span-10`}>
             <div className="flex bg-primary/10 justify-center items-center gap-2 p-3 rounded-lg font-bold h-screen cursor-wait w-full text-secondary">

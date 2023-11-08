@@ -8,14 +8,17 @@ import { IoLogOut } from '../Utils/icons'
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import logo from '../../public/BidStruct-Dark.png'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const ProfileSetup = dynamic(() => import('../components/clientComponents/ProfileSetup'))
 
 export default function SetupProfilePage() {
     const { logout } = useAuth();
     const [clientIsReady, setClientIsReady] = useState(null)
+    const { dispatch } = useAuthContext()
 
     useEffect(() => {
+        const token = Cookies.get('jwtToken')
         const getProfile = async () => {
             setClientIsReady(null)
             try {
@@ -24,10 +27,14 @@ export default function SetupProfilePage() {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                        "Authorization": `JWT ${token}`
                     }
                 }
                 let resp = await axios.request(reqOptions);
+                if (resp.status === 200) {
+                    dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
+                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
+                }
                 if (resp.data.profiles.length === 0) {
                     setClientIsReady(true)
                 } else {

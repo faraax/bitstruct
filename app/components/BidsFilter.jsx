@@ -4,13 +4,19 @@ import Cookies from "js-cookie"
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { MdOutlineKeyboardArrowDown } from "../Utils/icons"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 
-export default function BidsFilter({ setPortalid, portalid }) {
+export default function BidsFilter() {
+    const searchParams = useSearchParams()
+    const portalid = searchParams.get('portalid') ? searchParams.get('portalid') : null
+    const portalName = searchParams.get('portalName') ? searchParams.get('portalName') : null
     const { selectedProfile } = useAuthContext()
     const [portalList, setPortalList] = useState(null)
     const [list, setList] = useState(false)
 
     useEffect(() => {
+        const controller = new AbortController();
         const getProfilePortalList = async () => {
             try {
                 let reqOptions = {
@@ -22,9 +28,8 @@ export default function BidsFilter({ setPortalid, portalid }) {
                     },
                     data: { profileName: selectedProfile }
                 }
-                let { data } = await axios.request(reqOptions);
+                let { data } = await axios.request(reqOptions, { signal: controller.signal });
                 setPortalList(data)
-                // console.log(data);
             } catch (err) {
                 console.log(err);
             }
@@ -32,11 +37,11 @@ export default function BidsFilter({ setPortalid, portalid }) {
         if (selectedProfile) {
             getProfilePortalList()
         }
-    }, [selectedProfile])
 
-    const handlePortalId = (portalId) => {
-        setPortalid(portalId);
-    }
+        return () => {
+            controller.abort()
+        }
+    }, [selectedProfile])
 
     return (
         <>
@@ -46,21 +51,19 @@ export default function BidsFilter({ setPortalid, portalid }) {
                     onClick={() => setList(!list)}
                     className="relative w-full bg-white flex justify-between items-center placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl"
                 >
-                    <p className="px-4 text-primary">{portalid ? portalid.portalId + '-' + portalid.portalName.substring(0, 35) : 'Portal Id'}</p>
+                    <p className="px-4 text-primary">{portalid ? portalid + '-' + portalName?.substring(0, 35) : 'Portal Id'}</p>
                     <MdOutlineKeyboardArrowDown className="text-xl text-primary" />
                     <div className={`z-30 absolute ${list ? "block" : "hidden"} top-full -right-1 max-h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded`}>
                         <ul className="text-left flex flex-col bg-white text-primary">
                             {
                                 portalList?.map((list) => (
                                     list.projectName.map((list, index) => (
-                                        <li
-                                            key={index}
-                                            onClick={() => handlePortalId(list)}
-                                            className={`px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary/20  ${portalid?.portalId === list.portalId && 'bg-primary/20'}`}
-                                        >
-                                            {list.portalId} -
-                                            {list.portalName}
-                                        </li>
+                                        <Link href={`?portalid=${list.portalId}&portalName=${list.portalName}`} key={index}>
+                                            <li className={`px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary/20  ${portalid === list.portalId && 'bg-primary/20'}`}>
+                                                {list.portalId} -
+                                                {list.portalName}
+                                            </li>
+                                        </Link>
                                     ))
                                 ))
                             }
@@ -124,9 +127,12 @@ export default function BidsFilter({ setPortalid, portalid }) {
                 </button>
             </div>
             <div className="flex gap-2 mt-3 mx-16">
-                <button className="relative text-primary group w-full bg-white flex justify-center items-center hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl">
+                <Link
+                    href={'/dashboard'}
+                    className="relative text-primary group w-full bg-white flex justify-center items-center hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl"
+                >
                     Clear Search
-                </button>
+                </Link>
 
                 <button className="relative text-white group w-full bg-primary flex justify-center items-center hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl">
                     Search

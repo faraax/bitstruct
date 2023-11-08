@@ -34,7 +34,7 @@ export default function ViewProfile() {
         if (selectedProfile) {
             getProfileList()
         }
-    }, [setSelectedProject, selectedProfile])
+    }, [selectedProfile])
 
     return (
         <>

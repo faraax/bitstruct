@@ -9,10 +9,10 @@ const Sidebar = dynamic(() => import("../Sidebar"))
 
 
 export default function Layout({ children }) {
-    const { user, profiles } = useAuthContext()
+    const { user, profiles, authIsReady } = useAuthContext()
     const pathname = usePathname()
     const protectedRoutes = navTitles.map(list => list.url)
-    return (
+    return authIsReady && (
         <main className={user && profiles ? 'grid grid-cols-12' : ''}>
             <ProtectedRoutes path={pathname} user={user} >
                 {protectedRoutes.includes(pathname) && <Sidebar />}

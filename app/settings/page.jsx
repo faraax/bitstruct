@@ -22,7 +22,7 @@ export default function SettingsPage() {
             <div className='grid grid-cols-8 px-10 py-5 gap-2 '>
                 <div className='col-span-2 p-8 flex flex-col gap-3 bg-white rounded-xl shadow-lg'>
                     <div>
-                        <p className='text-mute text-sm '>Settings / {selectedSetting}</p>
+                        <p className='text-mute text-sm '>Settings / <span className='text-secondary'>{selectedSetting}</span></p>
                     </div>
                     <div className='flex gap-4'>
                         <ul className='flex flex-col '>

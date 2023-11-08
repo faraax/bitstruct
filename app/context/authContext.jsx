@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-
 export const AuthContext = createContext();
 
 const initialState = {
@@ -36,12 +35,9 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, initialState)
-    const token = Cookies.get('jwtToken')
-
 
     useLayoutEffect(() => {
-        let currentDate = new Date();
-
+        const token = Cookies.get('jwtToken')
         const getSub = async () => {
             try {
                 let reqOptions = {
@@ -62,6 +58,7 @@ export const AuthContextProvider = ({ children }) => {
                 console.log(err);
             }
         }
+
         const getProfile = async () => {
             try {
                 let reqOptions = {
@@ -77,25 +74,29 @@ export const AuthContextProvider = ({ children }) => {
                 if (resp.status === 200) {
                     dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
                     dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
-                    // console.log({ SETPROFILE: resp.data.profiles, SELECTEDPROFILE: resp.data.profiles[0] });
                 }
             } catch (err) {
                 console.log(err);
             }
         }
 
-        if (token && jwt_decode(token).exp * 1000 > currentDate.getTime()) {
+        if (token) {
             let decodedToken = jwt_decode(token);
-            getSub()
-            getProfile()
-            dispatch({ type: 'AUTHISREADY' })
-            dispatch({ type: 'LOGIN', payload: decodedToken })
+            let currentDate = new Date();
+            if (decodedToken.exp * 1000 > currentDate.getTime()) {
+                getSub();
+                getProfile();
+                dispatch({ type: 'AUTHISREADY' });
+                dispatch({ type: 'LOGIN', payload: decodedToken });
+            } else {
+                dispatch({ type: 'AUTHISREADY' });
+                Cookies.remove('jwtToken');
+            }
         } else {
-            dispatch({ type: 'AUTHISREADY' })
-            Cookies.remove('jwtToken')
+            dispatch({ type: 'AUTHISREADY' });
+            Cookies.remove('jwtToken');
         }
-    }, [token])
-
+    }, [])
     return (
         <AuthContext.Provider value={{ ...state, dispatch }}>
             {state.authIsReady && children}

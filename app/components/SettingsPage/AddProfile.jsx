@@ -27,18 +27,16 @@ export default function AddProfile() {
             }
 
             let resp = await axios.request(reqOptions);
-            console.log(resp.data);
             if (resp) {
                 setLoading(false)
-                setMsg("User Updated")
+                setMsg(resp.data)
                 setTimeout(() => setMsg(null), 5000)
             }
-
         }
         catch (err) {
             setLoading(false)
-            setMsg("Error")
             console.log("Login Err =>", err.message);
+            setMsg(err.message)
             setTimeout(() => setMsg(null), 5000)
         }
     }

@@ -4,7 +4,6 @@ import { pricePlans } from '../Utils/pricePlans'
 
 const Button = dynamic(() => import('./clientComponents/Button'))
 
-
 export default function PriceCards() {
     return (
         <section className="w-full py-12 x-container bg-white">
@@ -19,14 +18,14 @@ export default function PriceCards() {
                             {
                                 priceList.popular && (
                                     <div className="px-3 py-1 text-sm text-white bg-gradient-to-r from-pink-500 to-primary rounded-full inline-block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                        Popular
+                                        25% Savings
                                     </div>
                                 )
                             }
                             <div>
                                 <h3 className="text-2xl font-bold text-center">{priceList.title}</h3>
                                 <div className="mt-4 text-center text-zinc-600">
-                                    <span className="text-4xl font-bold">{priceList.price}</span>/ month{"\n                          "}
+                                    <span className="text-4xl font-bold">{priceList.price}</span> {priceList.popular ? "/ annually" : '/ month'}{"\n                          "}
                                 </div>
                                 <ul className="mt-4 space-y-2">
                                     {
@@ -42,7 +41,7 @@ export default function PriceCards() {
                                 </ul>
                             </div>
                             <div className="mt-6 flex justify-center items-center">
-                                <Button text={'Get Started'} type={"signup"} classList={'text-white bg-white w-full 3xl:w-2/3 2xl:w-2/3 xl:w-2/3 lg:w-full md:w-full rounded-xl bg-primary bg-secondary'} />
+                                <Button text={'Get Started'} type={"signup"} classList={'text-white bg-white w-full rounded-xl bg-primary bg-secondary'} />
                             </div>
                         </div>
                     ))

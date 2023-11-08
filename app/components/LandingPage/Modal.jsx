@@ -8,10 +8,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function Modal() {
     const searchParams = useSearchParams()
+    const type = searchParams.get('type')
     const modalRef = useRef()
     const router = useRouter()
     const pathname = usePathname()
-    const type = searchParams.get('type')
     const { user } = useAuthContext()
     const { userLogin, loading, error, message, userSignup } = useAuth()
     const [userCredential, setUserCredential] = useState({
