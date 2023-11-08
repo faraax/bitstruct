@@ -8,7 +8,8 @@ import { useSearchParams } from "next/navigation"
 // import CatModel from "./catModel"
 
 const Table = dynamic(() => import("./Table"))
-const CatModel = dynamic(() => import("./catModel"))
+const CatModel = dynamic(() => import("./CatModel"))
+
 const Cards = dynamic(() => import("../components/Cards"))
 const Navbar = dynamic(() => import("../components/Navbar"))
 const BidsFilter = dynamic(() => import("../components/BidsFilter"))

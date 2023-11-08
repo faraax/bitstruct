@@ -46,7 +46,7 @@ export default function SetupProfilePage() {
             }
         }
         getProfile()
-    }, [])
+    }, [dispatch])
 
     if (clientIsReady === false) return redirect('/dashboard')
 
