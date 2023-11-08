@@ -23,14 +23,14 @@ export default function Modal() {
 
         const handleEsc = (event) => {
             if (event.keyCode === 27) {
-                router.push('/')
+                router.push('/', { scroll: false })
             }
         };
         window.addEventListener('keydown', handleEsc);
 
         const outSideClick = (event) => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
-                router.push('/')
+                router.push('/', { scroll: false })
             }
         };
         window.addEventListener('mousedown', outSideClick);
@@ -77,7 +77,7 @@ export default function Modal() {
                         <div className='flex justify-between items-center'>
                             <h2 className='text-primary font-normal text-4xl'>Welcome</h2>
                             <button onClick={() => {
-                                router.push('/')
+                                router.push('/', { scroll: false })
                             }}>
                                 <CgCloseO className="text-3xl hover:text-primary/60 cursor-pointer duration-150" />
                             </button>
