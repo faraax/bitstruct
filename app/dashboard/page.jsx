@@ -41,10 +41,11 @@ const dashboardCards = [
 export default function DashboardPage() {
     const searchParams = useSearchParams()
     const portalid = searchParams.get('portalid') ? searchParams.get('portalid') : null
-    // const catsModelShow = searchParams.get('catsModel') === "show" ? true : false
+    const fromDate = searchParams.get('from')
+    const toDate = searchParams.get('to')
     const [portalData, setPortalData] = useState(null)
     const [loading, setLoading] = useState(false)
-    // console.log(catsModelShow);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const controller = new AbortController();
@@ -52,6 +53,7 @@ export default function DashboardPage() {
         const getPortalData = async () => {
             setPortalData(null)
             setLoading(true)
+            setError(null)
             try {
                 let reqOptions = {
                     url: `${process.env.APIENDPOINT}api/getPortalData`,
@@ -69,8 +71,10 @@ export default function DashboardPage() {
                 }
             } catch (err) {
                 setPortalData(null)
+                setError(err?.response.data.error)
+                // console.log(err?.response.data.error);
+            } finally {
                 setLoading(false)
-                console.log(err);
             }
         }
 
@@ -82,7 +86,6 @@ export default function DashboardPage() {
             controller.abort()
         }
     }, [portalid])
-
     return (
         <div className="col-span-10 relative">
             <Navbar />
@@ -108,7 +111,7 @@ export default function DashboardPage() {
                     <h2>Bid Opportunities</h2>
                     <div className="overflow-auto w-full">
                         {
-                            !portalData && <h2 className="text-mute mt-3">
+                            !portalData && <h2 className={`text-mute mt-3`}>
                                 {
                                     loading ? (
                                         <div className="flex items-center gap-2 p-3 rounded-lg font-bold cursor-wait w-full">
@@ -122,9 +125,14 @@ export default function DashboardPage() {
                                             </svg>
                                             <span className="text-lg">Please wait while the data is being scraped</span>
                                         </div>
-                                    ) : 'Select Portal Id to scrape data'}</h2>
+                                    ) : (error) ? <span className="text-red-500">{error}</span> : 'Select Portal Id to scrape data'}</h2>
                         }
-                        <Table portalData={portalData} />
+                        <Table
+                            portalData={portalData}
+                            searchParams={searchParams.toString()}
+                            fromDate={fromDate}
+                            toDate={toDate}
+                        />
                     </div>
                 </div>
             </div>

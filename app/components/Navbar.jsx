@@ -1,7 +1,6 @@
 "use client"
 import dynamic from 'next/dynamic'
 import { CgProfile } from 'react-icons/cg'
-import { BiSearchAlt2, BsBell } from '../Utils/icons'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { currentDate, currentDay, currentMonth, currentYear } from '../Utils/dateFormat'
 
@@ -20,22 +19,23 @@ export default function Navbar() {
                 </p>
             </div>
             <div className='flex justify-center items-center gap-2'>
-                <div className='relative'>
+                {/* <div className='relative'>
                     <input
                         type="text"
                         className='border border-mute border-opacity-20 px-10 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:placeholder:text-primary peer'
                         placeholder='Search'
                     />
                     <BiSearchAlt2 className='text-mute text-2xl absolute left-5 top-1/2 -translate-y-1/2 -translate-x-1/2 peer-focus:text-primary' />
-                </div>
-                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
+                </div> */}
+                {/* <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-xl p-3'>
                     <button>
                         <BsBell />
                     </button>
-                </div>
-                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-lg p-3'>
+                </div> */}
+                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-lg p-3 gap-4'>
+                    <h2 className='text-mute'>Profiles</h2>
                     <button className='relative group' title='Select Profile'>
-                        <CgProfile />
+                        <CgProfile className='text-3xl' />
                         <div className="z-10 absolute hidden group-focus:block top-full -right-1 max-h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded">
                             <ul className="text-left flex flex-col bg-white text-primary">
                                 {profiles && <UserList profiles={profiles} dispatch={dispatch} />}

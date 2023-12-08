@@ -12,10 +12,13 @@ export default function AssignProjects() {
     const [selectedState, setSelectedState] = useState(null)
     const [portalListByState, setPortalListByState] = useState([])
     const [selectedProject, setSelectedProject] = useState([])
+    const [error, setError] = useState(null)
 
     useLayoutEffect(() => {
         const getStates = async () => {
             setLoading(true)
+            setPortalListByState([])
+            setError(null)
             try {
                 let reqOptions = {
                     url: `${process.env.APIENDPOINT}api/getAvailableStates`,
@@ -27,15 +30,17 @@ export default function AssignProjects() {
 
                 let { data } = await axios.request(reqOptions);
                 setStateList(data);
-                setLoading(false)
             } catch (err) {
-                setLoading(false)
+                setError("Error fetching data try again please")
                 console.log(err);
+            } finally {
+                setLoading(false)
             }
         }
 
         const getPortals = async () => {
             setLoading(true)
+            setError(null)
             const formData = new FormData();
             formData.append("portalState", selectedState)
             try {
@@ -43,29 +48,28 @@ export default function AssignProjects() {
                     url: `${process.env.APIENDPOINT}api/listPortalsByState`,
                     method: "POST",
                     headers: {
-                        // "Content-Type": "application/json",
                         "Authorization": `JWT ${Cookies.get('jwtToken')}`
                     },
                     data: { portalState: selectedState }
                 }
 
                 let { data } = await axios.request(reqOptions);
-                setLoading(false)
                 setPortalListByState(data)
-                // console.log(data);
             } catch (err) {
-                setLoading(false)
+                setError("Error fetching data try again please")
                 console.log(err);
+            } finally {
+                setLoading(false)
             }
         }
         getStates()
-
         if (selectedState) {
             getPortals()
         }
     }, [selectedState, setLoading])
 
     const handleSeleteState = (e) => {
+        setPortalListByState([])
         setSelectedState(e.target.value)
     }
 
@@ -213,7 +217,7 @@ export default function AssignProjects() {
                                 </div>
                                 <div>
                                     {
-                                        !loading ? (
+                                        portalListByState.length != 0 ? (
                                             <>
                                                 <label >Select Project</label>
                                                 <select
@@ -228,9 +232,26 @@ export default function AssignProjects() {
                                                     }
                                                 </select>
                                             </>
-                                        ) : <h2>Loading</h2>
+                                        ) : null
                                     }
-
+                                </div>
+                                <div className='flex justify-center items-center pt-4'>
+                                    {loading && <h2 className='flex justify-center items-center gap-3'>
+                                        <svg className="h-5 w-5 animate-spin" viewBox="3 3 18 18">
+                                            <path
+                                                className="fill-mute"
+                                                d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"></path>
+                                            <path
+                                                className="fill-primary"
+                                                d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"></path>
+                                        </svg>
+                                        <span>
+                                            Please wait while state are being fetched
+                                        </span>
+                                    </h2>}
+                                    {
+                                        error && <h2 className='text-red-600 flex justify-center items-center'>{error}</h2>
+                                    }
                                 </div>
                             </div>
                         </div>

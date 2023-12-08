@@ -10,7 +10,7 @@ import {
 export default function Footer() {
     return (
         <footer className='bg-[#0C0838]'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-4 border-stone-200 border-b-2 border-opacity-30'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3 border-stone-200 border-b-2 border-opacity-30'>
 
                 {/* Column 1 */}
                 <div className='py-7 px-4 xs:px-1 xs:mx-auto'>
@@ -51,7 +51,7 @@ export default function Footer() {
                 </div>
 
                 {/* Column 4 */}
-                <div className='py-7 px-4 xs:px-1 xs:mx-auto 3xl:col-span-1 lg:col-span-1 md:col-span-full xs:col-span-full'>
+                {/* <div className='py-7 px-4 xs:px-1 xs:mx-auto 3xl:col-span-1 lg:col-span-1 md:col-span-full xs:col-span-full'>
                     <div className='flex 3xl:flex-col 2xl:flex-col xl:flex-col lg:flex-col md:flex-row xs:flex-col gap-3 text-2xl text-white/70 h-full'>
                         <div className='flex sm:gap-3 gap-3 items-center flex-row sm:flex-row xs:flex-col xs:gap-0'>
                             <SiInstagram />
@@ -66,7 +66,7 @@ export default function Footer() {
                             <p className='text-base'>LinkedIn</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </div>
             <div className='flex justify-center items-center py-2'>

@@ -1,4 +1,4 @@
-import { IoStatsChart, RiSettings4Fill, BsFillGridFill, BsFillClipboard2DataFill } from './icons'
+import { IoStatsChart, RiSettings4Fill, BsFillGridFill, BsFillClipboard2DataFill, MdFavorite } from './icons'
 
 export const navTitles = [
     {
@@ -9,16 +9,16 @@ export const navTitles = [
     },
     {
         id: 2,
-        title: "Activity",
-        icon: <IoStatsChart />,
+        title: "Favorite Counties",
+        icon: <MdFavorite />,
         url: "/activity"
     },
-    {
-        id: 3,
-        title: "Transaction",
-        icon: <BsFillClipboard2DataFill />,
-        url: "/transaction"
-    },
+    // {
+    //     id: 3,
+    //     title: "Transaction",
+    //     icon: <BsFillClipboard2DataFill />,
+    //     url: "/transaction"
+    // },
     {
         id: 4,
         title: "Settings",

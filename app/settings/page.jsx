@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 const Navbar = dynamic(() => import('../components/Navbar'))
 const ViewProfile = dynamic(() => import('../components/SettingsPage/ViewProfile'))
 const AddProfile = dynamic(() => import('../components/SettingsPage/AddProfile'))
-const Payments = dynamic(() => import('../components/SettingsPage/Payments'))
+// const Payments = dynamic(() => import('../components/SettingsPage/Payments'))
 const AssignProjects = dynamic(() => import('../components/SettingsPage/AssignProjects'))
 
 
@@ -37,23 +37,23 @@ export default function SettingsPage() {
                                 Add Profile
                             </li>
                             <li
-                                onClick={() => setSelectedSetting('Assign Projects')}
-                                className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Assign Projects' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
-                                Assign Projects
+                                onClick={() => setSelectedSetting('Assign Counties to Profile')}
+                                className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Assign Counties to Profile' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
+                                Assign Counties
                             </li>
-                            <li
+                            {/* <li
                                 onClick={() => setSelectedSetting('Payments')}
                                 className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Payments' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
                                 Payments
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
                 <div className='col-span-6'>
                     {selectedSetting === 'View Profiles' && <ViewProfile />}
                     {selectedSetting === 'Add Profile' && <AddProfile />}
-                    {selectedSetting === 'Assign Projects' && <AssignProjects />}
-                    {selectedSetting === 'Payments' && <Payments />}
+                    {selectedSetting === 'Assign Counties to Profile' && <AssignProjects />}
+                    {/* {selectedSetting === 'Payments' && <Payments />} */}
                 </div>
             </div>
         </div >

@@ -30,6 +30,7 @@ export default function ProfileSetup() {
                 let resp = await axios.request(reqOptions);
                 dispatch({ type: 'SETSUB', payload: resp.data })
                 setIsPending(false)
+                console.log(resp);
                 if (resp.data.product.active) {
                     setSelectedTab("Profile")
                 }

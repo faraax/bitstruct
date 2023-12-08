@@ -11,7 +11,7 @@ import {
 import { BiSearchAlt2, BiLogoLinkedin } from 'react-icons/bi'
 import { IoLogOut, IoPerson } from 'react-icons/io5'
 import { FaHeadphones, FaFacebookF } from 'react-icons/fa'
-import { MdOutlineKeyboardArrowDown, MdOutlineAnalytics } from 'react-icons/md'
+import { MdOutlineKeyboardArrowDown, MdOutlineAnalytics, MdFavorite } from 'react-icons/md'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import { GrDocumentCsv } from 'react-icons/gr'
 import { SlDoc } from 'react-icons/sl'
@@ -47,5 +47,6 @@ module.exports = {
     FaFacebookF,
     BiLogoLinkedin,
     CgCloseO,
-    CgMenuRight
+    CgMenuRight,
+    MdFavorite
 }

@@ -23,10 +23,10 @@ export default function Sidebar() {
                         width={286}
                     />
                 </div>
-                <div className='relative'>
+                {/* <div className='relative'>
                     <input type="text" className='border border-mute border-opacity-20 px-10 py-3 rounded-lg w-full focus:outline-none focus:ring-1 focus:ring-primary focus:placeholder:text-primary peer' placeholder='Search' />
                     <BiSearchAlt2 className='text-mute text-2xl absolute left-5 top-1/2 -translate-y-1/2 -translate-x-1/2 peer-focus:text-primary' />
-                </div>
+                </div> */}
                 <div className='flex flex-col gap-4'>
                     <p className='text-mute text-sm '>Menu</p>
                     <ul className='flex flex-col gap-5'>

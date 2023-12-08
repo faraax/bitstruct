@@ -26,7 +26,7 @@ export default function PowerfullTools() {
                         <h3 className='text-3xl'>Powerful Search</h3>
                         <p className='text-xl'>
                             <Balancer>
-                                {`With the most complete collection of information on available projects, companies, and contacts in the industry, you'll be able to find the your ideal matches instantly.`}
+                                {`With the most complete collection of information on available projects, companies, and contacts in the industry, you'll be able to find your ideal matches instantly.`}
                             </Balancer>
                         </p>
                     </div>

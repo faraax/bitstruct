@@ -14,7 +14,7 @@ export const pricePlans = [
             { services: 'Filter by County, Bid Value, and Contractor Type', icon: <TiTick key={true} className="text-white text-xl" /> },
             { services: 'Multiple Customizable Profiles', icon: <TiTimes key={false} className="text-white text-xl" /> },
         ],
-        className: 'flex flex-col p-6 bg-zinc-100 shadow-lg rounded-lg justify-between bg',
+        className: 'flex flex-col p-6 bg-zinc-100 shadow-lg rounded-lg justify-between',
         popular: false
     },
 
@@ -34,7 +34,7 @@ export const pricePlans = [
             { services: 'Multiple Customizable Profiles', icon: <TiTick key={true} className="text-white text-xl" /> },
             { services: 'Excellent For Teams With 3+ Estimators', icon: <TiTick key={true} className="text-white text-xl" /> },
         ],
-        className: 'relative flex flex-col p-6 bg-zinc-100 shadow-lg rounded-lg justify-between border-4 border-primary',
+        className: 'relative flex flex-col p-6 bg-zinc-100 shadow-lg rounded-lg justify-between',
         popular: true
     },
     {
