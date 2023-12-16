@@ -13,24 +13,25 @@ export default function ProfileSetup() {
     const [selectedTab, setSelectedTab] = useState('Payment');
     const [isPending, setIsPending] = useState(false);
     const { dispatch } = useAuthContext();
-    const token = Cookies.get('jwtToken');
+    // const token = Cookies.get('jwtToken');
 
     useEffect(() => {
         const getSub = async () => {
             setIsPending(true)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/get_subscription_data`,
+                    // url: `${process.env.APIENDPOINT}api/get_subscription_data`,
+                    url: `/api/get_subscription_data`,
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${token}`
+                        // "Authorization": `JWT ${token}`
                     }
                 }
                 let resp = await axios.request(reqOptions);
                 dispatch({ type: 'SETSUB', payload: resp.data })
                 setIsPending(false)
-                console.log(resp);
+                // console.log(resp);
                 if (resp.data.product.active) {
                     setSelectedTab("Profile")
                 }

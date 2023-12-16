@@ -2,25 +2,18 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link"
 import { useRef, useState } from "react";
-import { MdFavoriteBorder } from "react-icons/md"
+import { MdDelete } from "react-icons/md";
+// import { MdFavoriteBorder } from "react-icons/md"
 
-export default function Table({ portalData, searchParams, fromDate, toDate }) {
+export default function Table({ portalData, searchParams }) {
     const token = Cookies.get('jwtToken');
-    const [favs, setFavs] = useState([])
-    const filteredData = portalData?.portal_data.filter(item => {
-        const bidDueDate = new Date(item.bidDueDate.substring(0, 10));
-        if (fromDate && toDate) {
-            return bidDueDate >= new Date(fromDate) && bidDueDate <= new Date(toDate);
-        } else {
-            return bidDueDate
-        }
-    });
+    const [del, setDel] = useState([])
 
-    const handleFavsCounties = (list) => async (e) => {
-        setFavs(prev => [...prev, list.bidId])
+    const handleDelCounties = (list) => async (e) => {
+        setDel(prev => [...prev, list.bidId])
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/add-to-favorite`,
+                url: `${process.env.APIENDPOINT}api/delete-favorites`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -49,14 +42,14 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
                             <th className="font-normal py-3 pr-10">Categories</th>
                             <th className="font-normal py-3 pr-10">URL</th>
                             <th className="font-normal py-3 pr-10">Docs</th>
-                            <th className="font-normal py-3 pr-10">Favorite</th>
+                            <th className="font-normal py-3 pr-10">Delete</th>
                         </tr>
                     </thead>
                 )
             }
             <tbody>
                 {
-                    portalData && filteredData.map((list, index) => (
+                    portalData && portalData.map((list, index) => (
                         <tr key={index} className="text-mute text-left border-b border-mute border-opacity-20">
                             <td className="p-3" title={list.issueDate.substring(0, 10)}>
                                 {list.issueDate.substring(0, 10)}
@@ -97,15 +90,15 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
                                 </Link>
                             </td>
                             <td
-                                onClick={handleFavsCounties(list)}
-                                className={`p-3 hover:text-primary cursor-pointer text-2xl ${favs.includes(list.bidId) ? "text-primary" : ''}`} title={`${list.url}#bidDocs`}>
-                                <MdFavoriteBorder />
+                                onClick={handleDelCounties(list)}
+                                className={`p-3 hover:text-red-400 cursor-pointer text-2xl ${del.includes(list.bidId) ? "text-red-400" : ''}`} title={`${list.url}#bidDocs`}>
+                                <MdDelete  />
                             </td>
                         </tr>
                     ))
                 }
                 {
-                    portalData?.portal_data.length === 0 && (
+                    portalData?.portal_data?.length === 0 && (
                         <tr className="text-mute text-left border-b border-mute border-opacity-20">
                             <td className="py-3 px-10 text-mute" colSpan={17}>No Data Available</td>
                         </tr>

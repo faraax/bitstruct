@@ -5,9 +5,8 @@ import { cookies, headers } from 'next/headers'
 export async function POST(req, res) {
     try {
         let body = await req.json();
-        let cookieStore = cookies()
         let reqOptions = {
-            url: `${process.env.APIENDPOINT}auth/login`,
+            url: `${process.env.APIENDPOINT}auth/register`,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -15,7 +14,7 @@ export async function POST(req, res) {
             data: JSON.stringify(body),
         }
         let { data } = await axios.request(reqOptions);
-        cookieStore.set('jwtToken', data.token)
+        // cookieStore.set('jwtToken', data.token)
         return NextResponse.json(data)
     }
     catch (err) {
@@ -25,5 +24,5 @@ export async function POST(req, res) {
 
 // export async function GET(req, res) {
 //     let getCookie = cookies().get('jwtToken').value
-//     return NextResponse.json(cookieStore)
+//     return NextResponse.json(getCookie)
 // }

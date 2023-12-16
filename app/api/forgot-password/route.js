@@ -5,25 +5,18 @@ import { cookies, headers } from 'next/headers'
 export async function POST(req, res) {
     try {
         let body = await req.json();
-        let cookieStore = cookies()
         let reqOptions = {
-            url: `${process.env.APIENDPOINT}auth/login`,
+            url: `${process.env.APIENDPOINT}auth/forgot-password`,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            data: JSON.stringify(body),
+            data: body,
         }
         let { data } = await axios.request(reqOptions);
-        cookieStore.set('jwtToken', data.token)
         return NextResponse.json(data)
     }
     catch (err) {
-        return NextResponse.error(err)
+        return NextResponse.error(body)
     }
 }
-
-// export async function GET(req, res) {
-//     let getCookie = cookies().get('jwtToken').value
-//     return NextResponse.json(cookieStore)
-// }

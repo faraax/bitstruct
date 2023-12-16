@@ -19,7 +19,8 @@ export default function useAuth() {
         setError(null)
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}auth/login`,
+                // url: `${process.env.APIENDPOINT}auth/login`,
+                url: `/api/login`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,9 +29,7 @@ export default function useAuth() {
             }
 
             let { data } = await axios.request(reqOptions);
-
             let decoded = jwt_decode(data.token);
-            Cookies.set("jwtToken", data.token)
             setLoading(false)
             dispatch({ type: 'LOGIN', payload: decoded })
         }
@@ -47,7 +46,8 @@ export default function useAuth() {
         setError(null)
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}auth/register`,
+                // url: `${process.env.APIENDPOINT}auth/register`,
+                url: '/api/signup',
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -56,11 +56,37 @@ export default function useAuth() {
             }
 
             let { data } = await axios.request(reqOptions);
-
             setLoading(false)
             setMessage(data.message)
-            // console.log(data);
-            setTimeout(() => setMessage(null), 5000)
+            setTimeout(() => setMessage(null), 8000)
+        }
+        catch (err) {
+            setError(err.message)
+            setLoading(false)
+            console.log("Err =>", err.message);
+            setTimeout(() => setError(null), 5000)
+        }
+    }
+
+    const forgotPassword = async (username) => {
+        // console.log(username);
+        setLoading(true)
+        setError(null)
+        try {
+            let reqOptions = {
+                // url: `${process.env.APIENDPOINT}auth/forgot-password`,
+                url: '/api/forgot-password',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: username,
+            }
+
+            let { data } = await axios.request(reqOptions);
+            setLoading(false)
+            setMessage(data.message)
+            setTimeout(() => setMessage(null), 8000)
         }
         catch (err) {
             setError(err.message)
@@ -78,5 +104,5 @@ export default function useAuth() {
         setLoading(false)
     }
 
-    return { userLogin, loading, error, logout, userSignup, message }
+    return { userLogin, loading, error, logout, userSignup, message, forgotPassword }
 }

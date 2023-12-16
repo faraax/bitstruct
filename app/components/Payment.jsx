@@ -46,7 +46,7 @@ export default function Payment({ isPending, setIsPending }) {
                 setData(data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [setIsPending])
 
     const handleFormSubmit = async (default_price) => {
         const formData = new FormData();

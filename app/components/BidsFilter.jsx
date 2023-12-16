@@ -18,6 +18,9 @@ export default function BidsFilter() {
     const [dataFrom, setDataFrom] = useState('')
     const [dataTo, setDataTo] = useState('')
     const [list, setList] = useState(false)
+    const [filterError, setFilterError] = useState(false)
+
+    // console.log(state.subscription.product.metadata.Profiles - state.profiles.length);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -50,6 +53,7 @@ export default function BidsFilter() {
     const handleClearFilter = () => {
         setDataFrom('')
         setDataTo('')
+        setFilterError(false)
     }
 
     const createQueryString = useCallback(
@@ -65,7 +69,14 @@ export default function BidsFilter() {
 
     const handleApplyFilter = (e) => {
         e.preventDefault()
-        router.push(`${pathName}?${createQueryString('from', dataFrom, 'to', dataTo)}`)
+        if (portalList?.length > 0) {
+            setFilterError(false)
+            router.push(`${pathName}?${createQueryString('from', dataFrom, 'to', dataTo)}`)
+        } else {
+            setFilterError(!filterError)
+            // setTimeout(() => setFilterError(!filterError), 3000)
+        }
+
     }
 
     return (
@@ -92,6 +103,13 @@ export default function BidsFilter() {
                                     ))
                                 ))
                             }
+                            {
+                                portalList?.length === 0 && (
+                                    <li className={`px-4 py-2 border-b border-mute border-opacity-20 hover:bg-primary/20  ${portalid === list.portalId && 'bg-primary/20'}`}>
+                                        Please assign counties to profile.
+                                    </li>
+                                )
+                            }
                         </ul>
                     </div>
                 </button>
@@ -99,7 +117,7 @@ export default function BidsFilter() {
             <form onSubmit={handleApplyFilter} className="flex justify-center items-center flex-col">
                 <div className="flex gap-2 mt-3 items-baseline w-full">
                     <input type="date"
-                        className="placeholder:text-primary text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2"
+                        className={`placeholder:text-primary text-primary focus:outline-none focus:ring-1 focus:ring-primary ${filterError ? 'ring-red-400 ring-1' : ""} border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2`}
                         placeholder="Date from"
                         value={dataFrom}
                         onChange={(e) => setDataFrom(e.target.value)}
@@ -108,7 +126,7 @@ export default function BidsFilter() {
                         <p>-</p>
                     </span>
                     <input type="date"
-                        className="placeholder:text-primary text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2"
+                        className={`placeholder:text-primary text-primary focus:outline-none focus:ring-1 focus:ring-primary ${filterError ? 'ring-red-400 ring-1' : ""} border-[#BCE0FD] px-5 py-2 border rounded-xl w-1/2`}
                         placeholder="Date to"
                         value={dataTo}
                         onChange={(e) => setDataTo(e.target.value)}

@@ -11,7 +11,7 @@ export const navTitles = [
         id: 2,
         title: "Favorite Counties",
         icon: <MdFavorite />,
-        url: "/activity"
+        url: "/favorite"
     },
     // {
     //     id: 3,

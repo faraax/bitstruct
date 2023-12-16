@@ -23,11 +23,12 @@ export default function SetupProfilePage() {
             setClientIsReady(null)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    url: `/api/getUsersProfilesList`,
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${token}`
+                        // "Authorization": `JWT ${token}`
                     }
                 }
                 let resp = await axios.request(reqOptions);

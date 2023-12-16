@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 const Navbar = dynamic(() => import('../components/Navbar'))
 const ViewProfile = dynamic(() => import('../components/SettingsPage/ViewProfile'))
 const AddProfile = dynamic(() => import('../components/SettingsPage/AddProfile'))
-// const Payments = dynamic(() => import('../components/SettingsPage/Payments'))
+const ChangePassword = dynamic(() => import('../components/SettingsPage/ChangePassword'))
 const AssignProjects = dynamic(() => import('../components/SettingsPage/AssignProjects'))
 
 
@@ -41,11 +41,11 @@ export default function SettingsPage() {
                                 className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Assign Counties to Profile' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
                                 Assign Counties
                             </li>
-                            {/* <li
-                                onClick={() => setSelectedSetting('Payments')}
-                                className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Payments' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
-                                Payments
-                            </li> */}
+                            <li
+                                onClick={() => setSelectedSetting('Change Password')}
+                                className={`text-lg text-mute flex gap-4 ${selectedSetting === 'Change Password' ? "text-secondary" : ''} hover:text-secondary duration-200 cursor-pointer`}>
+                                Change Password
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default function SettingsPage() {
                     {selectedSetting === 'View Profiles' && <ViewProfile />}
                     {selectedSetting === 'Add Profile' && <AddProfile />}
                     {selectedSetting === 'Assign Counties to Profile' && <AssignProjects />}
-                    {/* {selectedSetting === 'Payments' && <Payments />} */}
+                    {selectedSetting === 'Change Password' && <ChangePassword />}
                 </div>
             </div>
         </div >

@@ -54,11 +54,13 @@ export default function CatModel({ portalData }) {
                     <div>
                         <ul>
                             {
-                                portalData?.portal_data[catIndex].CategoriesList.map((catList, _i) => (
+                                portalData[parseInt(catIndex)].CategoriesList.map((catList, _i) => (
                                     <li key={_i}>
                                         {_i + 1} - {catList}
                                     </li>
                                 ))
+                                // console.log({ portalData: portalData[parseInt(catIndex)], catIndex: parseInt(catIndex) })
+                                // console.log(catIndex)
                             }
                         </ul>
                     </div>

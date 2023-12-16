@@ -13,7 +13,7 @@ export default function Modal() {
     const router = useRouter()
     const pathname = usePathname()
     const { user } = useAuthContext()
-    const { userLogin, loading, error, message, userSignup } = useAuth()
+    const { userLogin, loading, error, message, userSignup, forgotPassword } = useAuth()
     const [userCredential, setUserCredential] = useState({
         email: "",
         password: ""
@@ -64,6 +64,13 @@ export default function Modal() {
         type === "signup" ? userSignup(userCredential) : userLogin(userCredential)
     }
 
+    const handleForgotPassword = () => {
+        const email = userCredential
+        // const formData = new FormData();
+        // formData.append('email', email)
+        forgotPassword(email)
+    }
+
     if (searchParams.get('modal') === "true" && user === false)
         return (
             <m.div
@@ -72,8 +79,8 @@ export default function Modal() {
                 exit={{ opacity: 0, scale: 0.2 }}
                 className='h-screen w-screen fixed top-0 left-0 backdrop-blur-md flex justify-center items-center z-10'
             >
-                <div className='bg-[#CECEDC] p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 rounded-xl w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3 flex flex-col gap-4' ref={modalRef}>
-                    <div className='flex flex-col gap-4'>
+                <div className='bg-[#CECEDC] p-6 sm:p-8 md:p-10 lg:p-12 xl:p-12 rounded-xl w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3 flex flex-col gap-4' ref={modalRef}>
+                    <div className='flex flex-col gap-3'>
                         <div className='flex justify-between items-center'>
                             <h2 className='text-primary font-normal text-4xl'>Welcome</h2>
                             <button onClick={() => {
@@ -82,7 +89,7 @@ export default function Modal() {
                                 <CgCloseO className="text-3xl hover:text-primary/60 cursor-pointer duration-150" />
                             </button>
                         </div>
-                        <p>Fill you email & password to {type === "signin" ? 'Sign In' : 'regiser'}</p>
+                        <p>Fill you email {type === "signin" ? 'Sign In' : 'to register'}</p>
                     </div>
                     <form onSubmit={handleFormSubmit} className='flex flex-col gap-3'>
                         <label className='flex flex-col text-xl'>
@@ -97,18 +104,25 @@ export default function Modal() {
                             onChange={handleCredentials}
                             required
                         />
-                        <label className='flex flex-col text-xl'>
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
-                            placeholder='Type Your Password'
-                            onChange={handleCredentials}
-                            required
-                        />
+                        {
+                            type === "signin" && (
+                                <>
+                                    <label className='flex flex-col text-xl'>
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        className='bg-[#CECEDC] py-2 px-5 rounded-full border border-stone-700 placeholder:text-stone-700'
+                                        placeholder='Type Your Password'
+                                        onChange={handleCredentials}
+                                        required
+                                    />
+                                </>
+                            )
+                        }
+
                         <div className='flex items-center flex-col w-full'>
                             {
                                 loading && <button disabled className='flex bg-secondary/80 py-3 px-5 rounded-full text-white cursor-wait gap-2'>
@@ -142,7 +156,7 @@ export default function Modal() {
                         {
                             message && (
                                 <div className='flex justify-center items-center'>
-                                    <h2 className='text-red-500'>{message}</h2>
+                                    <h2 className='text-green-500'>{message}</h2>s
                                 </div>
                             )
                         }
@@ -168,7 +182,9 @@ export default function Modal() {
                                     </p>
                                 )
                             }
-                            {type === "signin" && <p className='text-secondary hover:underline cursor-pointer'>Forgot Password</p>}
+                            {type === "signin" && <div onClick={handleForgotPassword} className='text-secondary hover:underline cursor-pointer'>
+                                <p>Forgot Password</p>
+                            </div>}
 
                         </div>
                     </form>

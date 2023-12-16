@@ -32,17 +32,17 @@ export default function Navbar() {
                         <BsBell />
                     </button>
                 </div> */}
-                <div className='bg-white flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary text-lg p-3 gap-4'>
+                <button className='bg-white hover:bg-white/80 hover:border-primary group flex justify-center items-center rounded-lg border border-mute border-opacity-20 text-primary/70 hover:text-primary text-lg p-3 gap-4'>
                     <h2 className='text-mute'>Profiles</h2>
-                    <button className='relative group' title='Select Profile'>
+                    <div className='relative' title='Select Profile'>
                         <CgProfile className='text-3xl' />
                         <div className="z-10 absolute hidden group-focus:block top-full -right-1 max-h-48 overflow-y-auto min-w-full w-max border-[#BCE0FD] border mt-1 rounded">
                             <ul className="text-left flex flex-col bg-white text-primary">
                                 {profiles && <UserList profiles={profiles} dispatch={dispatch} />}
                             </ul>
                         </div>
-                    </button>
-                </div>
+                    </div>
+                </button>
             </div>
         </nav>
     )

@@ -4,7 +4,7 @@ import React, { useLayoutEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function ViewProfile() {
-    const { profiles, selectedProfile, dispatch } = useAuthContext()
+    const { profiles, selectedProfile, dispatch, subscription } = useAuthContext()
     const [loading, setLoading] = useState(false)
     const [selectedProject, setSelectedProject] = useState([])
 
@@ -39,14 +39,16 @@ export default function ViewProfile() {
     return (
         <>
             <div className='bg-white rounded-xl gap-5 px-10 py-3 flex flex-col justify-center shadow-lg h-full'>
-                <div className='w-full bg-primary h-1 mt-4' />
+                <div className='w-full bg-mute/50 h-1 mt-4 relative'>
+                    <span className='bg-primary absolute h-full top-0 left-0 z-10' style={{ width: `${(100 / subscription?.product.metadata.Profiles) * profiles?.length}%` }} />
+                </div>
                 <div className='flex justify-between'>
                     <div>
                         {selectedProfile && <h2 className='text-mute'>{selectedProfile.profile_name}</h2>}
                     </div>
                     <div className='flex items-center gap-5'>
                         <p className='text-mute flex gap-3 items-center'>
-                            Profiles Available : 2/2
+                            Profiles Available : {profiles?.length}/{subscription?.product.metadata.Profiles}
                         </p>
                     </div>
                 </div>
@@ -82,10 +84,10 @@ export default function ViewProfile() {
                                     selectedProject.length === 0 && (
                                         <tr className=" text-left border-b border-mute border-opacity-20">
                                             <td className="py-3 w-1/5">
-                                                <span className="text-sm">No Assigned</span>
+                                                <span className="text-sm">No Counties Assigned</span>
                                             </td>
                                             <td className="py-3 w-1/5">
-                                                <span className="text-sm">No Assigned</span>
+                                                <span className="text-sm">No Counties Assigned</span>
                                             </td>
                                         </tr>
                                     )
