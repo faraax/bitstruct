@@ -92,7 +92,7 @@ export default function Table({ portalData, searchParams }) {
                             <td
                                 onClick={handleDelCounties(list)}
                                 className={`p-3 hover:text-red-400 cursor-pointer text-2xl ${del.includes(list.bidId) ? "text-red-400" : ''}`} title={`${list.url}#bidDocs`}>
-                                <MdDelete  />
+                                <MdDelete />
                             </td>
                         </tr>
                     ))
