@@ -29,13 +29,12 @@ export default function Payment({ isPending, setIsPending }) {
             setIsPending(true)
             const { signal } = new AbortController()
             try {
-                let res = await fetch("https://api.bidstruct.com/api/get-package-details", {
+                let res = await fetch("/api/get-package-details", {
                     method: "POST",
                     signal
                 });
                 return res.json()
             } catch (err) {
-                // console.log(err);
                 return err
             } finally {
                 setIsPending(false)
@@ -54,11 +53,11 @@ export default function Payment({ isPending, setIsPending }) {
         setIsPending(true)
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/checkout`,
+                url: `/api/checkout`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                    // "Authorization": `JWT ${Cookies.get('jwtToken')}`
                 },
                 data: formData,
             }

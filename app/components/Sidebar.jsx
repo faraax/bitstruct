@@ -5,13 +5,15 @@ import dynamic from 'next/dynamic'
 import useAuth from '../hooks/useAuth'
 import { navTitles } from '../Utils/SidebarList'
 import logo from '../../public/BidStruct_Logo.png'
-import { BiSearchAlt2, IoLogOut } from '../Utils/icons'
+import { IoLogOut } from '../Utils/icons'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 
 const SidebarList = dynamic(() => import('./SidebarList'))
 
 export default function Sidebar() {
     const { logout, loading } = useAuth()
+    const state = useAuthContext()
     return (
         <nav className='h-screen p-8 flex flex-col justify-between border-r-2 border-opacity-20 border-mute sticky top-0 col-span-2'>
             <div className='flex flex-col gap-10'>
@@ -51,7 +53,10 @@ export default function Sidebar() {
                     </button>
                 }
                 {
-                    !loading && <button onClick={() => logout()} className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
+                    !loading && <button
+                        // onClick={() => console.log(state)}
+                        onClick={() => logout()}
+                        className='flex w-full items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
                         <IoLogOut className='text-2xl' />
                         <span className='text-base'>
                             Logout

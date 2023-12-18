@@ -1,19 +1,21 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link"
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { MdDelete } from "react-icons/md";
-// import { MdFavoriteBorder } from "react-icons/md"
 
 export default function Table({ portalData, searchParams }) {
     const token = Cookies.get('jwtToken');
     const [del, setDel] = useState([])
 
     const handleDelCounties = (list) => async (e) => {
-        setDel(prev => [...prev, list.bidId])
+        if (!del.includes(list)) {
+            setDel((prev) => [...prev, list]);
+        }
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/delete-favorites`,
+                // url: `${process.env.APIENDPOINT}api/delete-favorites`,
+                url: `/api/delete-favorite`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -23,7 +25,7 @@ export default function Table({ portalData, searchParams }) {
             }
             let resp = await axios.request(reqOptions);
             console.log(resp.data.message);
-            console.log(resp);
+            // console.log(resp);
         } catch (err) {
             console.log(err);
         }
@@ -90,7 +92,7 @@ export default function Table({ portalData, searchParams }) {
                                 </Link>
                             </td>
                             <td
-                                onClick={handleDelCounties(list)}
+                                onClick={handleDelCounties(list.bidId)}
                                 className={`p-3 hover:text-red-400 cursor-pointer text-2xl ${del.includes(list.bidId) ? "text-red-400" : ''}`} title={`${list.url}#bidDocs`}>
                                 <MdDelete />
                             </td>

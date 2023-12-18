@@ -1,12 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link"
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md"
 
 export default function Table({ portalData, searchParams, fromDate, toDate }) {
     const token = Cookies.get('jwtToken');
     const [favs, setFavs] = useState([])
+
     const filteredData = portalData?.portal_data.filter(item => {
         const bidDueDate = new Date(item.bidDueDate.substring(0, 10));
         if (fromDate && toDate) {
@@ -29,8 +30,8 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
                 data: JSON.stringify(list)
             }
             let resp = await axios.request(reqOptions);
-            console.log(resp.data.message);
-            console.log(resp);
+            // console.log(resp.data.message);
+            // console.log(resp);
         } catch (err) {
             console.log(err);
         }

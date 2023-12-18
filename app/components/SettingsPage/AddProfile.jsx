@@ -18,7 +18,7 @@ export default function AddProfile() {
         setMsg(null)
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/addProfile`,
+                url: `/api/addProfile`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -26,9 +26,8 @@ export default function AddProfile() {
                 },
                 data: { profileName: profileName },
             }
-
             let resp = await axios.request(reqOptions);
-            console.log(resp);
+            // console.log(resp);
             if (resp) {
                 setLoading(false)
                 setMsg(resp.data)
@@ -78,14 +77,19 @@ export default function AddProfile() {
                                     </div>
                                 ))
                             }
-                            <div>
-                                <div
-                                    onClick={() => setAddNewProfile(!addNewProfile)}
-                                    className={`relative h-24 w-24 border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 hover:text-white duration-150`}>
-                                    <h1 className='text-4xl'><BsPersonFillAdd /></h1>
-                                    <span className='absolute -bottom-5 text-sm text-slate-800 font-semibold' >Add Profile</span>
-                                </div>
-                            </div>
+                            {
+                                parseInt(profiles?.length) === parseInt(subscription?.product.metadata.Profiles) ? null : (
+                                    <div>
+                                        <div
+                                            onClick={() => setAddNewProfile(!addNewProfile)}
+                                            className={`relative h-24 w-24 border border-mute rounded-full flex justify-center items-center cursor-pointer hover:bg-primary/90 hover:text-white duration-150`}>
+                                            <h1 className='text-4xl'><BsPersonFillAdd /></h1>
+                                            <span className='absolute -bottom-5 text-sm text-slate-800 font-semibold' >Add Profile</span>
+                                        </div>
+                                    </div>
+                                )
+                            }
+
                         </div>
                         {
                             addNewProfile && (

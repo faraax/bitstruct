@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useLayoutEffect, useReducer } from "react";
+import { createContext, useEffect, useLayoutEffect, useReducer } from "react";
 import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -35,13 +35,15 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, initialState)
+    const token = Cookies.get('jwtToken')
 
-    useLayoutEffect(() => {
-        const token = Cookies.get('jwtToken')
+    useEffect(() => {
         const getSub = async () => {
+            // setLoading(true)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/get_subscription_data`,
+                    // url: `${process.env.APIENDPOINT}api/get_subscription_data`,
+                    url: `/api/get_subscription_data`,
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -53,7 +55,6 @@ export const AuthContextProvider = ({ children }) => {
                 if (resp.status === 200) {
                     dispatch({ type: 'SETSUB', payload: resp.data })
                 }
-                // console.log("sub", resp.data);
             } catch (err) {
                 console.log(err);
             }
@@ -62,7 +63,8 @@ export const AuthContextProvider = ({ children }) => {
         const getProfile = async () => {
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    url: `/api/getUsersProfilesList`,
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -86,17 +88,20 @@ export const AuthContextProvider = ({ children }) => {
             if (decodedToken.exp * 1000 > currentDate.getTime()) {
                 getSub();
                 getProfile();
+                // console.log("Decoded token");
                 dispatch({ type: 'AUTHISREADY' });
                 dispatch({ type: 'LOGIN', payload: decodedToken });
             } else {
+                // console.log("removed token");
                 dispatch({ type: 'AUTHISREADY' });
-                Cookies.remove('jwtToken');
+                // Cookies.remove('jwtToken');
             }
         } else {
+            // console.log("removed token");
             dispatch({ type: 'AUTHISREADY' });
-            Cookies.remove('jwtToken');
+            // Cookies.remove('jwtToken');
         }
-    }, [])
+    }, [token])
     return (
         <AuthContext.Provider value={{ ...state, dispatch }}>
             {state.authIsReady && children}

@@ -27,11 +27,10 @@ export default function BidsFilter() {
         const getProfilePortalList = async () => {
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getProfilePortalList`,
+                    url: `/api/getProfilePortalList`,
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
                     },
                     data: { profileName: selectedProfile }
                 }

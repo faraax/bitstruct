@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 
 export default function ProtectedRoutes({ children, user, path }) {
     // const protectedRoutes = navTitles.map(list => list.url)
-    const protectedRoutes = ["/dashboard", "/activity", "/transaction", "/settings", '/setup-profile']
+    const protectedRoutes = ["/dashboard", "/favorite", "/settings", '/setup-profile']
     if (!user && protectedRoutes.includes(path)) return redirect('/')
     return (
         <>

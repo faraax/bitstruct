@@ -15,10 +15,10 @@ const ProfileSetup = dynamic(() => import('../components/clientComponents/Profil
 export default function SetupProfilePage() {
     const { logout } = useAuth();
     const [clientIsReady, setClientIsReady] = useState(null)
-    const { dispatch } = useAuthContext()
+    const { dispatch, profiles } = useAuthContext()
+    const token = Cookies.get('jwtToken')
 
     useEffect(() => {
-        const token = Cookies.get('jwtToken')
         const getProfile = async () => {
             setClientIsReady(null)
             try {
@@ -28,7 +28,7 @@ export default function SetupProfilePage() {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        // "Authorization": `JWT ${token}`
+                        "Authorization": `JWT ${token}`
                     }
                 }
                 let resp = await axios.request(reqOptions);
@@ -36,22 +36,29 @@ export default function SetupProfilePage() {
                     dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
                     dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
                 }
+                // console.log(resp.data.profiles);
                 if (resp.data.profiles.length === 0) {
                     setClientIsReady(true)
                 } else {
                     setClientIsReady(false)
+                    // console.log(resp.data.profiles);
                 }
             } catch (err) {
                 setClientIsReady(false)
                 console.log(err);
             }
+            // finally {
+            //     console.log(clientIsReady);
+            // }
         }
-        getProfile()
-    }, [dispatch])
+        if (token) {
+            getProfile()
+        }
+    }, [dispatch, token])
 
-    if (clientIsReady === false) return redirect('/dashboard')
+    if (profiles) return redirect('/dashboard')
 
-    return clientIsReady && (
+    return (
         <div className="col-span-12">
             <nav className="py-5 px-10 shadow-md sticky top-0 h-[10vh] flex items-center justify-between">
                 <div>
@@ -65,6 +72,7 @@ export default function SetupProfilePage() {
                 <div>
                     <button
                         onClick={() => logout()}
+                        // onClick={() => console.log(profiles)}
                         className='flex items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'
                     >
                         <IoLogOut

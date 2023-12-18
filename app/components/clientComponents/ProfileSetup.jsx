@@ -13,7 +13,7 @@ export default function ProfileSetup() {
     const [selectedTab, setSelectedTab] = useState('Payment');
     const [isPending, setIsPending] = useState(false);
     const { dispatch } = useAuthContext();
-    // const token = Cookies.get('jwtToken');
+    const token = Cookies.get('jwtToken');
 
     useEffect(() => {
         const getSub = async () => {

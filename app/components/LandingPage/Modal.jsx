@@ -156,7 +156,7 @@ export default function Modal() {
                         {
                             message && (
                                 <div className='flex justify-center items-center'>
-                                    <h2 className='text-green-500'>{message}</h2>s
+                                    <h2 className='text-green-500'>{message}</h2>
                                 </div>
                             )
                         }

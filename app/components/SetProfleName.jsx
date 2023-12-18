@@ -21,11 +21,11 @@ export default function SetProfleName({ isPending, setIsPending }) {
         setProfileCreated(null)
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/addProfile`,
+                url: `/api/addProfile`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                    // "Authorization": `JWT ${Cookies.get('jwtToken')}`
                 },
                 data: { profileName: name },
             }
@@ -37,11 +37,11 @@ export default function SetProfleName({ isPending, setIsPending }) {
                 setProfileCreated(true)
                 try {
                     let reqOption = {
-                        url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                        url: `/api/getUsersProfilesList`,
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
-                            "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                            // "Authorization": `JWT ${Cookies.get('jwtToken')}`
                         }
                     }
 

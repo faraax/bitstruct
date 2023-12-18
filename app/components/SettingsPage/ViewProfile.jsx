@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import React, { useLayoutEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -13,11 +13,11 @@ export default function ViewProfile() {
             setLoading(true)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getProfilePortalList`,
+                    url: `/api/getProfilePortalList`,
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                        // "Authorization": `JWT ${Cookies.get('jwtToken')}`
                     },
                     data: { profileName: selectedProfile }
                 }

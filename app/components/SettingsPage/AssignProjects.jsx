@@ -13,6 +13,7 @@ export default function AssignProjects() {
     const [portalListByState, setPortalListByState] = useState([])
     const [selectedProject, setSelectedProject] = useState([])
     const [error, setError] = useState(null)
+    const [msg, setMsg] = useState(null)
 
     useLayoutEffect(() => {
         const getStates = async () => {
@@ -21,7 +22,7 @@ export default function AssignProjects() {
             setError(null)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getAvailableStates`,
+                    url: `/api/getAvailableStates`,
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -45,7 +46,7 @@ export default function AssignProjects() {
             formData.append("portalState", selectedState)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/listPortalsByState`,
+                    url: `/api/listPortalsByState`,
                     method: "POST",
                     headers: {
                         "Authorization": `JWT ${Cookies.get('jwtToken')}`
@@ -147,7 +148,7 @@ export default function AssignProjects() {
         try {
             const portalIds = selectedProject.flatMap(state => state.projectName.map(project => project.portalId));
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/addPortalsToProfile`,
+                url: `/api/addPortalsToProfile`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -156,19 +157,22 @@ export default function AssignProjects() {
                 data: { profileName: selectedProfile.profile_name, portalsList: portalIds }
             }
             let { data } = await axios.request(reqOptions);
+            setMsg(data.success[0])
             if (data) {
                 setSaveDataloader(false)
             }
         } catch (err) {
             setSaveDataloader(false)
             console.log(err);
+        } finally {
+            setTimeout(() => setMsg(null), 3500)
         }
     }
 
     return (
         <div>
             <div className='bg-white rounded-xl gap-5 px-10 py-3 flex flex-col justify-center shadow-lg h-full'>
-            <div className='w-full bg-mute/50 h-1 mt-4 relative'>
+                <div className='w-full bg-mute/50 h-1 mt-4 relative'>
                     <span className='bg-primary absolute h-full top-0 left-0 z-10' style={{ width: `${(100 / subscription?.product.metadata.Profiles) * profiles?.length}%` }} />
                 </div>
                 <div className='flex justify-between'>
@@ -324,6 +328,9 @@ export default function AssignProjects() {
                             className='text-white bg-primary p-4 py-1 rounded-xl hover:bg-primary/80 duration-150'>
                             Save Settings
                         </button>
+                    }
+                    {
+                        msg && <div className='bg-green-500/80 p-3'><h2 className='text-white flex justify-center items-center'>{msg}</h2> </div>
                     }
                 </div>
             </div>

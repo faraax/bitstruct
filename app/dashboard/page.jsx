@@ -4,7 +4,8 @@ import Cookies from 'js-cookie'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { RiLayout2Fill, BsFillBuildingsFill, IoPerson } from "../Utils/icons"
-import { useSearchParams } from "next/navigation"
+import { redirect, useSearchParams } from "next/navigation"
+import { useAuthContext } from "../hooks/useAuthContext"
 // import CatModel from "./catModel"
 
 const Table = dynamic(() => import("./Table"))
@@ -46,21 +47,20 @@ export default function DashboardPage() {
     const [portalData, setPortalData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const { profiles } = useAuthContext()
 
     useEffect(() => {
         const controller = new AbortController();
-
         const getPortalData = async () => {
             setPortalData(null)
             setLoading(true)
             setError(null)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getPortalData`,
+                    url: `/api/getPortalData`,
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${Cookies.get('jwtToken')}`
                     },
                     data: { portalId: portalid }
                 }
@@ -72,7 +72,6 @@ export default function DashboardPage() {
             } catch (err) {
                 setPortalData(null)
                 setError(err?.response.data.error)
-                // console.log(err?.response.data.error);
             } finally {
                 setLoading(false)
             }
@@ -86,6 +85,9 @@ export default function DashboardPage() {
             controller.abort()
         }
     }, [portalid])
+
+    // if (profiles?.length === 0) return redirect('/setup-profile')
+
     return (
         <div className="col-span-10 relative">
             <Navbar />
