@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 
 export default function SetProfleName({ isPending, setIsPending }) {
     const [name, setName] = useState('')
-    const { dispatch } = useAuthContext()
+    const { dispatch, profiles } = useAuthContext()
     const [profileCreated, setProfileCreated] = useState(null)
 
     const handleFormSubmit = async (e) => {
@@ -62,7 +62,10 @@ export default function SetProfleName({ isPending, setIsPending }) {
         }
     }
 
-    if (profileCreated) return redirect('/dashboard')
+    // console.log(profiles);
+
+    // if (profileCreated) return redirect('/dashboard')
+    if (profiles.length != 0) return redirect('/dashboard')
 
     return (
         <div>

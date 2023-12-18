@@ -9,18 +9,21 @@ import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import logo from '../../public/BidStruct-Dark.png'
 import { useAuthContext } from '../hooks/useAuthContext';
+import Loading from '../loading';
 
 const ProfileSetup = dynamic(() => import('../components/clientComponents/ProfileSetup'))
 
 export default function SetupProfilePage() {
     const { logout } = useAuth();
     const [clientIsReady, setClientIsReady] = useState(null)
+    const [loading, setloading] = useState(false)
     const { dispatch, profiles } = useAuthContext()
     const token = Cookies.get('jwtToken')
 
     useEffect(() => {
         const getProfile = async () => {
             setClientIsReady(null)
+            setloading(true)
             try {
                 let reqOptions = {
                     // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
@@ -47,16 +50,16 @@ export default function SetupProfilePage() {
                 setClientIsReady(false)
                 console.log(err);
             }
-            // finally {
-            //     console.log(clientIsReady);
-            // }
+            finally {
+                setloading(false)
+            }
         }
         if (token) {
             getProfile()
         }
     }, [dispatch, token])
 
-    if (profiles) return redirect('/dashboard')
+    if (loading) return <Loading />
 
     return (
         <div className="col-span-12">

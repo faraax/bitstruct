@@ -7,17 +7,20 @@ import { MdDoubleArrow } from "react-icons/md";
 import SetProfleName from "../../components/SetProfleName";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { AnimatePresence, motion as m } from "framer-motion";
+import Loading from "./Loading";
 
 
 export default function ProfileSetup() {
     const [selectedTab, setSelectedTab] = useState('Payment');
     const [isPending, setIsPending] = useState(false);
+    const [loading, setloading] = useState(false)
     const { dispatch } = useAuthContext();
     const token = Cookies.get('jwtToken');
 
     useEffect(() => {
         const getSub = async () => {
             setIsPending(true)
+            setloading(true)
             try {
                 let reqOptions = {
                     // url: `${process.env.APIENDPOINT}api/get_subscription_data`,
@@ -30,14 +33,15 @@ export default function ProfileSetup() {
                 }
                 let resp = await axios.request(reqOptions);
                 dispatch({ type: 'SETSUB', payload: resp.data })
-                setIsPending(false)
-                // console.log(resp);
                 if (resp.data.product.active) {
                     setSelectedTab("Profile")
                 }
             } catch (err) {
                 console.log(err);
+            }
+            finally {
                 setIsPending(false)
+                setloading(false)
             }
         }
         if (token) {
@@ -45,6 +49,8 @@ export default function ProfileSetup() {
         }
 
     }, [dispatch, token])
+
+    if (loading) return <Loading />
 
     return (
         <>
