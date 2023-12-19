@@ -63,8 +63,8 @@ export const AuthContextProvider = ({ children }) => {
         const getProfile = async () => {
             try {
                 let reqOptions = {
-                    // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
-                    url: `/api/getUsersProfilesList`,
+                    url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    // url: `/api/getUsersProfilesList`,
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -73,9 +73,10 @@ export const AuthContextProvider = ({ children }) => {
                 }
 
                 let resp = await axios.request(reqOptions);
+                // console.log(resp);
                 if (resp.status === 200) {
-                    dispatch({ type: 'SETPROFILE', payload: resp?.data?.profiles })
-                    dispatch({ type: 'SELECTEDPROFILE', payload: resp?.data?.profiles[0] })
+                    dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
+                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
                 }
             } catch (err) {
                 console.log(err);
