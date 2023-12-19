@@ -37,11 +37,12 @@ export default function SetProfleName({ isPending, setIsPending }) {
                 setProfileCreated(true)
                 try {
                     let reqOption = {
-                        url: `/api/getUsersProfilesList`,
+                        url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                        // url: `/api/getUsersProfilesList`,
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
-                            // "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                            "Authorization": `JWT ${Cookies.get('jwtToken')}`
                         }
                     }
 
