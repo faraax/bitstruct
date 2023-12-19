@@ -36,11 +36,11 @@ export default function SetupProfilePage() {
                 }
                 let resp = await axios.request(reqOptions);
                 if (resp.status === 200) {
-                    dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
-                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
+                    dispatch({ type: 'SETPROFILE', payload: resp?.data?.profiles })
+                    dispatch({ type: 'SELECTEDPROFILE', payload: resp?.data?.profiles[0] })
                 }
                 // console.log(resp.data.profiles);
-                if (resp.data.profiles.length === 0) {
+                if (resp?.data?.profiles?.length === 0) {
                     setClientIsReady(true)
                 } else {
                     setClientIsReady(false)
@@ -59,7 +59,7 @@ export default function SetupProfilePage() {
         }
     }, [dispatch, token])
 
-    if (loading) return <Loading />
+    // if (loading) return <Loading />
 
     return (
         <div className="col-span-12">

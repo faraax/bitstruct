@@ -8,7 +8,7 @@ export default function Username({ classList, notes }) {
     const mergedClass = twMerge(`text-2xl font-medium`, classList)
     return (
         <>
-            {selectedProfile && <h2 className={mergedClass}>{notes}{selectedProfile.profile_name}</h2>}
+            {selectedProfile && <h2 className={mergedClass}>{notes}{selectedProfile?.profile_name}</h2>}
         </>
     )
 }

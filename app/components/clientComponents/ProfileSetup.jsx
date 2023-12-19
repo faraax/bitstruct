@@ -33,7 +33,7 @@ export default function ProfileSetup() {
                 }
                 let resp = await axios.request(reqOptions);
                 dispatch({ type: 'SETSUB', payload: resp.data })
-                if (resp.data.product.active) {
+                if (resp?.data?.product?.active) {
                     setSelectedTab("Profile")
                 }
             } catch (err) {
@@ -50,7 +50,7 @@ export default function ProfileSetup() {
 
     }, [dispatch, token])
 
-    if (loading) return <Loading />
+    // if (loading) return <Loading />
 
     return (
         <>

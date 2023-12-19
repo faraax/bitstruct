@@ -47,8 +47,8 @@ export default function SetProfleName({ isPending, setIsPending }) {
 
                     let res = await axios.request(reqOption);
                     if (res.status === 200) {
-                        dispatch({ type: 'SETPROFILE', payload: res.data.profiles })
-                        dispatch({ type: 'SELECTEDPROFILE', payload: res.data.profiles[0] })
+                        dispatch({ type: 'SETPROFILE', payload: res.data?.profiles })
+                        dispatch({ type: 'SELECTEDPROFILE', payload: res.data?.profiles[0] })
                     }
                 } catch (err) {
                     console.log(err);
@@ -65,7 +65,7 @@ export default function SetProfleName({ isPending, setIsPending }) {
     // console.log(profiles);
 
     // if (profileCreated) return redirect('/dashboard')
-    if (profiles.length != 0) return redirect('/dashboard')
+    if (profiles?.length !== 0) return redirect('/dashboard')
 
     return (
         <div>

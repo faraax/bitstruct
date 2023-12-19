@@ -53,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
 
                 let resp = await axios.request(reqOptions);
                 if (resp.status === 200) {
-                    dispatch({ type: 'SETSUB', payload: resp.data })
+                    dispatch({ type: 'SETSUB', payload: resp?.data })
                 }
             } catch (err) {
                 console.log(err);
@@ -74,8 +74,8 @@ export const AuthContextProvider = ({ children }) => {
 
                 let resp = await axios.request(reqOptions);
                 if (resp.status === 200) {
-                    dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
-                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
+                    dispatch({ type: 'SETPROFILE', payload: resp?.data?.profiles })
+                    dispatch({ type: 'SELECTEDPROFILE', payload: resp?.data?.profiles[0] })
                 }
             } catch (err) {
                 console.log(err);
