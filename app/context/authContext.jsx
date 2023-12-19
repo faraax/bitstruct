@@ -79,7 +79,9 @@ export const AuthContextProvider = ({ children }) => {
                     dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
                 }
             } catch (err) {
+                // if(err.response.status) {
                 console.log(err);
+                // }
             }
         }
 

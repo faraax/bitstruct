@@ -65,7 +65,7 @@ export default function SetProfleName({ isPending, setIsPending }) {
     // console.log(profiles);
 
     // if (profileCreated) return redirect('/dashboard')
-    if (profiles?.length !== 0) return redirect('/dashboard')
+    if (profiles) return redirect('/dashboard')
 
     return (
         <div>
