@@ -87,6 +87,10 @@ export default function useAuth() {
             setLoading(false)
             setMessage(data.message)
             setTimeout(() => setMessage(null), 8000)
+            setLoading(true)
+            Cookies.remove("jwtToken")
+            dispatch({ type: 'LOGOUT' })
+            dispatch({ type: 'SETPROFILE', payload: null })
         }
         catch (err) {
             setError(err.message)
