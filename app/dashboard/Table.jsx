@@ -49,10 +49,10 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
 
     const catsfilteredData = () => {
         const arr = searchParam.get('categories')?.split(',')
-        // console.log(!arr.includes(''));
-        if (!arr.includes('')) {
+        // console.log(tyarr);
+        if (arr !== undefined) {
             const filteredList = filteredData?.filter(item => {
-                const matchedCategories = item.CategoriesList.filter(category => arr.includes(category.split(' - ')[1].trim()));
+                const matchedCategories = item.CategoriesList.filter(category => searchParam.get('categories')?.split(',').includes(category.split(' - ')[1].trim()));
                 return matchedCategories.length > 0;
             });
             return filteredList
