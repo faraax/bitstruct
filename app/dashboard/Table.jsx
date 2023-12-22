@@ -49,9 +49,8 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
 
     const catsfilteredData = () => {
         const arr = searchParam.get('categories')?.split(',')
-        const containsOnlyEmptyStrings = arr.every(item => item === '');
-        console.log(containsOnlyEmptyStrings);
-        if (!containsOnlyEmptyStrings) {
+        // console.log(!arr.includes(''));
+        if (!arr.includes('')) {
             const filteredList = filteredData?.filter(item => {
                 const matchedCategories = item.CategoriesList.filter(category => arr.includes(category.split(' - ')[1].trim()));
                 return matchedCategories.length > 0;
