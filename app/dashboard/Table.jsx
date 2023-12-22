@@ -49,8 +49,7 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
 
     const catsfilteredData = () => {
         const arr = searchParam.get('categories')?.split(',')
-
-        if (arr) {
+        if (arr[0] !== '') {
             const filteredList = filteredData?.filter(item => {
                 const matchedCategories = item.CategoriesList.filter(category => arr.includes(category.split(' - ')[1].trim()));
                 return matchedCategories.length > 0;
