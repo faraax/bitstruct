@@ -44,7 +44,7 @@ export default function CatModel({ portalData }) {
             >
                 <div ref={modalRef} className='bg-[#CECEDC] px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 sm:pb-8 md:pb-10 lg:pb-12 xl:pb-16 rounded-xl w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 xl:w-1/3 flex flex-col gap-4 max-h-[75%] overflow-y-auto'>
                     <div className='flex justify-between items-center sticky top-0 bg-[#CECEDC] sm:pt-8 md:pt-10 lg:pt-12 xl:pt-16'>
-                        <h2 className='text-primary font-normal text-4xl'>CategoriesList</h2>
+                        <h2 className='text-primary font-normal text-4xl'>Categories List</h2>
                         <button onClick={() => {
                             router.back()
                         }}>

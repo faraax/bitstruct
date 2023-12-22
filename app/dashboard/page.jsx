@@ -1,11 +1,11 @@
 "use client"
 import axios from "axios"
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { RiLayout2Fill, BsFillBuildingsFill, IoPerson } from "../Utils/icons"
-import { redirect, useSearchParams } from "next/navigation"
-import { useAuthContext } from "../hooks/useAuthContext"
+import { useSearchParams } from "next/navigation"
+// import { useAuthContext } from "../hooks/useAuthContext"
 // import CatModel from "./catModel"
 
 const Table = dynamic(() => import("./Table"))
@@ -42,12 +42,13 @@ const dashboardCards = [
 export default function DashboardPage() {
     const searchParams = useSearchParams()
     const portalid = searchParams.get('portalid') ? searchParams.get('portalid') : null
+    const showCatsModel = searchParams.get('catsModel') === 'show'
     const fromDate = searchParams.get('from')
     const toDate = searchParams.get('to')
     const [portalData, setPortalData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const { profiles } = useAuthContext()
+    // const { profiles } = useAuthContext()
 
     useEffect(() => {
         const controller = new AbortController();
@@ -86,8 +87,6 @@ export default function DashboardPage() {
         }
     }, [portalid])
 
-    // if (profiles?.length === 0) return redirect('/setup-profile')
-
     return (
         <div className="col-span-10 relative">
             <Navbar />
@@ -106,7 +105,7 @@ export default function DashboardPage() {
                         </div>
                     </div>
                     <div className="col-span-2">
-                        <BidsFilter />
+                        <BidsFilter portalData={portalData} />
                     </div>
                 </div>
                 <div className="text-lg font-medium mt-5">
@@ -138,7 +137,7 @@ export default function DashboardPage() {
                     </div>
                 </div>
             </div>
-            <CatModel portalData={portalData} />
+            {showCatsModel && <CatModel portalData={portalData} />}
         </div>
     )
 }

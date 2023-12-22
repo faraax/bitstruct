@@ -22,7 +22,7 @@ export default function Footer() {
                         height={"auto"}
                         className='py-4'
                     />
-                    <p className='text-white text-center'>+1 646 905 0356</p>
+                    <p className='text-white text-center'>{`(844) 480-0467`}</p>
                     <p className='text-white text-center'>info@bidstruct.com</p>
                 </div>
 

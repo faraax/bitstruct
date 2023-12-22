@@ -66,8 +66,6 @@ export default function Modal() {
 
     const handleForgotPassword = () => {
         const email = userCredential
-        // const formData = new FormData();
-        // formData.append('email', email)
         forgotPassword(email)
     }
 
@@ -89,7 +87,7 @@ export default function Modal() {
                                 <CgCloseO className="text-3xl hover:text-primary/60 cursor-pointer duration-150" />
                             </button>
                         </div>
-                        <p>Fill you email {type === "signin" ? 'Sign In' : 'to register'}</p>
+                        <p>{type === "signin" ? 'Please fill in your email address & password to sign in' : 'Please fill your email address to begin registration'}</p>
                     </div>
                     <form onSubmit={handleFormSubmit} className='flex flex-col gap-3'>
                         <label className='flex flex-col text-xl'>

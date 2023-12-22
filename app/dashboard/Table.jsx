@@ -1,18 +1,28 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link"
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md"
 
 export default function Table({ portalData, searchParams, fromDate, toDate }) {
     const token = Cookies.get('jwtToken');
     const [favs, setFavs] = useState([])
+    const searchParam = useSearchParams()
 
     const filteredData = portalData?.portal_data.filter(item => {
         const bidDueDate = new Date(item.bidDueDate.substring(0, 10));
         if (fromDate && toDate) {
+            // console.log({ bidDueDate });
             return bidDueDate >= new Date(fromDate) && bidDueDate <= new Date(toDate);
+        } else if (fromDate) {
+            // console.log({ bidDueDate });
+            return bidDueDate >= new Date(fromDate) && bidDueDate;
+        } else if (toDate) {
+            // console.log({ bidDueDate });
+            return bidDueDate && bidDueDate <= new Date(toDate);
         } else {
+            // console.log({ bidDueDate });
             return bidDueDate
         }
     });
@@ -37,16 +47,30 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
         }
     }
 
+    const catsfilteredData = () => {
+        const arr = searchParam.get('categories')?.split(',')
+
+        if (arr) {
+            const filteredList = filteredData?.filter(item => {
+                const matchedCategories = item.CategoriesList.filter(category => arr.includes(category.split(' - ')[1].trim()));
+                return matchedCategories.length > 0;
+            });
+            return filteredList
+        } else {
+            return filteredData
+        }
+    }
+
     return (
         <table className="table-auto w-full -z-0 my-3">
             {
                 portalData && (
                     <thead className="z-40 bg-[#FAFCFF] border-b border-mute border-opacity-20">
                         <tr className="text-mute text-left border-b border-mute border-opacity-20">
-                            <th className="font-normal py-3 pr-10">Posted</th>
+                            <th className="font-normal py-3 pr-10">Posted Date {`(yyyy/mm/dd)`}</th>
                             <th className="font-normal py-3 pr-10">Project Title</th>
                             <th className="font-normal py-3 pr-10">Estimated Bid Value</th>
-                            <th className="font-normal py-3 pr-10">Due Date</th>
+                            <th className="font-normal py-3 pr-10">Due Date {`(yyyy/mm/dd)`}</th>
                             <th className="font-normal py-3 pr-10">Categories</th>
                             <th className="font-normal py-3 pr-10">URL</th>
                             <th className="font-normal py-3 pr-10">Docs</th>
@@ -57,7 +81,7 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
             }
             <tbody>
                 {
-                    portalData && filteredData.map((list, index) => (
+                    portalData && catsfilteredData().map((list, index) => (
                         <tr key={index} className="text-mute text-left border-b border-mute border-opacity-20">
                             <td className="p-3" title={list.issueDate.substring(0, 10)}>
                                 {list.issueDate.substring(0, 10)}

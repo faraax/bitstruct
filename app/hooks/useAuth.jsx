@@ -70,8 +70,8 @@ export default function useAuth() {
 
     const forgotPassword = async (username) => {
         // console.log(username);
-        setLoading(true)
         setError(null)
+        setLoading(true)
         try {
             let reqOptions = {
                 // url: `${process.env.APIENDPOINT}auth/forgot-password`,
@@ -83,18 +83,18 @@ export default function useAuth() {
                 data: username,
             }
 
-            let { data } = await axios.request(reqOptions);
+            setLoading(true)
             setLoading(false)
             setMessage(data.message)
-            setTimeout(() => setMessage(null), 8000)
-            setLoading(true)
             Cookies.remove("jwtToken")
             dispatch({ type: 'LOGOUT' })
+            setTimeout(() => setMessage(null), 8000)
+            let { data } = await axios.request(reqOptions);
             dispatch({ type: 'SETPROFILE', payload: null })
         }
         catch (err) {
-            setError(err.message)
             setLoading(false)
+            setError(err.message)
             console.log("Err =>", err.message);
             setTimeout(() => setError(null), 5000)
         }
@@ -102,10 +102,10 @@ export default function useAuth() {
 
     const logout = () => {
         setLoading(true)
+        setLoading(false)
         Cookies.remove("jwtToken")
         dispatch({ type: 'LOGOUT' })
         dispatch({ type: 'SETPROFILE', payload: null })
-        setLoading(false)
     }
 
     return { userLogin, loading, error, logout, userSignup, message, forgotPassword }
