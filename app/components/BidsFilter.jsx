@@ -156,9 +156,10 @@ export default function BidsFilter({ portalData }) {
                     <Select
                         isMulti
                         options={categoriesArray()}
-                        className="basic-multi-select rounded-xl"
+                        className="basic-multi-select rounded-xl placeholder:text-primary"
                         onChange={(option => setSelectCats(option))}
-                        classNamePrefix="truncate"
+                        classNamePrefix="react-select truncate placeholder:text-primary"
+                        placeholder={<div className="text-primary">Select category</div>} 
                     />
                     {/* <button className="relative group w-full bg-white flex justify-between items-center placeholder:text-primary focus:outline-none focus:ring-1 focus:ring-primary border-[#BCE0FD] px-5 py-2 border rounded-xl">
                         <p className="px-4 text-primary">Categories</p>
