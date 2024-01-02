@@ -39,7 +39,7 @@ export default function SetProfleName({ isPending, setIsPending }) {
                     let reqOption = {
                         url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
                         // url: `/api/getUsersProfilesList`,
-                        method: "GET",
+                        method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                             "Authorization": `JWT ${Cookies.get('jwtToken')}`
@@ -66,7 +66,7 @@ export default function SetProfleName({ isPending, setIsPending }) {
     // console.log(profiles);
 
     // if (profileCreated) return redirect('/dashboard')
-    if (profiles) return redirect('/dashboard')
+    if (profiles) return redirect('/settings')
 
     return (
         <div>

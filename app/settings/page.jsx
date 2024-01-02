@@ -2,16 +2,14 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 
-
 const Navbar = dynamic(() => import('../components/Navbar'))
-const ViewProfile = dynamic(() => import('../components/SettingsPage/ViewProfile'))
 const AddProfile = dynamic(() => import('../components/SettingsPage/AddProfile'))
+const ViewProfile = dynamic(() => import('../components/SettingsPage/ViewProfile'))
 const ChangePassword = dynamic(() => import('../components/SettingsPage/ChangePassword'))
 const AssignProjects = dynamic(() => import('../components/SettingsPage/AssignProjects'))
 
-
 export default function SettingsPage() {
-    const [selectedSetting, setSelectedSetting] = useState('View Profiles')
+    const [selectedSetting, setSelectedSetting] = useState('Assign Counties to Profile')
 
     return (
         <div className="col-span-10">

@@ -74,7 +74,6 @@ export default function Payment({ isPending, setIsPending }) {
 
     return (
         <div className="flex justify-center items-center flex-col gap-4">
-
             {/* <div className="flex justify-center items-center flex-col gap-2">
                 <div className="w-60 h-60 rounded-full overflow-hidden border-mute border-2">
                     <Image
@@ -123,9 +122,7 @@ export default function Payment({ isPending, setIsPending }) {
                     </a>}
                 </form>
             </div> */}
-
             {/* <PriceCards /> */}
-
             {
                 isPending ? (
                     <div className="flex justify-center items-center gap-2 p-3 rounded-lg font-bold cursor-wait w-full text-secondary">

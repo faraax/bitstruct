@@ -65,7 +65,7 @@ export const AuthContextProvider = ({ children }) => {
                 let reqOptions = {
                     url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
                     // url: `/api/getUsersProfilesList`,
-                    method: "GET",
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `JWT ${token}`

@@ -5,10 +5,10 @@ import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import useAuth from '../hooks/useAuth';
 import { IoLogOut } from '../Utils/icons'
-import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import logo from '../../public/BidStruct-Dark.png'
 import { useAuthContext } from '../hooks/useAuthContext';
+import { redirect } from 'next/navigation';
 import Loading from '../loading';
 
 const ProfileSetup = dynamic(() => import('../components/clientComponents/ProfileSetup'))
@@ -29,7 +29,7 @@ export default function SetupProfilePage() {
                 let reqOptions = {
                     url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
                     // url: `/api/getUsersProfilesList`,
-                    method: "GET",
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `JWT ${token}`
@@ -59,11 +59,8 @@ export default function SetupProfilePage() {
             getProfile()
         }
     }, [dispatch, token])
-
     // console.log(clientIsReady);
-
     // if (clientIsReady) return redirect('/')
-
     return (
         <div className="col-span-12">
             <nav className="py-5 px-10 shadow-md sticky top-0 h-[10vh] flex items-center justify-between">
@@ -72,15 +69,13 @@ export default function SetupProfilePage() {
                         src={logo}
                         alt='Bit Struct-Logo'
                         placeholder='blur'
-                        width={286}
-                    />
+                        width={286} />
                 </div>
                 <div>
                     <button
                         onClick={() => logout()}
                         // onClick={() => console.log(state)}
-                        className='flex items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'
-                    >
+                        className='flex items-center gap-2 bg-primary text-white p-3 rounded-lg hover:bg-opacity-80 duration-150 hover:outline-none hover:ring-1 hover:ring-primary border-[#BCE0FD]'>
                         <IoLogOut
                             className='text-2xl' />
                         <span className='text-base'>

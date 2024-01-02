@@ -20,7 +20,7 @@ export default function Home() {
   const { user, profiles } = useAuthContext()
 
   if (user && !profiles) return redirect('/setup-profile')
-  if (user) return redirect('/dashboard')
+  if (user) return redirect('/settings')
 
   return (
     <main
