@@ -37,12 +37,13 @@ export default function SetProfleName({ isPending, setIsPending }) {
                 setProfileCreated(true)
                 try {
                     let reqOption = {
-                        url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
-                        // url: `/api/getUsersProfilesList`,
-                        method: "POST",
+                        // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                        url: `/api/getUsersProfilesList`,
+                        // method: "POST",
+                        method: "GET",
                         headers: {
                             "Content-Type": "application/json",
-                            "Authorization": `JWT ${Cookies.get('jwtToken')}`
+                            // "Authorization": `JWT ${Cookies.get('jwtToken')}`
                         }
                     }
 
@@ -50,6 +51,8 @@ export default function SetProfleName({ isPending, setIsPending }) {
                     if (res.status === 200) {
                         dispatch({ type: 'SETPROFILE', payload: res.data?.profiles })
                         dispatch({ type: 'SELECTEDPROFILE', payload: res.data?.profiles[0] })
+                    } else {
+                        throw new Error(resp)
                     }
                 } catch (err) {
                     console.log(err);

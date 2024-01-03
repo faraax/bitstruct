@@ -27,18 +27,21 @@ export default function SetupProfilePage() {
             setloading(true)
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
-                    // url: `/api/getUsersProfilesList`,
-                    method: "POST",
+                    // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    url: `/api/getUsersProfilesList`,
+                    // method: "POST",
+                    method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${token}`
+                        // "Authorization": `JWT ${token}`
                     }
                 }
                 let resp = await axios.request(reqOptions);
                 if (resp.status === 200) {
                     dispatch({ type: 'SETPROFILE', payload: resp?.data?.profiles })
                     dispatch({ type: 'SELECTEDPROFILE', payload: resp?.data?.profiles[0] })
+                } else {
+                    throw new Error(resp)
                 }
                 // console.log(resp.data.profiles);
                 // if (resp?.data?.profiles?.length === 0) {

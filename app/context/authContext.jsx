@@ -63,25 +63,26 @@ export const AuthContextProvider = ({ children }) => {
         const getProfile = async () => {
             try {
                 let reqOptions = {
-                    url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
-                    // url: `/api/getUsersProfilesList`,
-                    method: "POST",
+                    // url: `${process.env.APIENDPOINT}api/getUsersProfilesList`,
+                    url: `/api/getUsersProfilesList`,
+                    // method: "POST",
+                    method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `JWT ${token}`
+                        // "Authorization": `JWT ${token}`
                     }
                 }
 
                 let resp = await axios.request(reqOptions);
                 // console.log(resp);
                 if (resp.status === 200) {
-                    dispatch({ type: 'SETPROFILE', payload: resp.data.profiles })
-                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data.profiles[0] })
+                    dispatch({ type: 'SETPROFILE', payload: resp.data?.profiles })
+                    dispatch({ type: 'SELECTEDPROFILE', payload: resp.data?.profiles[0] })
+                } else {
+                    throw new Error(resp)
                 }
             } catch (err) {
-                // if(err.response.status) {
                 console.log(err);
-                // }
             }
         }
 
@@ -100,9 +101,7 @@ export const AuthContextProvider = ({ children }) => {
                 // Cookies.remove('jwtToken');
             }
         } else {
-            // console.log("removed token");
             dispatch({ type: 'AUTHISREADY' });
-            // Cookies.remove('jwtToken');
         }
     }, [token])
     return (

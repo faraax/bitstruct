@@ -4,14 +4,14 @@ import ghassanKhoulaghasi from "../../public/testimonials/Ghassan Khoulaghasi.jp
 const testimonials = [
     {
         id: 1,
-        name: "Bashar Allan",
+        name: "Alexander Enriquez",
         imgSrc: basharAllan,
-        company: "SDS Structual Engineers",
+        company: "EQ Structural Engineers",
         review: "BidStruct has become an integral part of my everyday routine. The value of your information and the ability your service gives us to prospect for new jobs has made a huge impact for our company.",
     },
     {
         id: 2,
-        name: "Ghassan Khoulaghasi",
+        name: "Phillip Sullivan",
         imgSrc: ghassanKhoulaghasi,
         company: "Abatix Corp",
         review: `Bidstruct has enabled us to stay ahead of the game in terms of "finding out first" about projects, start dates and companies involved. The information gathered on each project is so thorough that it is a one-stop shop for us.`,
