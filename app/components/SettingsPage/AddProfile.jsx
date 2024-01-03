@@ -13,7 +13,7 @@ export default function AddProfile() {
     // const { profiles } = useAuthContext()
 
     const handleNewProfile = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         setLoading(true)
         setMsg(null)
         try {

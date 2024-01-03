@@ -31,11 +31,12 @@ export default function Table({ portalData, searchParams, fromDate, toDate }) {
         setFavs(prev => [...prev, list.bidId])
         try {
             let reqOptions = {
-                url: `${process.env.APIENDPOINT}api/add-to-favorite`,
+                // url: `${process.env.APIENDPOINT}api/add-to-favorite`,
+                url: `/api/add-to-favorite`,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `JWT ${token}`
+                    // "Authorization": `JWT ${token}`
                 },
                 data: JSON.stringify(list)
             }
