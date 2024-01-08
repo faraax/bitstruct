@@ -83,14 +83,15 @@ export default function useAuth() {
                 data: username,
             }
 
+            let { data } = await axios.request(reqOptions);
             setLoading(true)
             setLoading(false)
             setMessage(data.message)
             Cookies.remove("jwtToken")
             dispatch({ type: 'LOGOUT' })
             setTimeout(() => setMessage(null), 8000)
-            let { data } = await axios.request(reqOptions);
             dispatch({ type: 'SETPROFILE', payload: null })
+            // console.log(data);
         }
         catch (err) {
             setLoading(false)

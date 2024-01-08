@@ -138,7 +138,7 @@ export default function Payment({ isPending, setIsPending }) {
                     </div>
                 ) : (
                     <div className={link ? 'hidden' : ''}>
-                        <h2 className="text-3xl text-center py-5">Select you plan</h2>
+                        <h2 className="text-3xl text-center py-5">Select your plan</h2>
                         <div className="grid 3xl:grid-cols-3 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 grid-cols-1 xs:px-0 3xl:px-4 md:px-6 gap-5">
                             {
                                 data
@@ -199,7 +199,6 @@ export default function Payment({ isPending, setIsPending }) {
                                                         Select
                                                     </button>
                                                 }
-
                                             </div>
                                         </div>
                                     ))
